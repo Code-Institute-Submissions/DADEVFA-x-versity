@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Lessons</title>
+</head>
+<body>
+    {% for lesson in lessons %}
+        {{ lesson.lesson_title }}<br>
+        {{ lesson.course_subject }}<br>
+        {{ lesson.lesson_description }}<br>
+        {{ lesson.due_date }}<br>
+        {{ lesson.is_mandatory }}<br>
+    {% endfor %}
+</body>
+</html>
