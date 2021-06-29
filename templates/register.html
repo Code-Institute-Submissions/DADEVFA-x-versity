@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3 class="center-align deep-purple-text text-lighten-2">Register</h3>
+
+<div class="row">
+    <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">
+        <div class="card-panel">
+            <div class="row">
+                <form class="col s12">
+                    <!-- Name -->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input name="username" id="username" type="text" class="validate">
+                            <label for="username">Name</label>
+                        </div>
+                    </div>
+                    <!-- Email -->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input placeholder="your@emailaddress.com" name="email" id="email" type="email"
+                                class="validate">
+                            <label for="email">Email</label>
+                        </div>
+                    </div>
+                    <!-- Password -->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="password" name="password" type="password" class="validate">
+                            <label for="password">Password</label>
+                        </div>
+                    </div>
+                    <!-- Role -->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label for="role">
+                                <input name="role" id="role" type="checkbox" value="teacher" />
+                                <span>I'm a teacher</span>
+                            </label>
+                        </div>
+                    </div>
+                    <!-- Submit -->
+                    <div class="row" style="margin-top: 70px; padding-left: 10px;"  >
+                        <button type="submit" class="col btn deep-purple lighten-2 white-text">
+                            Register
+                        </button>
+                    </div>
+            </div>
+    </form>
+</div>
+</div>
+</form>
+</div>
+
+
+{% endblock %}
