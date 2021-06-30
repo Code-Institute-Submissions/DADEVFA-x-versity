@@ -3,7 +3,10 @@ body {
     font-weight: 700;
 }
 
-
 .header-text {
     font-weight: 300;
+}
+
+.buttons {
+    font-family: 'Titillium Web', sans-serif;
 }

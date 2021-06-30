@@ -33,15 +33,18 @@
                     <!-- Role -->
                     <div class="row">
                         <div class="input-field col s12">
-                            <label for="role">
-                                <input name="role" id="role" type="checkbox" value="teacher" />
-                                <span>I'm a teacher</span>
-                            </label>
+                            <select name="role" id="role">
+                                <option value="Student">Student</option>
+                                <option value="Teacher">Teacher</option>
+                                <option value="School">School</option>
+                                <option value="Parent">Parent</option>
+                            </select>
+                            <label for="role">Register as a:</label>
                         </div>
-                    </div>
+                        </div>
                     <!-- Submit -->
                     <div class="row" style="margin-top: 70px; padding-left: 10px;"  >
-                        <button type="submit" class="col btn deep-purple lighten-2 white-text">
+                        <button type="submit" class="col btn deep-purple lighten-2 white-text buttons">
                             Register
                         </button>
                     </div>
