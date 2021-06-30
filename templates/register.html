@@ -11,7 +11,8 @@
                     <!-- Name -->
                     <div class="row">
                         <div class="input-field col s12">
-                            <input name="username" id="username" type="text" class="validate">
+                            <input name="username" id="username" type="text" minlength="5" 
+                                maxlength="15" pattern="^[a-zA-Z0-9äæöøüÄÆÖØÜ ]*$" class="validate" required>
                             <label for="username">Name</label>
                         </div>
                     </div>
@@ -19,14 +20,15 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <input name="email" id="email" type="email"
-                                class="validate">
+                                class="validate" required>
                             <label for="email">Email</label>
                         </div>
                     </div>
                     <!-- Password -->
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="password" name="password" type="password" class="validate">
+                            <input id="password" name="password" type="password" minlength="5" 
+                                maxlength="15" pattern="^[a-zA-Z0-9äæöøüÄÆÖØÜ!?@`?=)(/&%€#*§-.,;:_) ]*$" class="validate" required>
                             <label for="password">Password</label>
                         </div>
                     </div>
@@ -34,7 +36,7 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <select name="role" id="role">
-                                <option value="Student">Student</option>
+                                <option value="Student" selected>Student</option>
                                 <option value="Teacher">Teacher</option>
                                 <option value="School">School</option>
                                 <option value="Parent">Parent</option>
