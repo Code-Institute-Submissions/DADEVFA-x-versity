@@ -11,24 +11,23 @@
                     <!-- Name -->
                     <div class="row">
                         <div class="input-field col s12">
-                            <input name="username" id="username" type="text" minlength="5" 
-                                maxlength="15" pattern="^[a-zA-Z0-9äæöøüÄÆÖØÜ ]*$" class="validate" required>
+                            <input name="username" id="username" type="text" minlength="5" maxlength="35"
+                                pattern="^[a-zA-Z0-9äæöøüÄÆÖØÜ ]*$" class="validate" required>
                             <label for="username">Name</label>
                         </div>
                     </div>
                     <!-- Email -->
                     <div class="row">
                         <div class="input-field col s12">
-                            <input name="email" id="email" type="email"
-                                class="validate" required>
+                            <input name="email" id="email" type="email" class="validate" required>
                             <label for="email">Email</label>
                         </div>
                     </div>
                     <!-- Password -->
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="password" name="password" type="password" minlength="5" 
-                                maxlength="15" pattern="^[a-zA-Z0-9äæöøüÄÆÖØÜ!?@`?=)(/&%€#*§-.,;:_) ]*$" class="validate" required>
+                            <input id="password" name="password" type="password" minlength="5" maxlength="15"
+                                pattern="^[a-zA-Z0-9äæöøüÄÆÖØÜ!?@`?=)(/&%€#*§-.,;:_) ]*$" class="validate" required>
                             <label for="password">Password</label>
                         </div>
                     </div>
@@ -43,9 +42,9 @@
                             </select>
                             <label for="role">Register as a:</label>
                         </div>
-                        </div>
+                    </div>
                     <!-- Submit -->
-                    <div class="row" style="margin-top: 70px; padding-left: 10px;"  >
+                    <div class="row" style="margin-top: 70px; padding-left: 10px;">
                         <button type="submit" class="col btn deep-purple lighten-2 white-text buttons">
                             Register
                         </button>
@@ -53,9 +52,13 @@
             </div>
     </form>
 </div>
+<div class="row">
+    <div class="col s12">
+        <p class="center-align">
+            Already Registered?
+            <a href="{{ url_for('login') }}" class="orange-text text-darken-4">Log In</a>
+        </p>
+    </div>
 </div>
-</form>
-</div>
-
 
 {% endblock %}

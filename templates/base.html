@@ -36,7 +36,7 @@
                     <li><a href="#">New Lesson</a></li>
                     <li><a href="#">Manage Courses</a></li>
                     <li><a href="#">Log out</a></li>
-                    <li><a href="#">Log in</a></li>
+                    <li><a href="{{ url_for('login') }}">Log in</a></li>
                     <li><a href="{{ url_for('register') }}">Register</a></li>
                 </ul>
             </div>
@@ -51,7 +51,7 @@
             <li><a href="#">New Lesson</a></li>
             <li><a href="#">Manage Courses</a></li>
             <li><a href="#">Log out</a></li>
-            <li><a href="#">Log in</a></li>
+            <li><a href="{{ url_for('login') }}">Log in</a></li>
             <li><a href="{{ url_for('register') }}">Register</a></li>
         </ul>
     </header>
