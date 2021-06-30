@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3 class="center-align deep-purple-text text-lighten-2">Register</h3>
+<h3 class="center-align deep-purple-text text-lighten-2 header-text">REGISTER</h3>
 
 <div class="row">
     <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">
@@ -18,7 +18,7 @@
                     <!-- Email -->
                     <div class="row">
                         <div class="input-field col s12">
-                            <input placeholder="your@emailaddress.com" name="email" id="email" type="email"
+                            <input name="email" id="email" type="email"
                                 class="validate">
                             <label for="email">Email</label>
                         </div>
