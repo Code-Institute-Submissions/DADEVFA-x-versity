@@ -25,6 +25,18 @@ def get_lessons():
     return render_template("lessons.html", lessons=lessons)
 
 
+@app.route("/profile/<username>", methods=["GET", "POST"])
+def profile(username):
+    # grab the session user's username from db
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+
+    if session["user"]:
+        return render_template("profile.html", username=username)
+
+    return redirect(url_for("login"))
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -45,8 +57,10 @@ def register():
         mongo.db.users.insert_one(register)
 
         # Store user in session cookies
-        session["user"] = request.form.get("email")
+        session["user"] = request.form.get("username").lower()
         flash("Registration Successful!")
+        return redirect(url_for("profile", username=session["user"]))
+
     return render_template("register.html")
 
 
@@ -61,10 +75,11 @@ def login():
             # ensure hashed password matches user input
             if check_password_hash(
                     existing_user["password"], request.form.get("password")):
-                session["user"] = request.form.get("email")
-                flash("Welcome back")
-                return redirect(url_for(
-                    "login", email=session["user"]))
+                session["user"] = existing_user["username"]
+                username = session["user"]
+                flash("Welcome, {}".format(username))
+                return render_template("profile.html", username=username)
+
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")
