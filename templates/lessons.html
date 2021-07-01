@@ -1,12 +1,42 @@
 {% extends "base.html" %}
-{% block content %}   
+{% block content %}
 
-    {% for lesson in lessons %}
-        {{ lesson.lesson_title }}<br>
-        {{ lesson.course_name }}<br>
-        {{ lesson.lesson_description }}<br>
-        {{ lesson.due_date }}<br>
-        {{ lesson.is_mandatory }}<br>
+<body>
+  {% for lesson in lessons %}
+  <div id="blue" class="block teal lighten-2 white-text">
+    <nav class="pushpin-demo-nav" data-target="blue">
+      <div class="nav-wrapper teal lighten-2">
+        <div class="container">
+          <a href="#" class="brand-logo">{{ lesson.lesson_title }}<br></a>
+        </div>
+      </div>
+    </nav>
+    {{ lesson.lesson_title }}<br>
+    {{ lesson.course_name }}<br>
+    {{ lesson.lesson_description }}<br>
+    {{ lesson.due_date }}<br>
+    {{ lesson.is_mandatory }}<br>
     {% endfor %}
+  </div>
+  <div id="cyan" class="block cyan lighten-1">
+    <nav class="pushpin-demo-nav" data-target="cyan">
+      <div class="nav-wrapper cyan lighten-1">
+        <div class="container">
+          <a href="#" class="brand-logo">Green</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <div id="teal" class="block teal lighten-2">
+    <nav class="pushpin-demo-nav" data-target="teal">
+      <div class="nav-wrapper teal lighten-2">
+        <div class="container">
+          <a href="#" class="brand-logo">Red</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</body>
 
 {% endblock %}
