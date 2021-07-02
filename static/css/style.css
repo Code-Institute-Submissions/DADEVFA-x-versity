@@ -12,7 +12,7 @@ body {
 }
 
 .block {
-    height: 100vh;
+    height: 70vh;
     width: 100%;
 }
 
@@ -30,6 +30,7 @@ body {
 }
 
 .lesson-box {
+    position: relative;
     max-height: 80vh;
     min-height: 50%;
     width: 80%;
@@ -44,16 +45,19 @@ body {
     position: relative;
     padding: 30px 0 50.25% 0;
     height: 0;
+    overflow: hidden;
 }
 
 .video-box iframe {
+    position: absolute;
     top: 0;
     left: 0;
-    height: 520px;
+    height: 100%;
+    max-height: 600px;
     width: 100%;
 }
 
-.lesson-title{
+.lesson-title {
     font-weight: 700;
-    font-size: 4.2vh;
+    font-size: 4vh;
 }

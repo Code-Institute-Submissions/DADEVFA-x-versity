@@ -2,20 +2,18 @@
 {% block content %}
 
 <body>
-{% for lesson in lessons %}
-  <div id="lesson" class="block teal lighten-2 white-text">
-    <nav class="pushpin-demo-nav" data-target="lesson">
-      <div class="nav-wrapper teal lighten-2">
-        <div class="container">
-          <div href="#" class="lesson-title">{{ lesson.lesson_title }}
-            {% if lesson.is_mandatory == "on" %}
-            <i class="fas fa-exclamation-circle deep-purple-text text-lighten-2 
+  {% for lesson in lessons %}
+  <div class="block teal lighten-2 white-text">
+    <div class="teal lighten-2">
+      <div class="container">
+        <div class="lesson-title">{{ lesson.lesson_title }}
+          {% if lesson.is_mandatory == "on" %}
+          <i class="fas fa-exclamation-circle deep-purple-text text-lighten-2 
             tooltipped" data-position="right" data-tooltip="Mandatory"></i>
-            {% endif %}
-          </div>
+          {% endif %}
         </div>
       </div>
-    </nav>
+    </div>
     <div class="container lesson-frame lesson-box">
       <h4 class="teal-text center">{{ lesson.lesson_nr }}. {{ lesson.lesson_description }}</h4>
       <h6 class="lesson-deadline">Lesson submission date:</h6>
@@ -23,18 +21,11 @@
         {{ lesson.due_date }}
       </h6>
       {% if lesson.has_video == "on" %}
-        <div class="video-box">
-            <iframe 
-              id="player" 
-              type="text/html" 
-              width="540" 
-              height="390" 
-              src="{{ lesson.lesson_video }}" 
-              frameborder="0"
-              allow="encrypted-media;" 
-              allowfullscreen>
-            </iframe>
-        </div>
+      <div class="video-box">
+        <iframe id="player" type="text/html" src="{{ lesson.lesson_video }}" frameborder="0" allow="encrypted-media;"
+          allowfullscreen>
+        </iframe>
+      </div>
       {% endif %}
     </div>
   </div>
@@ -42,6 +33,3 @@
 </body>
 
 {% endblock %}
-
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/t7DrJqcUviA" title="YouTube video player" frameborder="0" 
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
