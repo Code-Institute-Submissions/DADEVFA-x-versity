@@ -6,7 +6,7 @@
   <div class="block teal lighten-2 white-text">
     <div class="teal lighten-2">
       <div class="container">
-        <div class="lesson-title">{{ lesson.lesson_title }}
+        <div class="lesson-title">- {{ lesson.lesson_title }} 
           {% if lesson.is_mandatory == "on" %}
           <i class="fas fa-exclamation-circle deep-purple-text text-lighten-2 
             tooltipped" data-position="right" data-tooltip="Mandatory"></i>
@@ -15,16 +15,24 @@
       </div>
     </div>
     <div class="container lesson-frame lesson-box">
-      <h4 class="teal-text center">{{ lesson.lesson_nr }}. {{ lesson.lesson_description }}</h4>
-      <h6 class="lesson-deadline">Lesson submission date:</h6>
-      <h6 class="deep-orange-text lighten-2">
-        {{ lesson.due_date }}
-      </h6>
+      <h4 class="teal-text center description-text">{{ lesson.lesson_nr }}. {{ lesson.lesson_description }}</h4>
       {% if lesson.has_video == "on" %}
+      <h6>This lesson contains a video:</h6>
       <div class="video-box">
         <iframe id="player" type="text/html" src="{{ lesson.lesson_video }}" frameborder="0" allow="encrypted-media;"
           allowfullscreen>
         </iframe>
+      </div>
+      {% endif %}
+      {% if lesson.has_audio == "on" %}
+      <h6>This lesson contains audio:</h6>
+      <div class="audio-box">
+        <audio
+          controls
+          src="{{ url_for('static', filename='audio1.mp3') }}">
+              Your browser does not support the
+              <code>audio</code> element.
+        </audio>
       </div>
       {% endif %}
     </div>

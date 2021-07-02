@@ -12,8 +12,10 @@ body {
 }
 
 .block {
-    height: 70vh;
+    height: 80vh;
     width: 100%;
+    margin-bottom: 120px;
+    box-shadow: rgba(56, 59, 61, 0.322) 0px 8px 15px;
 }
 
 .full {
@@ -22,11 +24,14 @@ body {
 
 .lesson-frame {
     margin-top: 20px;
-    padding-top: 40px;
     border-width: 2px;
     box-shadow: rgba(56, 59, 61, 0.322) 0px 8px 24px;
     background-color: white;
-    height: 40vh;
+    height: 60vh;
+}
+
+.lesson-frame h6 {
+    padding: 10px;
 }
 
 .lesson-box {
@@ -41,11 +46,17 @@ body {
     color: teal;
 }
 
+.lesson-box .video-box {
+    margin: 10px;
+}
+
 .video-box {
     position: relative;
     padding: 30px 0 50.25% 0;
     height: 0;
     overflow: hidden;
+    margin: 10px;
+    max-width: 70vh;
 }
 
 .video-box iframe {
@@ -53,11 +64,16 @@ body {
     top: 0;
     left: 0;
     height: 100%;
-    max-height: 600px;
+    max-height: 390px;
     width: 100%;
+    max-width: 500px;
 }
 
 .lesson-title {
     font-weight: 700;
     font-size: 4vh;
+    padding: 50px 0px 10px 0px;
+}
+.description-text {
+    padding: 20px 0px;
 }
