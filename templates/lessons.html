@@ -2,41 +2,46 @@
 {% block content %}
 
 <body>
-  {% for lesson in lessons %}
-  <div id="blue" class="block teal lighten-2 white-text">
-    <nav class="pushpin-demo-nav" data-target="blue">
+{% for lesson in lessons %}
+  <div id="lesson" class="block teal lighten-2 white-text">
+    <nav class="pushpin-demo-nav" data-target="lesson">
       <div class="nav-wrapper teal lighten-2">
         <div class="container">
-          <a href="#" class="brand-logo">{{ lesson.lesson_title }}<br></a>
+          <div href="#" class="lesson-title">{{ lesson.lesson_title }}
+            {% if lesson.is_mandatory == "on" %}
+            <i class="fas fa-exclamation-circle deep-purple-text text-lighten-2 
+            tooltipped" data-position="right" data-tooltip="Mandatory"></i>
+            {% endif %}
+          </div>
         </div>
       </div>
     </nav>
-    {{ lesson.lesson_title }}<br>
-    {{ lesson.course_name }}<br>
-    {{ lesson.lesson_description }}<br>
-    {{ lesson.due_date }}<br>
-    {{ lesson.is_mandatory }}<br>
-    {% endfor %}
-  </div>
-  <div id="cyan" class="block cyan lighten-1">
-    <nav class="pushpin-demo-nav" data-target="cyan">
-      <div class="nav-wrapper cyan lighten-1">
-        <div class="container">
-          <a href="#" class="brand-logo">Green</a>
+    <div class="container lesson-frame lesson-box">
+      <h4 class="teal-text center">{{ lesson.lesson_nr }}. {{ lesson.lesson_description }}</h4>
+      <h6 class="lesson-deadline">Lesson submission date:</h6>
+      <h6 class="deep-orange-text lighten-2">
+        {{ lesson.due_date }}
+      </h6>
+      {% if lesson.has_video == "on" %}
+        <div class="video-box">
+            <iframe 
+              id="player" 
+              type="text/html" 
+              width="540" 
+              height="390" 
+              src="{{ lesson.lesson_video }}" 
+              frameborder="0"
+              allow="encrypted-media;" 
+              allowfullscreen>
+            </iframe>
         </div>
-      </div>
-    </nav>
+      {% endif %}
+    </div>
   </div>
-
-  <div id="teal" class="block teal lighten-2">
-    <nav class="pushpin-demo-nav" data-target="teal">
-      <div class="nav-wrapper teal lighten-2">
-        <div class="container">
-          <a href="#" class="brand-logo">Red</a>
-        </div>
-      </div>
-    </nav>
-  </div>
+  {% endfor %}
 </body>
 
 {% endblock %}
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/t7DrJqcUviA" title="YouTube video player" frameborder="0" 
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

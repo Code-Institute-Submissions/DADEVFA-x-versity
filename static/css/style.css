@@ -16,23 +16,44 @@ body {
     width: 100%;
 }
 
-nav ul li a:hover,
-nav ul li a.active {
-    background-color: rgba(0, 0, 0, .1);
-}
-
-.pin-top {
-    position: relative;
-}
-
-.pin-bottom {
-    position: relative;
-}
-
-.pinned {
-    position: fixed !important;
-}
-
 .full {
     width: 100%;
+}
+
+.lesson-frame {
+    margin-top: 20px;
+    padding-top: 40px;
+    border-width: 2px;
+    box-shadow: rgba(56, 59, 61, 0.322) 0px 8px 24px;
+    background-color: white;
+    height: 40vh;
+}
+
+.lesson-box {
+    max-height: 80vh;
+    min-height: 50%;
+    width: 80%;
+    color: black;
+}
+
+.lesson-deadline {
+    color: teal;
+}
+
+.video-box {
+    position: relative;
+    padding: 30px 0 50.25% 0;
+    height: 0;
+}
+
+.video-box iframe {
+    top: 0;
+    left: 0;
+    height: 520px;
+    width: 100%;
+}
+
+.lesson-title{
+    font-weight: 700;
+    font-size: 4.2vh;
 }

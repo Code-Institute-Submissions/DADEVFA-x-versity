@@ -21,7 +21,7 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_lessons")
 def get_lessons():
-    lessons = mongo.db.lessons.find()
+    lessons = list(mongo.db.lessons.find())
     return render_template("lessons.html", lessons=lessons)
 
 
