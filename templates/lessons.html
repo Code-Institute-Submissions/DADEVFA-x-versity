@@ -6,7 +6,7 @@
   <div class="block teal lighten-2 white-text">
     <div class="teal lighten-2">
       <div class="container">
-        <div class="lesson-title">- {{ lesson.lesson_title }} 
+        <div class="lesson-title">- {{ lesson.lesson_title }}
           {% if lesson.is_mandatory == "on" %}
           <i class="fas fa-exclamation-circle deep-purple-text text-lighten-2 
             tooltipped" data-position="right" data-tooltip="Mandatory"></i>
@@ -27,11 +27,9 @@
       {% if lesson.has_audio == "on" %}
       <h6>This lesson contains audio:</h6>
       <div class="audio-box">
-        <audio
-          controls
-          src="{{ url_for('static', filename=lesson.lesson_audio) }}">
-              Your browser does not support the
-              <code>audio</code> element.
+        <audio controls src="{{ url_for('static', filename=lesson.lesson_audio) }}">
+          Your browser does not support the
+          <code>audio</code> element.
         </audio>
       </div>
       {% endif %}
