@@ -34,7 +34,7 @@
                     <li><a href="{{ url_for('get_lessons') }}">Home</a></li>
                     {% if session.user %}
                         <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-                        <li><a href="#">New Lesson</a></li>
+                        <li><a href="{{ url_for('add_lesson') }}">New Lesson</a></li>
                         <li><a href="#">Manage Courses</a></li>
                         <li><a href="{{ url_for('logout') }}">Log out</a></li>
                     {% else %}
@@ -52,7 +52,7 @@
             <li><a href="{{ url_for('get_lessons') }}">Home</a></li>
             {% if session.user %}
                 <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-                <li><a href="#">New Lesson</a></li>
+                <li><a href="{{ url_for('login') }}">New Lesson</a></li>
                 <li><a href="#">Manage Courses</a></li>
                 <li><a href="{{ url_for('logout') }}">Log out</a></li>
             {% else %}

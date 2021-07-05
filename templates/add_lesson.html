@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h3 class="deep-purple-text text-lighten-2 center-align">Add a new lesson:</h3>
+
+    <div class="row">
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s12" method="POST" action="">
+                    <i class="fas fa-school prefix deep-purple-text text-lighten-2"></i>
+                    <input id="lesson_title" name="lesson_title" type="text" class="validate"> 
+                    <label for="lesson_title">Lesson Title</label>
+                </div>
+                <div class="input-field col s12">
+                    <i class="fas fa-folder-plus prefix deep-purple-text text-lighten-2"></i>
+                    <input id="lesson_description" name="lesson_description" type="text" class="validate">
+                    <label for="lesson_description">Lesson Description</label>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}
