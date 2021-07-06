@@ -75,10 +75,61 @@ body {
     font-size: 4vh;
     padding: 50px 0px 10px 0px;
 }
+
 .description-text {
     padding: 20px 0px;
 }
 
 .audio-box {
     padding: 0 10px 10px 10px;
+}
+
+.scrollspy-box {
+    padding: 5px;
+    position: fixed;
+    text-align: right;
+    float: right;
+    right: 0;
+    z-index: 2;
+    font-family: 'Titillium Web', sans-serif;
+    font-family: 300;
+    background-color: #9575cd86;
+}
+
+.scrollspy-box .table-of-contents a {
+    color: white
+}
+
+.scrollspy-box .table-of-contents a :active {
+    color: black;
+    font-weight: 900;
+}
+
+.range-field {
+    padding-left: 40px;
+}
+
+.switch {
+    padding-left: 25px;
+}
+
+.mandatory-i {
+    margin-top: -15px;
+}
+
+.all-icons {
+    margin-top: 8px;
+}
+
+.audio_upload form{
+    padding-left: 40px;
+    padding-bottom: 40px;
+}
+
+.video-url {
+    padding-left: 40px;
+}
+
+.add-lessons-box {
+    margin: 40px;
 }

@@ -1,23 +1,120 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h3 class="deep-purple-text text-lighten-2 center-align">Add a new lesson:</h3>
+<h3 class="deep-purple-text text-lighten-2 center-align">Add a new lesson:</h3>
 
-    <div class="row">
-        <form class="col s12">
-            <div class="row">
-                <div class="input-field col s12" method="POST" action="">
-                    <i class="fas fa-school prefix deep-purple-text text-lighten-2"></i>
-                    <input id="lesson_title" name="lesson_title" type="text" class="validate"> 
-                    <label for="lesson_title">Lesson Title</label>
-                </div>
-                <div class="input-field col s12">
-                    <i class="fas fa-folder-plus prefix deep-purple-text text-lighten-2"></i>
-                    <input id="lesson_description" name="lesson_description" type="text" class="validate">
-                    <label for="lesson_description">Lesson Description</label>
+<div class="row card-panel grey lighten-5 add-lessons-box z-depth-3">
+    <form class="col s12 prefix">
+        <!-- Lesson Title -->
+        <div class="row">
+            <div class="input-field col s12" method="POST" action="">
+                <i class="fas fa-school prefix deep-purple-text text-lighten-2 all-icons"></i>
+                <input id="lesson_title" name="lesson_title" type="text" class="validate" minlength="3" maxlength="20"
+                    required>
+                <label for="lesson_title">Lesson Title</label>
+            </div>
+        </div>
+        <!-- Lesson Description -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-folder-plus prefix deep-purple-text text-lighten-2 all-icons"></i>
+                <input id="lesson_description" name="lesson_description" type="text" class="validate" minlength="3"
+                    maxlength="100" required>
+                <label for="lesson_description">Lesson Description</label>
+            </div>
+        </div>
+        <!-- Lesson Description -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-file-archive prefix deep-purple-text text-lighten-2 all-icons"></i>
+                <select name="lesson_module" id="lesson_module">
+                    <option value="" disabled selected>Lesson belongs to</option>
+                    <option value="1">Module 1</option>
+                    <option value="2">Module 2</option>
+                    <option value="3">Module 3</option>
+                    <option value="4">Module 4</option>
+                    <option value="5">Module 5</option>
+                    <option value="6">Module 6</option>
+                </select>
+                <label for="lesson_module">Lesson Module</label>
+            </div>
+        </div>
+        <!-- Due Date -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-calendar-alt prefix deep-purple-text text-lighten-2"></i>
+                <form action="#">
+                    <div class="range-field">
+                        <label for="due_date">Days to submission from student start</label>
+                        <input name="due_date" id="due_date" type="range" value="1" min="0" max="150" />
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Mandatory -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-exclamation-circle prefix deep-purple-text text-lighten-2 mandatory-i"></i>
+                <div class="switch">
+                    <label for="is_mandatory">
+                        <input type="checkbox" id="is_mandatory" name="is_mandatory">
+                        <span class="lever"></span>
+                        Mandatory?
+                    </label>
                 </div>
             </div>
-        </form>
-    </div>
+        </div>
+        <!-- Has Audio -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-file-audio prefix deep-purple-text text-lighten-2 mandatory-i"></i>
+                <div class="switch">
+                    <label for="has_audio">
+                        <input type="checkbox" id="has_audio" name="has_audio">
+                        <span class="lever"></span>
+                        Lesson has Audio?
+                    </label>
+                </div>
+            </div>
+        </div>
+        <!-- Audio Upload -->
+        <div class="row">
+            <div class="input-field col s12 m6 audio_upload">
+                <form action="#">
+                    <div class="file-field input-field">
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text">
+                        </div>
+                        <div class="btn-small">
+                            <input name="lesson_audio" id="lesson_audio" type="file">
+                            <span>Choose Audio File</span>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <!-- Has Video -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-file-video prefix deep-purple-text text-lighten-2 mandatory-i"></i>
+                <div class="switch">
+                    <label for="has_video">
+                        <input type="checkbox" id="has_video" name="has_video">
+                        <span class="lever"></span>
+                        Lesson has Video?
+                    </label>
+                </div>
+            </div>
+        </div>
+        <!-- Video Link -->
+        <div class="row video-url">
+            <div class="input-field col s12 m6">
+                <textarea id="lesson_video" name="lesson_video" class="materialize-textarea"
+                    placeholder="https://www.youtube-nocookie.com/embed/t7DrJqcUviA"></textarea>
+                <label for="lesson_video">Link for Youtube Embed</label>
+                <p>Make sure to use the youtube url with "/embed/" included in link</p>
+            </div>
+        </div>
+    </form>
+</div>
 
 {% endblock %}
