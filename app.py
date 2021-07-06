@@ -85,10 +85,11 @@ def login():
             if check_password_hash(
                     existing_user["password"], request.form.get("password")):
                 session["user"] = existing_user["username"]
-                user_role = mongo.db.users.find_one("role")
-                print(user_role)
+                session["role"] = existing_user["role"]
+                role = session["role"]
                 username = session["user"]
                 flash("Welcome, {}".format(username))
+                flash("Welcome, {}".format(role))
                 return render_template("profile.html", username=username)
 
             else:
@@ -103,9 +104,15 @@ def login():
 
     return render_template("login.html")
 
+
 @app.route("/add_lesson")
 def add_lesson():
-    return render_template("add_lesson.html")
+    if session["role"] == "teacher":
+        return render_template("add_lesson.html")
+
+    else:
+        flash("To become a Teacher, one must first study hard")
+        return redirect(url_for("login"))
 
 
 if __name__ == "__main__":
