@@ -42,6 +42,7 @@ def logout():
     # remove session cookie
     flash("You have been logged out")
     session.pop("user")
+    session.pop("role")
     return redirect(url_for("login"))
 
 
@@ -87,10 +88,8 @@ def login():
                 # store users name and role
                 session["user"] = existing_user["username"]
                 session["role"] = existing_user["role"]
-                role = session["role"]
                 username = session["user"]
                 flash("Welcome, {}".format(username))
-                flash("Welcome, {}".format(role))
                 return render_template("profile.html", username=username)
 
             else:
@@ -109,10 +108,12 @@ def login():
 @app.route("/add_lesson")
 def add_lesson():
     # check if user is a teacher
-    if session["role"] == "teacher" or "admin":
+    allow_role = ["teacher", "admin"]
+    if session.get('role') in allow_role:
         return render_template("add_lesson.html")
-    # check if user is a somebody else
+
     else:
+        # if user is a somebody else
         flash("To become a Teacher, one must first study hard")
         # not allowed
         return redirect(url_for("login"))
