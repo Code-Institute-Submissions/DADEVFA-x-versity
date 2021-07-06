@@ -84,6 +84,7 @@ def login():
             # ensure hashed password matches user input
             if check_password_hash(
                     existing_user["password"], request.form.get("password")):
+                # store users name and role
                 session["user"] = existing_user["username"]
                 session["role"] = existing_user["role"]
                 role = session["role"]
@@ -107,11 +108,13 @@ def login():
 
 @app.route("/add_lesson")
 def add_lesson():
-    if session["role"] == "teacher":
+    # check if user is a teacher
+    if session["role"] == "teacher" or "admin":
         return render_template("add_lesson.html")
-
+    # check if user is a somebody else
     else:
         flash("To become a Teacher, one must first study hard")
+        # not allowed
         return redirect(url_for("login"))
 
 
