@@ -7,6 +7,14 @@ $(document).ready(function () {
   $('.tooltipped').tooltip();
 });
 
+const scrollspy = document.querySelectorAll(".scrollspy");
+M.ScrollSpy.init(scrollspy, {
+  getActiveElement: function (id) {
+    return 'a[href="#' + id + '"]';
+  },
+})
+
+
 var slider = document.getElementById('due_date');
 noUiSlider.create(slider, {
  start: [20, 80],

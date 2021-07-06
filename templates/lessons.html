@@ -2,11 +2,20 @@
 {% block content %}
 
 <body>
+  <div class="scrollspy-box">
+    <div class="col s12 m9 l10">
+      <ul class="section table-of-contents">
+        {% for lesson in lessons %}
+        <li><a href="#{{ lesson.lesson_title }}" class="option"> Lesson: {{ lesson.lesson_nr }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
   {% for lesson in lessons %}
   <div class="block teal lighten-2 white-text">
     <div class="teal lighten-2">
       <div class="container">
-        <div class="lesson-title">- {{ lesson.lesson_title }}
+        <div id="{{ lesson.lesson_title }}" class="lesson-title scrollspy">- {{ lesson.lesson_title }}
           {% if lesson.is_mandatory == "on" %}
           <i class="fas fa-exclamation-circle deep-purple-text text-lighten-2 
             tooltipped" data-position="right" data-tooltip="Mandatory"></i>
@@ -14,7 +23,7 @@
         </div>
       </div>
     </div>
-    <div class="container lesson-frame lesson-box">
+    <div id="{{ lesson.lesson_nr }}" class="container lesson-frame lesson-box">
       <h4 class="teal-text center description-text">{{ lesson.lesson_nr }}. {{ lesson.lesson_description }}</h4>
       {% if lesson.has_video == "on" %}
       <h6>This lesson contains a video:</h6>
@@ -37,5 +46,4 @@
   </div>
   {% endfor %}
 </body>
-
 {% endblock %}

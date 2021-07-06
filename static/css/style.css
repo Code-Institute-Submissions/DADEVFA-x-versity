@@ -85,19 +85,19 @@ body {
 }
 
 .scrollspy-box {
-    padding: 5px;
     position: fixed;
-    text-align: right;
-    float: right;
-    right: 0;
+    width: 70px;
+    height: 170px;
     z-index: 2;
-    font-family: 'Titillium Web', sans-serif;
+    font-family: 'Titillium Web';
     font-family: 300;
-    background-color: #9575cd86;
+    font-size: 13px;
+    top: 10vh;
+    right: 0;
 }
 
 .scrollspy-box .table-of-contents a {
-    color: white
+    color: black
 }
 
 .scrollspy-box .table-of-contents a :active {
