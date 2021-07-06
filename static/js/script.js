@@ -14,18 +14,35 @@ M.ScrollSpy.init(scrollspy, {
   },
 })
 
+function videoUpload() {
+  let element = document.getElementById("toggle_video");
+  if ($(element).hasClass('toggle-video')) {
+    // if it is, remove.
+    $(element).removeClass('toggle-video')
+  } else {
+    // otherwise just add muted.
+    $(element).addClass('toggle-video')
+  }
+};
 
-var slider = document.getElementById('due_date');
-noUiSlider.create(slider, {
- start: [20, 80],
- connect: true,
- step: 1,
- orientation: 'horizontal',
- range: {
-   'min': 0,
-   'max': 100
- },
- format: wNumb({
-   decimals: 0
- })
-});
+function audioUpload() {
+  let element = document.getElementById("toggle_audio");
+  if ($(element).hasClass('toggle-audio')) {
+    // if it is, remove.
+    $(element).removeClass('toggle-audio')
+  } else {
+    // otherwise just add muted.
+    $(element).addClass('toggle-audio')
+  }
+};
+
+function submissionUpload() {
+  let element = document.getElementById("submission_style");
+  if ($(element).hasClass('toggle-sub-styles')) {
+    // if it is, remove.
+    $(element).removeClass('toggle-sub-styles')
+  } else {
+    // otherwise just add muted.
+    $(element).addClass('toggle-sub-styles')
+  }
+};

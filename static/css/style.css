@@ -133,3 +133,15 @@ body {
 .add-lessons-box {
     margin: 40px;
 }
+
+.toggle-video {
+    display: none;
+}
+
+.toggle-audio {
+    display: none;
+}
+
+.toggle-sub-styles {
+    display: none;
+}

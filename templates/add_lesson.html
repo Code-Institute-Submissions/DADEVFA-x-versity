@@ -23,6 +23,22 @@
                 <label for="lesson_description">Lesson Description</label>
             </div>
         </div>
+        <!-- Lesson Nr -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-book prefix deep-purple-text text-lighten-2 all-icons"></i>
+                <select name="lesson_module" id="lesson_module">
+                    <option value="" disabled selected>This lesson comes:</option>
+                    <option value="1">1st</option>
+                    <option value="2">2nd</option>
+                    <option value="3">3rd</option>
+                    <option value="4">4th</option>
+                    <option value="5">5th</option>
+                    <option value="6">6th</option>
+                </select>
+                <label for="lesson_module">Lesson Placement</label>
+            </div>
+        </div>
         <!-- Lesson Description -->
         <div class="row">
             <div class="input-field col s12">
@@ -42,11 +58,11 @@
         <!-- Due Date -->
         <div class="row">
             <div class="input-field col s12">
-                <i class="fas fa-calendar-alt prefix deep-purple-text text-lighten-2"></i>
+                <i class="fas fa-hourglass-start prefix deep-purple-text text-lighten-2"></i>
                 <form action="#">
                     <div class="range-field">
                         <label for="due_date">Days to submission from student start</label>
-                        <input name="due_date" id="due_date" type="range" value="1" min="0" max="150" />
+                        <input name="due_date" id="due_date" type="range" min="0" max="150" />
                     </div>
                 </form>
             </div>
@@ -70,15 +86,15 @@
                 <i class="fas fa-file-audio prefix deep-purple-text text-lighten-2 mandatory-i"></i>
                 <div class="switch">
                     <label for="has_audio">
-                        <input type="checkbox" id="has_audio" name="has_audio">
-                        <span class="lever"></span>
+                        <input class="add-media" type="checkbox" id="has_audio" name="has_audio">
+                        <span onclick="audioUpload()" class="lever"></span>
                         Lesson has Audio?
                     </label>
                 </div>
             </div>
         </div>
         <!-- Audio Upload -->
-        <div class="row">
+        <div id="toggle_audio" class="row toggle-audio card-panel deep-purple lighten-5 z-depth-1">
             <div class="input-field col s12 m6 audio_upload">
                 <form action="#">
                     <div class="file-field input-field">
@@ -99,19 +115,64 @@
                 <div class="switch">
                     <label for="has_video">
                         <input type="checkbox" id="has_video" name="has_video">
-                        <span class="lever"></span>
+                        <span onclick="videoUpload()" class="lever"></span>
                         Lesson has Video?
                     </label>
                 </div>
             </div>
         </div>
         <!-- Video Link -->
-        <div class="row video-url">
+        <div id="toggle_video" class="row video-url toggle-video card-panel deep-purple lighten-5 z-depth-1">
             <div class="input-field col s12 m6">
                 <textarea id="lesson_video" name="lesson_video" class="materialize-textarea"
                     placeholder="https://www.youtube-nocookie.com/embed/t7DrJqcUviA"></textarea>
                 <label for="lesson_video">Link for Youtube Embed</label>
                 <p>Make sure to use the youtube url with "/embed/" included in link</p>
+            </div>
+        </div>
+        <!-- Has Submission -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-paperclip prefix deep-purple-text text-lighten-2 mandatory-i"></i>
+                <div class="switch">
+                    <label for="has_submission">
+                        <input type="checkbox" id="has_submission" name="has_submission">
+                        <span onclick="submissionUpload()" class="lever"></span>
+                        Lesson has Submission?
+                    </label>
+                </div>
+            </div>
+        </div>
+        <!-- Submission Style -->
+        <div id="submission_style" class="row toggle-sub-styles card-panel deep-purple lighten-5 z-depth-1">
+            <div class="input-field col s12 m6">
+        <!-- Lesson Test -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="lesson_test" name="lesson_test" 
+                            minlength="10" maxlength="400" class="materialize-textarea"
+                                placeholder="Assignment"></textarea>
+                        <label for="lesson_test">Give your student an assignment:</label>
+                    </div>
+                </div>
+                <div>
+                    <label for="student_text">
+                        <input name="student_text" id="student_text" type="checkbox" class="filled-in" />
+                        <span>Student sends text</span>
+                    </label>
+                </div>
+                <div>
+                    <label for="student_file">
+                        <input name="student_file" id="student_file" type="checkbox" class="filled-in" />
+                        <span>Student uploads file</span>
+                    </label>
+                </div>
+                <div>
+                    <label for="student_audio">
+                        <input name="student_audio" id="student_audio" type="checkbox" class="filled-in" />
+                        <span>Student uploads audio</span>
+                    </label>
+                </div>
             </div>
         </div>
     </form>
