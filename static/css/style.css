@@ -74,13 +74,14 @@ body {
 }
 
 .description-text {
-    padding: 20px 0px;
+    margin: 20px 0px;
     color: #429E9D;
     text-align: center;
+    padding: 16px 0px;
 }
 
 .audio-box {
-    padding: 20px 20px 20px 10px
+    padding: 10px 20px 20px 10px
 }
 
 .scrollspy-box {
@@ -90,11 +91,11 @@ body {
     z-index: 2;
     font-family: 'Titillium Web';
     font-family: 300;
-    font-size: 13px;
+    font-size: 15px;
     top: 12vh;
     right: 0;
     text-align: right;
-    padding-right: 5px;
+    padding-right: 8px;
 }
 
 .scrollspy-box .table-of-contents a {
@@ -104,9 +105,9 @@ body {
 .table-of-contents a.active {
     color: black;
     font-weight: 800;
-    padding-left: 7px;
+    padding-left: 6px;
     border-left: 3px solid #9575cd;
-    padding-right: 3px;
+    padding-right: 1px;
 }
 
 .range-field {
