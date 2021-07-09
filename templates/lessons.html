@@ -20,14 +20,34 @@
         <div id="{{ lesson.lesson_nr }}." class="lesson-title scrollspy section">{{ lesson.lesson_nr }}.
           {{ lesson.lesson_title }}
           {% if lesson.is_mandatory == "on" %}
-          <i class="fas fa-exclamation-circle deep-orange-text text-lighten-3 
-            tooltipped" data-position="right" data-tooltip="Mandatory"></i>
+          <i class="fas fa-exclamation-circle mandatory tooltipped" data-position="right" data-tooltip="Mandatory"></i>
           {% endif %}
         </div>
       </div>
     </div>
-    <div id="{{ lesson.lesson_nr }}" class="container lesson-frame lesson-box z-depth-5">
+    <div id="{{ lesson.lesson_nr }}" class="container lesson-frame lesson-box">
       <h4 class="description-text">{{ lesson.lesson_description }}</h4>
+      <!-- Student Lesson Actions -->
+      {% if lesson.has_submission == "on" %}
+        <div class="student-action-box">
+          <div style="position: absolute;" class="fixed-action-btn">
+            <a class="btn-floating btn-large deep-orange accent-3">
+              <i class="fas fa-folder-plus"></i>
+            </a>
+            <ul>
+              <li><a class="btn-floating"><i class="fas fa-paperclip"></i></a>
+                <p class="center">Attach</p>
+              </li>
+              <li><a class="btn-floating"><i class="far fa-save"></i></a>
+                <p class="center">Save</p>
+              </li>
+              <li><a class="btn-floating pulse"><i class="far fa-share-square"></i></a>
+                <p class="center">Submit</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      {% endif %}
       <!-- Video -->
       {% if lesson.has_video == "on" %}
       <h6><i class="fas fa-file-video lesson-icons"></i>This lesson contains a video:</h6>
