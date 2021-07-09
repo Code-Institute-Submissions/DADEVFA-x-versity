@@ -2,39 +2,44 @@
 {% block content %}
 
 <body>
+  <!-- Scrollspy -->
   <div class="scrollspy-box">
     <div class="col s12 m9 l10">
       <ul class="section table-of-contents">
         {% for lesson in lessons %}
-        <li><a href="#{{ lesson.lesson_title }}" class="option"> Lesson: {{ lesson.lesson_nr }}</a></li>
+        <li><a href="#{{ lesson.lesson_nr }}." class="option">{{ lesson.lesson_nr }}</a></li>
         {% endfor %}
       </ul>
     </div>
   </div>
+  <!-- Lessons -->
   {% for lesson in lessons %}
-  <div class="block teal lighten-2 white-text">
-    <div class="teal lighten-2">
+  <div class="block lighten-2 white-text">
+    <div class="lighten-2">
       <div class="container">
-        <div id="{{ lesson.lesson_title }}" class="lesson-title scrollspy">- {{ lesson.lesson_title }}
+        <div id="{{ lesson.lesson_nr }}." class="lesson-title scrollspy section">{{ lesson.lesson_nr }}.
+          {{ lesson.lesson_title }}
           {% if lesson.is_mandatory == "on" %}
-          <i class="fas fa-exclamation-circle deep-purple-text text-lighten-2 
+          <i class="fas fa-exclamation-circle deep-orange-text text-lighten-3 
             tooltipped" data-position="right" data-tooltip="Mandatory"></i>
           {% endif %}
         </div>
       </div>
     </div>
-    <div id="{{ lesson.lesson_nr }}" class="container lesson-frame lesson-box">
-      <h4 class="teal-text center description-text">{{ lesson.lesson_nr }}. {{ lesson.lesson_description }}</h4>
+    <div id="{{ lesson.lesson_nr }}" class="container lesson-frame lesson-box z-depth-5">
+      <h4 class="description-text">{{ lesson.lesson_description }}</h4>
+      <!-- Video -->
       {% if lesson.has_video == "on" %}
-      <h6>This lesson contains a video:</h6>
+      <h6><i class="fas fa-file-video lesson-icons"></i>This lesson contains a video:</h6>
       <div class="video-box">
         <iframe id="player" type="text/html" src="{{ lesson.lesson_video }}" frameborder="0" allow="encrypted-media;"
           allowfullscreen>
         </iframe>
       </div>
       {% endif %}
+      <!-- Audio -->
       {% if lesson.has_audio == "on" %}
-      <h6>This lesson contains audio:</h6>
+      <h6><i class="fas fa-file-audio lesson-icons"></i>This lesson contains audio:</h6>
       <div class="audio-box">
         <audio controls src="{{ url_for('static', filename=lesson.lesson_audio) }}">
           Your browser does not support the

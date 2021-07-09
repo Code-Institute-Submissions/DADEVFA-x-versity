@@ -16,6 +16,7 @@ body {
     width: 100%;
     margin-bottom: 120px;
     box-shadow: rgba(56, 59, 61, 0.322) 0px 8px 15px;
+    background-color: #429E9D;
 }
 
 .full {
@@ -31,7 +32,7 @@ body {
 }
 
 .lesson-frame h6 {
-    padding: 10px;
+    padding-top: 10px;
     margin-top: -38px;
 }
 
@@ -39,12 +40,8 @@ body {
     position: relative;
     max-height: 95vh;
     min-height: 50%;
-    width: 80%;
+    width: 86%;
     color: black;
-}
-
-.lesson-deadline {
-    color: teal;
 }
 
 .lesson-box .video-box {
@@ -78,31 +75,38 @@ body {
 
 .description-text {
     padding: 20px 0px;
+    color: #429E9D;
+    text-align: center;
 }
 
 .audio-box {
-    padding: 0 10px 10px 10px;
+    padding: 20px 20px 20px 10px
 }
 
 .scrollspy-box {
     position: fixed;
-    width: 70px;
+    width: 100px;
     height: 170px;
     z-index: 2;
     font-family: 'Titillium Web';
     font-family: 300;
     font-size: 13px;
-    top: 10vh;
+    top: 12vh;
     right: 0;
+    text-align: right;
+    padding-right: 5px;
 }
 
 .scrollspy-box .table-of-contents a {
     color: black
 }
 
-.scrollspy-box .table-of-contents a :active {
+.table-of-contents a.active {
     color: black;
-    font-weight: 900;
+    font-weight: 800;
+    padding-left: 7px;
+    border-left: 3px solid #9575cd;
+    padding-right: 3px;
 }
 
 .range-field {
@@ -121,7 +125,13 @@ body {
     margin-top: 8px;
 }
 
-.audio_upload form{
+.lesson-icons {
+    font-size: 3.3vh;
+    margin: 0px 10px;
+    color: #9575cd;
+}
+
+.audio_upload form {
     padding-left: 40px;
     padding-bottom: 40px;
 }
@@ -134,14 +144,39 @@ body {
     margin: 40px;
 }
 
-.toggle-video {
+.toggle-video audio {
     display: none;
+    width: 100%
 }
 
 .toggle-audio {
     display: none;
 }
 
+audio {
+    width: 100%;
+}
+
 .toggle-sub-styles {
     display: none;
+}
+
+
+/*---------------------------------- Screensize*/
+
+/*------------------------------ Phone*/
+
+/*------------------------------ Tablets*/
+
+
+@media (min-width: 767px) {
+    .scrollspy-box {
+        font-size: 16px;
+        padding-right: 20px;
+    }
+
+    .table-of-contents a.active {
+        padding-left: 10px;
+        padding-right: 5px;
+    }
 }

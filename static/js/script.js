@@ -5,14 +5,13 @@ $(document).ready(function () {
   });
   $('select').formSelect();
   $('.tooltipped').tooltip();
+  $('.scrollspy').scrollSpy({
+    scrollOffset: 1,
+    getActiveElement: function (id) {
+      return 'a[href="#' + id + '"]'
+  }});
 });
 
-const scrollspy = document.querySelectorAll(".scrollspy");
-M.ScrollSpy.init(scrollspy, {
-  getActiveElement: function (id) {
-    return 'a[href="#' + id + '"]';
-  },
-})
 
 function videoUpload() {
   let element = document.getElementById("toggle_video");
