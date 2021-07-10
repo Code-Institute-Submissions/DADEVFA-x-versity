@@ -154,7 +154,7 @@ body {
     margin: 40px;
 }
 
-.toggle-video audio {
+.toggle-video {
     display: none;
     width: 100%
 }
@@ -164,18 +164,20 @@ body {
 }
 
 audio {
-    width: 80%;
+    width: 100%;
 }
 
 .toggle-sub-styles {
     display: none;
 }
 
+/*---------------------------------- Lesson Page */
+/*------------------------ Student Actions  */
+
 .student-action-box {
     position: relative;
-    top: 360px;
-    right: -10px;
-    background-color: #9575cd;
+    top: 370px;
+    right: -0px;
 }
 
 .student-action-box p{
@@ -188,13 +190,28 @@ audio {
     font-weight: 600;
 }
 
-.student-action-box a{
+.student-action-box a {
     background-color: #9575cd;
+}
+
+.btn-floating:hover{
+    background-color: #429E9D;
 }
 
 /*---------------------------------- Screensize*/
 
 /*------------------------------ Phone*/
+
+@media (min-width: 319px) {
+    .video-box {
+        width: 100%;
+        max-width: 100%;
+        margin: 0px;
+    }
+    .lesson-box .video-box {
+        margin: 0px;
+    }
+}
 
 /*------------------------------ Tablets*/
 
@@ -212,6 +229,15 @@ audio {
     .student-action-box {
         position: relative;
         top: 400px;
-        right: -10px;
+    }
+    .lesson-box .video-box {
+        margin: 10px;
+    }
+    .video-box iframe {
+        max-width: 50%;
+        padding-bottom: 10px;
+    }
+    .audio-box audio{
+        max-width: 50%;
     }
 }
