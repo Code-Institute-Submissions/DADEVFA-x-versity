@@ -142,7 +142,7 @@ body {
     color: black;
     font-weight: 800;
     padding-left: 6px;
-    border-left: 3px solid #cb99c9;
+    border-left: 3px solid #dd5540;
     padding-right: 1px;
 }
 
@@ -165,7 +165,7 @@ body {
 .lesson-icons {
     font-size: 3.3vh;
     margin: 0px 10px;
-    color: #cb99c9;
+    color: #dd5540;
 }
 
 .audio_upload form {
@@ -222,7 +222,7 @@ audio {
 }
 
 .btn-floating:hover {
-    background-color: #cb99c9;
+    background-color: #dd5540;
 }
 
 /*---------------------------------- Footer*/
@@ -246,7 +246,7 @@ audio {
 .footer-btn:hover {
     text-shadow: 0.7px 2px black;
     padding-left: 5px;
-    border-left: 3px solid #cb99c9;
+    border-left: 3px solid #dd5540;
 }
 
 .footer i {
@@ -255,7 +255,7 @@ audio {
 }
 
 .footer i:hover {
-    color: #cb99c9;
+    color: #dd5540;
 }
 
 .footer-copyright .copyright {
