@@ -13,7 +13,7 @@ body {
 .nav-bar-bg a {
     letter-spacing: 1px;
     color: #ece3d3;
-    font-weight: 600;
+    font-weight: 800;
     font-size: 12px;
     text-shadow: 0.2px 1px black;
 }
@@ -30,8 +30,13 @@ body {
     font-weight: 700;
 }
 
+.nav-btn:hover {
+    border-bottom: 3px solid #dd5540;
+    text-shadow: 0.7px 2px black;
+}
+
 .mandatory {
-    color: #ede4d5;
+    color: #dd5f4c;
 }
 
 .header-text {
@@ -47,7 +52,7 @@ body {
     width: 100%;
     margin-bottom: 200px;
     box-shadow: rgba(56, 59, 61, 0.322) 0px 8px 15px;
-    background-color: #429E9D;
+    background-color: #3c8699;
 }
 
 .full {
@@ -107,11 +112,12 @@ body {
     font-weight: 700;
     font-size: 4vh;
     padding: 50px 0px 10px 0px;
+    color: #ede4d5;
 }
 
 .description-text {
     margin: 20px 0px;
-    color: #429E9D;
+    color: #3c8699;
     text-align: center;
     padding: 16px 0px;
 }

@@ -31,17 +31,17 @@
                 </a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="{{ url_for('get_lessons') }}">Home</a></li>
+                    <li><a class="nav-btn" href="{{ url_for('get_lessons') }}">Home</a></li>
                     {% if session.user %}
-                    <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+                    <li><a class="nav-btn" href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
                     {% if session.role|lower == "teacher"|lower %}
-                    <li><a href="{{ url_for('add_lesson') }}">New Lesson</a></li>
+                    <li><a class="nav-btn" href="{{ url_for('add_lesson') }}">New Lesson</a></li>
                     {% endif %}
-                    <li><a href="#">Manage Courses</a></li>
-                    <li><a href="{{ url_for('logout') }}">Log out</a></li>
+                    <li><a class="nav-btn" href="#">Manage Courses</a></li>
+                    <li><a class="nav-btn" href="{{ url_for('logout') }}">Log out</a></li>
                     {% else %}
-                    <li><a href="{{ url_for('login') }}">Log in</a></li>
-                    <li><a href="{{ url_for('register') }}">Register</a></li>
+                    <li><a class="nav-btn" href="{{ url_for('login') }}">Log in</a></li>
+                    <li><a class="nav-btn" href="{{ url_for('register') }}">Register</a></li>
                     {% endif %}
                 </ul>
             </div>
@@ -51,17 +51,17 @@
             <a href="#">
                 <img class="logo" src="{{ url_for('static', filename='x-versity-logo.png') }}" alt="Logo for X-Versity">
             </a>
-            <li><a href="{{ url_for('get_lessons') }}">Home</a></li>
+            <li><a class="nav-btn" href="{{ url_for('get_lessons') }}">Home</a></li>
             {% if session.user %}
-            <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+            <li><a class="nav-btn" href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
             {% if session.role|lower == "teacher"|lower %}
-            <li><a href="{{ url_for('add_lesson') }}">New Lesson</a></li>
+            <li><a class="nav-btn" href="{{ url_for('add_lesson') }}">New Lesson</a></li>
             {% endif %}
-            <li><a href="#">Manage Courses</a></li>
-            <li><a href="{{ url_for('logout') }}">Log out</a></li>
+            <li><a class="nav-btn" href="#">Manage Courses</a></li>
+            <li><a class="nav-btn" href="{{ url_for('logout') }}">Log out</a></li>
             {% else %}
-            <li><a href="{{ url_for('login') }}">Log in</a></li>
-            <li><a href="{{ url_for('register') }}">Register</a></li>
+            <li><a class="nav-btn" href="{{ url_for('login') }}">Log in</a></li>
+            <li><a class="nav-btn" href="{{ url_for('register') }}">Register</a></li>
             {% endif %}
         </ul>
     </header>
