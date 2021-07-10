@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,700;1,900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200;1,700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
     {% block styles %}
@@ -24,44 +24,44 @@
 
     <header>
         <!-- Navbar -->
-        <nav class="deep-purple lighten-2">
+        <nav class="nav-bar-bg">
             <div class="nav-wrapper">
                 <a href="{{ url_for('get_lessons') }}">
-                    <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo for X-Versity">
+                    <img src="{{ url_for('static', filename='x-versity-logo.png') }}" alt="Logo for X-Versity">
                 </a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="{{ url_for('get_lessons') }}">Home</a></li>
                     {% if session.user %}
-                        <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-                        {% if session.role|lower == "teacher"|lower %}
-                        <li><a href="{{ url_for('add_lesson') }}">New Lesson</a></li>
-                        {% endif %}
-                        <li><a href="#">Manage Courses</a></li>
-                        <li><a href="{{ url_for('logout') }}">Log out</a></li>
+                    <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+                    {% if session.role|lower == "teacher"|lower %}
+                    <li><a href="{{ url_for('add_lesson') }}">New Lesson</a></li>
+                    {% endif %}
+                    <li><a href="#">Manage Courses</a></li>
+                    <li><a href="{{ url_for('logout') }}">Log out</a></li>
                     {% else %}
-                        <li><a href="{{ url_for('login') }}">Log in</a></li>
-                        <li><a href="{{ url_for('register') }}">Register</a></li>
+                    <li><a href="{{ url_for('login') }}">Log in</a></li>
+                    <li><a href="{{ url_for('register') }}">Register</a></li>
                     {% endif %}
                 </ul>
             </div>
         </nav>
         <!-- Mobile Side Navbar -->
-        <ul class="sidenav deep-purple lighten-2" id="mobile-demo">
+        <ul class="sidenav nav-bar-bg" id="mobile-demo">
             <a href="#">
-                <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo for X-Versity">
+                <img class="logo" src="{{ url_for('static', filename='x-versity-logo.png') }}" alt="Logo for X-Versity">
             </a>
             <li><a href="{{ url_for('get_lessons') }}">Home</a></li>
             {% if session.user %}
-                <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-                {% if session.role|lower == "teacher"|lower %}
-                    <li><a href="{{ url_for('add_lesson') }}">New Lesson</a></li>
-                {% endif %}
-                <li><a href="#">Manage Courses</a></li>
-                <li><a href="{{ url_for('logout') }}">Log out</a></li>
+            <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+            {% if session.role|lower == "teacher"|lower %}
+            <li><a href="{{ url_for('add_lesson') }}">New Lesson</a></li>
+            {% endif %}
+            <li><a href="#">Manage Courses</a></li>
+            <li><a href="{{ url_for('logout') }}">Log out</a></li>
             {% else %}
-                <li><a href="{{ url_for('login') }}">Log in</a></li>
-                <li><a href="{{ url_for('register') }}">Register</a></li>
+            <li><a href="{{ url_for('login') }}">Log in</a></li>
+            <li><a href="{{ url_for('register') }}">Register</a></li>
             {% endif %}
         </ul>
     </header>
@@ -82,6 +82,46 @@
         {% block content %}
         {% endblock %}
     </main>
+    <!-- footer -->
+    <footer class="page-footer footer z-depth-5">
+        <div class="container">
+            <div class="row">
+                <div class="col s5">
+                    <ul class="left">
+                        <li><a class="footer-btn" href="{{ url_for('get_lessons') }}">Home</a></li>
+                        <li><a class="footer-btn" href="{{ url_for('login') }}">Log in</a></li>
+                        <li><a class="footer-btn" href="{{ url_for('logout') }}">Log out</a></li>
+                        <li><a class="footer-btn" href="{{ url_for('register') }}">Register</a></li>
+                    </ul>
+                </div>
+                <div class="col s5 right">
+                    <ul class="right">
+                        <li>
+                            <a class="" href="https://www.facebook.com" target="_blank" rel="noopener">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" href="https://www.instagram.com" target="_blank" rel="noopener">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" href="https://www.linkedin.com" target="_blank" rel="noopener">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container copyright">
+                © 2021 X-Versity
+            </div>
+        </div>
+    </footer>
+
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

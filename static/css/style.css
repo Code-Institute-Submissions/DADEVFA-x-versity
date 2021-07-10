@@ -3,6 +3,33 @@ body {
     font-weight: 700;
 }
 
+/*---------------------------------- Navigation */
+
+.nav-bar-bg {
+    background-color: #424242;
+    font-family: 'Lato', sans-serif;
+}
+
+.nav-bar-bg a {
+    letter-spacing: 1px;
+    color: #ece3d3;
+    font-weight: 600;
+    font-size: 12px;
+    text-shadow: 0.2px 1px black;
+}
+
+.nav-bar-bg img {
+    max-width: 200px;
+    max-height: 50px;
+    padding: 13px 0px 0px 20px;
+}
+
+.sidenav li>a {
+    letter-spacing: 1px;
+    color: #ece3d3;
+    font-weight: 700;
+}
+
 .mandatory {
     color: #ede4d5;
 }
@@ -16,9 +43,9 @@ body {
 }
 
 .block {
-    height: 100vh;
+    height: 700px;
     width: 100%;
-    margin-bottom: 120px;
+    margin-bottom: 200px;
     box-shadow: rgba(56, 59, 61, 0.322) 0px 8px 15px;
     background-color: #429E9D;
 }
@@ -108,14 +135,14 @@ body {
 }
 
 .scrollspy-box .table-of-contents a {
-    color: black
+    color: black;
 }
 
 .table-of-contents a.active {
     color: black;
     font-weight: 800;
     padding-left: 6px;
-    border-left: 3px solid #9575cd;
+    border-left: 3px solid #cb99c9;
     padding-right: 1px;
 }
 
@@ -138,7 +165,7 @@ body {
 .lesson-icons {
     font-size: 3.3vh;
     margin: 0px 10px;
-    color: #9575cd;
+    color: #cb99c9;
 }
 
 .audio_upload form {
@@ -180,23 +207,63 @@ audio {
     right: -0px;
 }
 
-.student-action-box p{
+.student-action-box p {
     font-weight: 400;
     padding-bottom: 10px;
 }
 
-.student-action-box i{
-    color: #eee8de;
+.student-action-box i {
+    color: #ece3d3;
     font-weight: 600;
 }
 
 .student-action-box a {
-    background-color: #9575cd;
+    background-color: #424242;
 }
 
-.btn-floating:hover{
-    background-color: #429E9D;
+.btn-floating:hover {
+    background-color: #cb99c9;
 }
+
+/*---------------------------------- Footer*/
+
+.footer {
+    background-color: #424242;
+    color: #ece3d3;
+    font-family: 'Lato', sans-serif;
+    font-weight: 600;
+    text-shadow: 0.2px 1px black;
+    letter-spacing: 1px;
+}
+
+.footer a {
+    color: #ece3d3;
+    font-family: 'Lato', sans-serif;
+    text-shadow: 0.2px 1px black;
+    letter-spacing: 1px;
+}
+
+.footer-btn:hover {
+    text-shadow: 0.7px 2px black;
+    padding-left: 5px;
+    border-left: 3px solid #cb99c9;
+}
+
+.footer i {
+    font-size: 20px;
+    margin-top: 4px;
+}
+
+.footer i:hover {
+    color: #cb99c9;
+}
+
+.footer-copyright .copyright {
+    color: #ece3d3;
+    text-align: center;
+    font-size: 10px;
+}
+
 
 /*---------------------------------- Screensize*/
 
@@ -208,6 +275,7 @@ audio {
         max-width: 100%;
         margin: 0px;
     }
+
     .lesson-box .video-box {
         margin: 0px;
     }
@@ -226,18 +294,22 @@ audio {
         padding-left: 10px;
         padding-right: 5px;
     }
+
     .student-action-box {
         position: relative;
         top: 400px;
     }
+
     .lesson-box .video-box {
         margin: 10px;
     }
+
     .video-box iframe {
         max-width: 50%;
         padding-bottom: 10px;
     }
-    .audio-box audio{
+
+    .audio-box audio {
         max-width: 50%;
     }
 }
