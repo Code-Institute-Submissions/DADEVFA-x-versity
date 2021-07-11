@@ -48,7 +48,7 @@ body {
 }
 
 .block {
-    height: 700px;
+    height: 1000px;
     width: 100%;
     margin-bottom: 200px;
     box-shadow: rgba(56, 59, 61, 0.322) 0px 8px 15px;
@@ -64,22 +64,20 @@ body {
     border-width: 2px;
     box-shadow: rgba(56, 59, 61, 0.322) 0px 8px 24px;
     background-color: white;
-    height: 500px;
+    height: 750px;
 }
 
 .lesson-frame h6 {
-    padding-top: 10px;
+    padding-top: 30px;
     margin-top: -38px;
 }
 
 .lesson-box {
     position: relative;
-    max-height: 95vh;
-    min-height: 50%;
     width: 86%;
     color: black;
     background-color: white;
-    height: 500px;
+    height: 750px;
 }
 
 .lesson-box .video-box {
@@ -104,7 +102,7 @@ body {
     height: 100%;
     max-height: 390px;
     width: 100%;
-    max-width: 500px;
+    max-width: 700px;
     padding-bottom: 6px;
 }
 
@@ -120,6 +118,10 @@ body {
     color: #3c8699;
     text-align: center;
     padding: 16px 0px;
+}
+
+.lesson-media-text {
+    font-size: 14px;
 }
 
 .audio-box {
@@ -207,28 +209,58 @@ audio {
 /*---------------------------------- Lesson Page */
 /*------------------------ Student Actions  */
 
-.student-action-box {
-    position: relative;
-    top: 370px;
-    right: -0px;
+.student-text {
+    margin: 50px 20px 10px 20px;
+    padding: 10px;
+    overflow-x: auto;
+    height: 150px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
 }
 
-.student-action-box p {
-    font-weight: 400;
-    padding-bottom: 10px;
+.student-upload {
+    width: 84%;
 }
 
-.student-action-box i {
+.file-upload {
+    margin: 0px 20px;
+}
+
+.file-button {
+    background-color: #424242;
+    color: #ece3d3;
+}
+
+.file-button:hover {
+    background-color: #dd5540;
+    color: #ece3d3;
+}
+
+.send-button {
+    text-align: center;
+    background-color: #424242;
     color: #ece3d3;
     font-weight: 600;
+    margin-top: 20px;
 }
 
-.student-action-box a {
-    background-color: #424242;
-}
-
-.btn-floating:hover {
+.send-button:hover {
     background-color: #dd5540;
+    color: #ece3d3;
+}
+
+.assignment {
+    font-weight: 700;
+    color: #424242;
+    padding: 20px 0px;
+}
+
+.assignment-label {
+    margin-top: 40px;
+    padding: 20px 20px 0 20px;
+    font-size: 17px;
+    color: #dd5540;
 }
 
 /*---------------------------------- Footer*/
@@ -301,21 +333,25 @@ audio {
         padding-right: 5px;
     }
 
-    .student-action-box {
-        position: relative;
-        top: 400px;
+    .video-box {
+        padding-right: 10px;
     }
 
     .lesson-box .video-box {
         margin: 10px;
-    }
-
-    .video-box iframe {
-        max-width: 50%;
-        padding-bottom: 10px;
+        max-width: 500px;
     }
 
     .audio-box audio {
-        max-width: 50%;
+        max-width: 100%;
+    }
+
+    .student-text {
+        overflow-x: auto;
+        margin: 17px 20px 10px 20px;
+        height: 250px;
+        border-top: none;
+        border-left: none;
+        border-right: none;
     }
 }

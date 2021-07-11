@@ -4,14 +4,15 @@ $(document).ready(function () {
     inDuration: "750"
   });
   $('select').formSelect();
+  $('input#input_text, textarea#student_answer').characterCounter();
   $('.tooltipped').tooltip();
   $('.scrollspy').scrollSpy({
     scrollOffset: 1,
     getActiveElement: function (id) {
       return 'a[href="#' + id + '"]'
-  }});
+    }
+  });
 });
-
 
 function videoUpload() {
   let element = document.getElementById("toggle_video");
@@ -45,11 +46,3 @@ function submissionUpload() {
     $(element).addClass('toggle-sub-styles')
   }
 };
-
-document.addEventListener('DOMContentLoaded', function() {
-  var elems = document.querySelectorAll('.fixed-action-btn');
-  var instances = M.FloatingActionButton.init(elems, {
-    direction: 'left'
-  });
-});
-      
