@@ -68,6 +68,18 @@ body {
     width: 100%;
 }
 
+
+.login-text{
+    font-size: 5vh;
+    font-weight: 400;
+    color: #424242;
+}
+
+.if-new{
+    color: #dd5540;
+    letter-spacing: 1px;
+}
+
 .lesson-frame {
     margin-top: 20px;
     border-width: 2px;
