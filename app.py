@@ -107,8 +107,35 @@ def login():
     return render_template("login.html")
 
 
-@app.route("/add_lesson")
+@app.route("/add_lesson", methods=["GET", "POST"])
 def add_lesson():
+    if request.method == "POST":
+        is_mandatory = "on" if request.form.get("is_mandatory") else "off"
+        has_audio = "on" if request.form.get("has_audio") else "off"
+        has_video = "on" if request.form.get("has_video") else "off"
+        has_submission = "on" if request.form.get("has_submission") else "off"
+        text_answer = "on" if request.form.get("text_answer") else "off"
+        file_answer = "on" if request.form.get("file_answer") else "off"
+        lesson = {
+            "course_name": request.form.get("course_name"),
+            "course_module": request.form.get("course_module"),
+            "lesson_title": request.form.get("lesson_title"),
+            "lesson_nr": request.form.get("lesson_nr"),
+            "lesson_description": request.form.get("lesson_description"),
+            "due_date": request.form.get("due_date"),
+            "is_mandatory": is_mandatory,
+            "has_audio": has_audio,
+            "lesson_audio": request.form.get("lesson_audio"),
+            "has_video": has_video,
+            "lesson_video": request.form.get("lesson_video"),
+            "has_submission": has_submission,
+            "lesson_test": request.form.get("lesson_test"),
+            "text_answer": text_answer,
+            "file_answer": file_answer,
+            "created_by": session["user"]
+        }
+        mongo.db.lessons.insert_one(lesson)
+        flash("Lesson is Added")
     # check if user is a teacher
     allow_role = ["teacher", "admin"]
     if session.get("role") in allow_role:

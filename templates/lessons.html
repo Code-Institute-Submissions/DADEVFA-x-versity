@@ -50,7 +50,7 @@
       {% if lesson.has_submission == "on" %}
       <h5 class="assignment-label">Assignment: <strong class="assignment">{{ lesson.lesson_test }}</strong></h5>
       {% endif %}
-      {% if lesson.has_text_answer == "on" %}
+      {% if lesson.text_answer == "on" %}
       <div id="student_upload" class="student-text z-depth-2">
         <form>
           <div class="row">
@@ -66,7 +66,7 @@
         <button type="submit" class="btn-large send-button waves-effect">Submit</button>
       </div>
       {% endif %}
-      {% if lesson.has_file_answer == "on" %}
+      {% if lesson.file_answer == "on" %}
       <div class="row file-upload center">
         <form id="fileForm" name="fileForm" class="student-upload" max-size="5mb" action="#">
           <div class="file-field input-field">

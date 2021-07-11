@@ -4,7 +4,7 @@
 <h3 class="center-align header-text">Add a new lesson:</h3>
 
 <div class="row card-panel grey lighten-5 add-lessons-box z-depth-3">
-    <form class="col s12 prefix">
+    <form class="col s12 prefix" method="POST" action="{{ url_for('add_lesson') }}">
         <!-- Assigned Course -->
         <div class="row">
             <div class="input-field col s12">
@@ -68,12 +68,10 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-hourglass-start prefix"></i>
-                <form action="#">
                     <div class="range-field">
                         <label for="due_date">Days to submission from student start</label>
                         <input name="due_date" id="due_date" type="range" min="0" max="150" />
                     </div>
-                </form>
             </div>
         </div>
         <!-- Mandatory -->
@@ -95,7 +93,7 @@
                 <i class="fas fa-file-audio prefix mandatory-i"></i>
                 <div class="switch">
                     <label for="has_audio">
-                        <input class="add-media" type="checkbox" id="has_audio" name="has_audio">
+                        <input id="has_audio" name="has_audio" class="add-media" type="checkbox" >
                         <span onclick="audioUpload()" class="lever"></span>
                         Lesson has Audio?
                     </label>
@@ -105,7 +103,6 @@
         <!-- Audio Upload -->
         <div id="toggle_audio" class="row toggle-audio card-panel z-depth-1">
             <div class="input-field col s12 m6 audio_upload">
-                <form action="#">
                     <div class="file-field input-field">
                         <div class="file-path-wrapper">
                             <input class="file-path validate" type="text">
@@ -164,23 +161,25 @@
                     </div>
                 </div>
                 <div>
-                    <label for="student_text">
-                        <input name="student_text" id="student_text" type="checkbox" class="filled-in" />
+                    <label for="text_answer">
+                        <input name="text_answer" id="text_answer" type="checkbox" class="filled-in" />
                         <span>Student sends text</span>
                     </label>
                 </div>
                 <div>
-                    <label for="student_file">
-                        <input name="student_file" id="student_file" type="checkbox" class="filled-in" />
+                    <label for="file_answer">
+                        <input name="file_answer" id="file_answer" type="checkbox" class="filled-in" />
                         <span>Student uploads file</span>
                     </label>
                 </div>
-                <div>
-                    <label for="student_audio">
-                        <input name="student_audio" id="student_audio" type="checkbox" class="filled-in" />
-                        <span>Student uploads audio</span>
-                    </label>
-                </div>
+            </div>
+        </div>
+        <!-- Submit button -->
+        <div class="row">
+            <div class="col s12 center-align">
+                <button type="submit" class="btn-large send-button waves-effect">
+                    Add Lesson <i class="fas fa-plus-square right"></i>
+                </button>
             </div>
         </div>
     </form>
