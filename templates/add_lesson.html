@@ -5,6 +5,15 @@
 
 <div class="row card-panel grey lighten-5 add-lessons-box z-depth-3">
     <form class="col s12 prefix">
+        <!-- Assigned Course -->
+        <div class="row">
+            <div class="input-field col s12">
+                <select id="course_name" name="course_name" class="validate" required>
+                    <option value="{{ course }}" selected>{{ course }}</option>
+                </select>
+                <label for="course_name">Assigned Course:</label>
+            </div>
+        </div>
         <!-- Lesson Title -->
         <div class="row">
             <div class="input-field col s12" method="POST" action="">
@@ -27,7 +36,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-book prefix deep-purple-text text-lighten-2 all-icons"></i>
-                <select name="lesson_module" id="lesson_module">
+                <select name="lesson_nr" id="lesson_nr">
                     <option value="" disabled selected>This lesson comes:</option>
                     <option value="1">1st</option>
                     <option value="2">2nd</option>
@@ -36,7 +45,7 @@
                     <option value="5">5th</option>
                     <option value="6">6th</option>
                 </select>
-                <label for="lesson_module">Lesson Placement</label>
+                <label for="lesson_nr">Lesson Placement</label>
             </div>
         </div>
         <!-- Lesson Description -->
@@ -146,12 +155,11 @@
         <!-- Submission Style -->
         <div id="submission_style" class="row toggle-sub-styles card-panel deep-purple lighten-5 z-depth-1">
             <div class="input-field col s12 m6">
-        <!-- Lesson Test -->
+                <!-- Lesson Test -->
                 <div class="row">
                     <div class="input-field col s12">
-                        <textarea id="lesson_test" name="lesson_test" 
-                            minlength="10" maxlength="400" class="materialize-textarea"
-                                placeholder="Assignment"></textarea>
+                        <textarea id="lesson_test" name="lesson_test" minlength="10" maxlength="400"
+                            class="materialize-textarea" placeholder="Assignment"></textarea>
                         <label for="lesson_test">Give your student an assignment:</label>
                     </div>
                 </div>

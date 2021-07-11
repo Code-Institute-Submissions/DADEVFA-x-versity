@@ -43,6 +43,7 @@ def logout():
     flash("You have been logged out")
     session.pop("user")
     session.pop("role")
+    session.pop("course")
     return redirect(url_for("login"))
 
 
@@ -85,9 +86,10 @@ def login():
             # ensure hashed password matches user input
             if check_password_hash(
                     existing_user["password"], request.form.get("password")):
-                # store users name and role
+                # store users name and role and course
                 session["user"] = existing_user["username"]
                 session["role"] = existing_user["role"]
+                session["course"] = existing_user["assigned_course"]
                 username = session["user"]
                 flash("Welcome, {}".format(username))
                 return render_template("profile.html", username=username)
@@ -109,8 +111,10 @@ def login():
 def add_lesson():
     # check if user is a teacher
     allow_role = ["teacher", "admin"]
-    if session.get('role') in allow_role:
-        return render_template("add_lesson.html")
+    if session.get("role") in allow_role:
+        # what courses are assigned
+        course = session.get("course").capitalize()
+        return render_template("add_lesson.html", course=course)
 
     else:
         # if user is a somebody else
