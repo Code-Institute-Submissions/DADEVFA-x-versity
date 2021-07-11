@@ -45,6 +45,15 @@ body {
 
 .buttons {
     font-family: 'Titillium Web', sans-serif;
+    font-weight: 600;
+    color: #ede4d5;
+    background-color: #424242;
+}
+
+.buttons:hover {
+    font-family: 'Titillium Web', sans-serif;
+    color: #ede4d5;
+    background-color: #dd5f4c;
 }
 
 .block {

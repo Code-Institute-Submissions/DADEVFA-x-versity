@@ -63,22 +63,22 @@
         </form>
       </div>
       <div class="container center">
-        <button type="submit" class="btn-large send-button">Submit</button>
+        <button type="submit" class="btn-large send-button waves-effect">Submit</button>
       </div>
       {% endif %}
       {% if lesson.has_file_answer == "on" %}
       <div class="row file-upload center">
         <form id="fileForm" name="fileForm" class="student-upload" max-size="5mb" action="#">
           <div class="file-field input-field">
-            <div class="btn-small file-button">
-              <i class="fas fa-paperclip file-btn"></i>
+            <a class="btn-small file-button waves-effect">
+              <i class="fas fa-paperclip"></i>
               <input type="file" multiple>
-            </div>
+            </a>
             <div class="file-path-wrapper">
               <input class="file-path validate" type="text" placeholder="Upload one or more files">
             </div>
           </div>
-          <button type="submit" class="btn-large send-button">Submit</button>
+          <button type="submit" class="btn-large send-button waves-effect">Submit</button>
         </form>
       </div>
       {% endif %}
