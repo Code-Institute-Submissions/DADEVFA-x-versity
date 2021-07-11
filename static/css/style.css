@@ -64,24 +64,13 @@ body {
     width: 100%;
 }
 
-.register-text {
+.header-text {
     font-size: 5vh;
     font-weight: 400;
     color: #424242;
 }
 
-.login-text {
-    font-size: 5vh;
-    font-weight: 400;
-    color: #424242;
-}
-
-.if-new {
-    color: #dd5540;
-    letter-spacing: 1px;
-}
-
-.has-login {
+.login-register-check {
     color: #dd5540;
     letter-spacing: 1px;
 }
@@ -89,7 +78,7 @@ body {
 .lesson-frame {
     margin-top: 20px;
     border-width: 2px;
-    box-shadow: rgba(56, 59, 61, 0.322) 0px 8px 24px;
+    box-shadow: #383b3d52 0px 8px 24px;
     background-color: white;
     height: 750px;
 }
@@ -179,6 +168,10 @@ body {
     padding-left: 6px;
     border-left: 3px solid #dd5540;
     padding-right: 1px;
+}
+
+.add-lessons-box {
+    color: #424242;
 }
 
 .range-field {

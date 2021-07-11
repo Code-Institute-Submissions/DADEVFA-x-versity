@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3 class="deep-purple-text text-lighten-2 center-align">Add a new lesson:</h3>
+<h3 class="center-align header-text">Add a new lesson:</h3>
 
 <div class="row card-panel grey lighten-5 add-lessons-box z-depth-3">
     <form class="col s12 prefix">
@@ -17,7 +17,7 @@
         <!-- Lesson Title -->
         <div class="row">
             <div class="input-field col s12" method="POST" action="">
-                <i class="fas fa-school prefix deep-purple-text text-lighten-2 all-icons"></i>
+                <i class="fas fa-school prefix all-icons"></i>
                 <input id="lesson_title" name="lesson_title" type="text" class="validate" minlength="3" maxlength="20"
                     required>
                 <label for="lesson_title">Lesson Title</label>
@@ -26,7 +26,7 @@
         <!-- Lesson Description -->
         <div class="row">
             <div class="input-field col s12">
-                <i class="fas fa-folder-plus prefix deep-purple-text text-lighten-2 all-icons"></i>
+                <i class="fas fa-folder-plus prefix all-icons"></i>
                 <input id="lesson_description" name="lesson_description" type="text" class="validate" minlength="3"
                     maxlength="100" required>
                 <label for="lesson_description">Lesson Description</label>
@@ -35,7 +35,7 @@
         <!-- Lesson Nr -->
         <div class="row">
             <div class="input-field col s12">
-                <i class="fas fa-book prefix deep-purple-text text-lighten-2 all-icons"></i>
+                <i class="fas fa-book prefix all-icons"></i>
                 <select name="lesson_nr" id="lesson_nr">
                     <option value="" disabled selected>This lesson comes:</option>
                     <option value="1">1st</option>
@@ -51,7 +51,7 @@
         <!-- Lesson Description -->
         <div class="row">
             <div class="input-field col s12">
-                <i class="fas fa-file-archive prefix deep-purple-text text-lighten-2 all-icons"></i>
+                <i class="fas fa-file-archive prefix all-icons"></i>
                 <select name="lesson_module" id="lesson_module">
                     <option value="" disabled selected>Lesson belongs to</option>
                     <option value="1">Module 1</option>
@@ -67,7 +67,7 @@
         <!-- Due Date -->
         <div class="row">
             <div class="input-field col s12">
-                <i class="fas fa-hourglass-start prefix deep-purple-text text-lighten-2"></i>
+                <i class="fas fa-hourglass-start prefix"></i>
                 <form action="#">
                     <div class="range-field">
                         <label for="due_date">Days to submission from student start</label>
@@ -79,7 +79,7 @@
         <!-- Mandatory -->
         <div class="row">
             <div class="input-field col s12">
-                <i class="fas fa-exclamation-circle prefix deep-purple-text text-lighten-2 mandatory-i"></i>
+                <i class="fas fa-exclamation-circle prefix mandatory-i"></i>
                 <div class="switch">
                     <label for="is_mandatory">
                         <input type="checkbox" id="is_mandatory" name="is_mandatory">
@@ -92,7 +92,7 @@
         <!-- Has Audio -->
         <div class="row">
             <div class="input-field col s12">
-                <i class="fas fa-file-audio prefix deep-purple-text text-lighten-2 mandatory-i"></i>
+                <i class="fas fa-file-audio prefix mandatory-i"></i>
                 <div class="switch">
                     <label for="has_audio">
                         <input class="add-media" type="checkbox" id="has_audio" name="has_audio">
@@ -103,7 +103,7 @@
             </div>
         </div>
         <!-- Audio Upload -->
-        <div id="toggle_audio" class="row toggle-audio card-panel deep-purple lighten-5 z-depth-1">
+        <div id="toggle_audio" class="row toggle-audio card-panel z-depth-1">
             <div class="input-field col s12 m6 audio_upload">
                 <form action="#">
                     <div class="file-field input-field">
@@ -120,7 +120,7 @@
         <!-- Has Video -->
         <div class="row">
             <div class="input-field col s12">
-                <i class="fas fa-file-video prefix deep-purple-text text-lighten-2 mandatory-i"></i>
+                <i class="fas fa-file-video prefix mandatory-i"></i>
                 <div class="switch">
                     <label for="has_video">
                         <input type="checkbox" id="has_video" name="has_video">
@@ -131,7 +131,7 @@
             </div>
         </div>
         <!-- Video Link -->
-        <div id="toggle_video" class="row video-url toggle-video card-panel deep-purple lighten-5 z-depth-1">
+        <div id="toggle_video" class="row video-url toggle-video card-panel z-depth-1">
             <div class="input-field col s12 m6">
                 <textarea id="lesson_video" name="lesson_video" class="materialize-textarea"
                     placeholder="https://www.youtube-nocookie.com/embed/t7DrJqcUviA"></textarea>
@@ -142,7 +142,7 @@
         <!-- Has Submission -->
         <div class="row">
             <div class="input-field col s12">
-                <i class="fas fa-paperclip prefix deep-purple-text text-lighten-2 mandatory-i"></i>
+                <i class="fas fa-paperclip prefix mandatory-i"></i>
                 <div class="switch">
                     <label for="has_submission">
                         <input type="checkbox" id="has_submission" name="has_submission">
@@ -153,7 +153,7 @@
             </div>
         </div>
         <!-- Submission Style -->
-        <div id="submission_style" class="row toggle-sub-styles card-panel deep-purple lighten-5 z-depth-1">
+        <div id="submission_style" class="row toggle-sub-styles card-panel z-depth-1">
             <div class="input-field col s12 m6">
                 <!-- Lesson Test -->
                 <div class="row">
