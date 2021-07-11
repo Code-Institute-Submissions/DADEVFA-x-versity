@@ -247,7 +247,7 @@ audio {
 }
 
 .student-upload {
-    width: 84%;
+    width: 100%;
 }
 
 .file-upload {
@@ -275,6 +275,10 @@ audio {
 .send-button:hover {
     background-color: #dd5540;
     color: #ece3d3;
+}
+
+.submit-btn-box {
+    text-align: center;
 }
 
 .assignment {
