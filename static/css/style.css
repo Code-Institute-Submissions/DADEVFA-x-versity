@@ -39,10 +39,6 @@ body {
     color: #dd5f4c;
 }
 
-.header-text {
-    font-weight: 300;
-}
-
 .buttons {
     font-family: 'Titillium Web', sans-serif;
     font-weight: 600;
@@ -68,14 +64,24 @@ body {
     width: 100%;
 }
 
-
-.login-text{
+.register-text {
     font-size: 5vh;
     font-weight: 400;
     color: #424242;
 }
 
-.if-new{
+.login-text {
+    font-size: 5vh;
+    font-weight: 400;
+    color: #424242;
+}
+
+.if-new {
+    color: #dd5540;
+    letter-spacing: 1px;
+}
+
+.has-login {
     color: #dd5540;
     letter-spacing: 1px;
 }
