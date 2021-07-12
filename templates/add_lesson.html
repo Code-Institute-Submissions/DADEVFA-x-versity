@@ -36,7 +36,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-book prefix all-icons"></i>
-                <select name="lesson_nr" id="lesson_nr">
+                <select name="lesson_nr" id="lesson_nr" class="validate" required>
                     <option value="" disabled selected>This lesson comes:</option>
                     <option value="1">1st</option>
                     <option value="2">2nd</option>
@@ -52,8 +52,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-file-archive prefix all-icons"></i>
-                <select name="lesson_module" id="lesson_module">
-                    <option value="" disabled selected>Lesson belongs to</option>
+                <select name="course_module" id="course_module" class="validate" required>
                     <option value="1">Module 1</option>
                     <option value="2">Module 2</option>
                     <option value="3">Module 3</option>
@@ -61,7 +60,7 @@
                     <option value="5">Module 5</option>
                     <option value="6">Module 6</option>
                 </select>
-                <label for="lesson_module">Lesson Module</label>
+                <label for="course_module">Belongs to Module</label>
             </div>
         </div>
         <!-- Due Date -->
@@ -70,7 +69,7 @@
                 <i class="fas fa-hourglass-start prefix"></i>
                     <div class="range-field">
                         <label for="due_date">Days to submission from student start</label>
-                        <input name="due_date" id="due_date" type="range" min="0" max="150" />
+                        <input name="due_date" id="due_date" type="range" min="0" max="150" class="validate" required/>
                     </div>
             </div>
         </div>
