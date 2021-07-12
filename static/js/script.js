@@ -57,23 +57,35 @@ $(document).ready(function () {
 
 function videoUpload() {
   let element = document.getElementById("toggle_video");
+  let opposite = document.getElementById("mute_audio");
   if ($(element).hasClass('toggle-video')) {
-    // if it is, remove.
+    // if the class is there, remove it
+    // and make element visable
     $(element).removeClass('toggle-video')
+    // also hide audio option since video is picked
+    $(opposite).addClass('mute-audio')
   } else {
-    // otherwise just add muted.
+    // hide element by adding class
     $(element).addClass('toggle-video')
+    // make audio an option again
+    $(opposite).removeClass('mute-audio')
   }
 };
 
 function audioUpload() {
   let element = document.getElementById("toggle_audio");
+  let opposite = document.getElementById("mute_video");
   if ($(element).hasClass('toggle-audio')) {
-    // if it is, remove.
+    // if the class is there, remove it
+    // and make element visable
     $(element).removeClass('toggle-audio')
+    // also hide audio option since video is picked
+    $(opposite).addClass('mute-video')
   } else {
-    // otherwise just add muted.
+    /// hide element by adding class
     $(element).addClass('toggle-audio')
+    // make video an option again
+    $(opposite).removeClass('mute-video')
   }
 };
 
