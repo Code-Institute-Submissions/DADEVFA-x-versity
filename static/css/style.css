@@ -70,11 +70,6 @@ body {
     color: #424242;
 }
 
-.login-register-check {
-    color: #dd5540;
-    letter-spacing: 1px;
-}
-
 .lesson-frame {
     margin-top: 20px;
     border-width: 2px;
@@ -298,6 +293,52 @@ audio {
     color: #dd5540;
 }
 
+/*---------------------------------- Profile*/
+
+.profile-box {
+    background-color: #ece3d3;
+    height: 60vh;
+    width: 100%;
+    margin: 15px;
+}
+
+.message-box {
+    color: #dd5540;
+    font-size: 6vh;
+}
+
+/*---------------------------------- Login*/
+
+.login-register-check {
+    color: #dd5540;
+    letter-spacing: 1px;
+}
+
+.login-box {
+    background-color: #ece3d3;
+    padding: 10px;
+    margin: 10px;
+}
+
+.login-frame {
+    margin: 12px;
+    padding: 10px 20px 20px 50px;
+}
+
+/*---------------------------------- Regristretion*/
+
+.register-box {
+    background-color: #ece3d3;
+    padding: 10px;
+    margin: 10px;
+}
+
+.register-frame {
+    height: 20%;
+    margin: 12px;
+    padding: 10px 20px 20px 50px;
+}
+
 /*---------------------------------- Footer*/
 
 .footer {
@@ -432,5 +473,33 @@ input[type='range']::-webkit-slider-thumb {
     .add-lessons-box {
         padding: 26px;
         margin: 40px;
+    }
+    .login-box {
+        height: 100vh;
+        padding: 40px;
+        margin: 15px;
+    }
+    
+    .login-frame {
+        margin: 12px;
+        padding: 10px 20px 20px 50px;
+    }
+    .register-box {
+        height: 135vh;
+        padding: 40px;
+        margin: 15px;
+    }
+    
+    .register-frame {
+        margin: 12px;
+        padding: 10px 20px 20px 50px;
+    }
+}
+@media (min-width: 1280px) {
+    .register-box {
+        height: 100vh;
+    }
+    .login-box {
+        height: 80vh;
     }
 }
