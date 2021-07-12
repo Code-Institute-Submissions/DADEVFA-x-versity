@@ -26,13 +26,14 @@
         <!-- Navbar -->
         <nav class="nav-bar-bg">
             <div class="nav-wrapper">
-                <a href="{{ url_for('get_lessons') }}">
+                <a href="{{ url_for('login') }}">
                     <img src="{{ url_for('static', filename='x-versity-logo.png') }}" alt="Logo for X-Versity">
                 </a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a class="nav-btn" href="{{ url_for('get_lessons') }}">Home</a></li>
+                    <li><a class="nav-btn" href="{{ url_for('login') }}">Home</a></li>
                     {% if session.user %}
+                    <li><a class="nav-btn" href="{{ url_for('get_lessons') }}">My lessons</a></li>
                     <li><a class="nav-btn" href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
                     {% if session.role|lower == "teacher"|lower %}
                     <li><a class="nav-btn" href="{{ url_for('add_lesson') }}">New Lesson</a></li>
@@ -51,8 +52,9 @@
             <a href="#">
                 <img class="logo" src="{{ url_for('static', filename='x-versity-logo.png') }}" alt="Logo for X-Versity">
             </a>
-            <li><a class="nav-btn" href="{{ url_for('get_lessons') }}">Home</a></li>
+            <li><a class="nav-btn" href="{{ url_for('login') }}">Home</a></li>
             {% if session.user %}
+            <li><a class="nav-btn" href="{{ url_for('get_lessons') }}">My lessons</a></li>
             <li><a class="nav-btn" href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
             {% if session.role|lower == "teacher"|lower %}
             <li><a class="nav-btn" href="{{ url_for('add_lesson') }}">New Lesson</a></li>
@@ -71,7 +73,7 @@
         {% if messages %}
         {% for message in messages %}
         <div class="row flashes">
-            <h3 class="deep-purple-text text-lighten-2 center-align">{{ message }}</h3>
+            <h3 class="message-box center-align">{{ message }}</h3>
         </div>
         {% endfor %}
         {% endif %}
