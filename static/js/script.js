@@ -13,6 +13,21 @@ $(document).ready(function () {
     }
   });
 
+  // Limit Teacher to only choose one 
+  // alternative for student submission 
+  // per lesson: 
+  $("#text_answer").click(function () {
+    if ($("#text_answer").is(':checked'))
+      $("#file_answer").prop("checked", false);
+  });
+
+  $("#file_answer").click(function () {
+    if ($("#file_answer").is(':checked'))
+      $("#text_answer").prop("checked", false);
+  });
+
+  // Code Institutes custom validator for 
+  // select inputs with Materialize  
   validateMaterializeSelect();
 
   function validateMaterializeSelect() {
