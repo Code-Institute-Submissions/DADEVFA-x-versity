@@ -347,7 +347,7 @@ audio {
 
 .login-frame {
     margin: 12px;
-    padding: 10px 20px 20px 50px;
+    padding: 10px 30px 20px 30px;
 }
 
 /*---------------------------------- Regristretion*/
@@ -361,7 +361,7 @@ audio {
 .register-frame {
     height: 20%;
     margin: 12px;
-    padding: 10px 20px 20px 50px;
+    padding: 10px 30px 20px 30px;
 }
 
 /*---------------------------------- Footer*/
