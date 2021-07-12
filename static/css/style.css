@@ -32,7 +32,16 @@ body {
 }
 
 .nav-btn:hover {
-    border-bottom: 3px solid #dd5540;
+    border-bottom: 2px solid #dd5540;
+    text-shadow: 0.7px 2px black;
+    height: 64px;
+}
+
+.sidenav li>a:hover{
+    letter-spacing: 1px;
+    color: #ece3d3;
+    font-weight: 700;
+    border-bottom: 2px solid #dd5540;
     text-shadow: 0.7px 2px black;
 }
 
