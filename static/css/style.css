@@ -172,6 +172,8 @@ body {
 
 .add-lessons-box {
     color: #424242;
+    background-color: #ede4d5ab;
+    margin: 13px;
 }
 
 .range-field {
@@ -203,10 +205,7 @@ body {
 
 .video-url {
     padding-left: 40px;
-}
-
-.add-lessons-box {
-    margin: 40px;
+    background-color: whitesmoke;
 }
 
 .toggle-video {
@@ -224,6 +223,18 @@ audio {
 
 .toggle-sub-styles {
     display: none;
+}
+
+.mute-audio {
+    display: none;
+}
+
+.mute-video {
+    display: none;
+}
+
+.upload-box {
+    background-color: whitesmoke;
 }
 
 /*---------------------------------- Lesson Page */
@@ -326,6 +337,45 @@ audio {
     font-size: 10px;
 }
 
+.switch label input[type=checkbox]:checked+.lever {
+    background-color: #d43f29;
+}
+
+.switch label input[type=checkbox]:checked+.lever:after {
+    background-color: #ec6d59;
+}
+
+[type="checkbox"].filled-in:checked+span:not(.lever):after {
+    border: 2px solid #dd5540;
+    background-color: #dd5540;
+}
+
+
+element.style {
+    height: 30px;
+    width: 30px;
+    top: -30px;
+    margin-left: 33px;
+    left: 0px;
+}
+
+input[type=range]+.thumb.active {
+    border-radius: 50% 50% 50% 0;
+}
+
+input[type=range]+.thumb {
+    background-color: #dd5540;
+}
+
+.dropdown-content li>a,
+.dropdown-content li>span {
+    color: #dd5540;
+}
+
+input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background: #dd5540;
+}
 
 /*---------------------------------- Screensize*/
 
@@ -377,5 +427,10 @@ audio {
         border-top: none;
         border-left: none;
         border-right: none;
+    }
+
+    .add-lessons-box {
+        padding: 26px;
+        margin: 40px;
     }
 }
