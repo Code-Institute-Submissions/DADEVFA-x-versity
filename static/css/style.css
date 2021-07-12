@@ -1,6 +1,7 @@
 body {
     font-family: 'Titillium Web', sans-serif;
     font-weight: 700;
+    overflow-x: hidden;
 }
 
 /*---------------------------------- Navigation */
@@ -53,11 +54,14 @@ body {
 }
 
 .block {
-    height: 1000px;
+    display: block;
+    overflow: auto;
     width: 100%;
-    margin-bottom: 200px;
+    padding-bottom: 20px;
+    margin-bottom: 150px;
     box-shadow: rgba(56, 59, 61, 0.322) 0px 8px 15px;
     background-color: #3c8699;
+    margin-top: -2px;
 }
 
 .full {
@@ -71,11 +75,8 @@ body {
 }
 
 .lesson-frame {
-    margin-top: 20px;
     border-width: 2px;
-    box-shadow: #383b3d52 0px 8px 24px;
     background-color: white;
-    height: 750px;
 }
 
 .lesson-frame h6 {
@@ -84,11 +85,13 @@ body {
 }
 
 .lesson-box {
-    position: relative;
     width: 86%;
     color: black;
     background-color: white;
-    height: 750px;
+    display: block;
+    overflow: auto;
+    margin-bottom: 40px;
+    overflow-y: hidden;
 }
 
 .lesson-box .video-box {
@@ -101,8 +104,6 @@ body {
     height: 0;
     overflow: hidden;
     margin: 10px;
-    width: 80%;
-    max-width: 80%;
     float: left;
 }
 
@@ -120,7 +121,7 @@ body {
 .lesson-title {
     font-weight: 700;
     font-size: 4vh;
-    padding: 50px 0px 10px 0px;
+    padding: 40px 0px 40px 0px;
     color: #ede4d5;
 }
 
@@ -136,7 +137,8 @@ body {
 }
 
 .audio-box {
-    padding: 10px 20px 20px 10px
+    padding: 10px 20px 20px 10px;
+    margin-bottom: 60px;
 }
 
 .scrollspy-box {
@@ -236,13 +238,14 @@ audio {
 /*------------------------ Student Actions  */
 
 .student-text {
-    margin: 50px 20px 10px 20px;
+    margin: 20px 10px 10px 10px;
     padding: 10px;
-    overflow-x: auto;
-    height: 150px;
+    height: 230px;
     border-top: none;
     border-left: none;
     border-right: none;
+    background-color: white;
+    overflow-x: auto;
 }
 
 .student-upload {
@@ -250,7 +253,13 @@ audio {
 }
 
 .file-upload {
-    margin: 0px 20px;
+    margin: 20px 10px 10px 10px;
+    padding: 10px;
+    height: 250px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background-color: white;
 }
 
 .file-button {
@@ -283,14 +292,30 @@ audio {
 .assignment {
     font-weight: 700;
     color: #424242;
-    padding: 20px 0px;
 }
 
 .assignment-label {
-    margin-top: 40px;
-    padding: 20px 20px 0 20px;
-    font-size: 17px;
+    bottom: 50;
+    padding: 0px 20px 0px 20px;
     color: #dd5540;
+    width: 98%;
+}
+
+.assignment-box {
+    width: 100%;
+    margin-top: 20px;
+    float: right;
+    padding: 10px;
+    background-color: #ece3d3ef;
+}
+
+.assignment-box-empty {
+    width: 100%;
+    height: 440px;
+    margin-top: 20px;
+    float: right;
+    padding: 10px;
+    background-color: #ece3d3;
 }
 
 /*---------------------------------- Profile*/
@@ -453,18 +478,26 @@ input[type='range']::-webkit-slider-thumb {
     }
 
     .lesson-box .video-box {
-        margin: 10px;
+        margin: 10px 0px 10px 35px;
         max-width: 500px;
     }
 
     .audio-box audio {
         max-width: 100%;
+        margin-bottom: 150px;
     }
 
     .student-text {
-        overflow-x: auto;
         margin: 17px 20px 10px 20px;
-        height: 250px;
+        height: 230px;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+    }
+
+    .file-upload {
+        margin: 17px 20px 10px 20px;
+        height: 200px;
         border-top: none;
         border-left: none;
         border-right: none;
@@ -474,31 +507,44 @@ input[type='range']::-webkit-slider-thumb {
         padding: 26px;
         margin: 40px;
     }
+
     .login-box {
         height: 100vh;
         padding: 40px;
         margin: 15px;
     }
-    
+
     .login-frame {
         margin: 12px;
         padding: 10px 20px 20px 50px;
     }
+
     .register-box {
         height: 135vh;
         padding: 40px;
         margin: 15px;
     }
-    
+
     .register-frame {
         margin: 12px;
         padding: 10px 20px 20px 50px;
     }
+
+    .assignment-box {
+        width: 100%;
+        padding: 20px;
+        margin-top: -15%;
+    }
+    .lesson-media-text {
+        margin-left: 25px;
+    }
 }
+
 @media (min-width: 1280px) {
     .register-box {
         height: 100vh;
     }
+
     .login-box {
         height: 80vh;
     }

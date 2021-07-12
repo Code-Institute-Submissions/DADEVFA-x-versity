@@ -14,18 +14,16 @@
   </div>
   <!-- Lessons -->
   {% for lesson in lessons %}
-  <div class="block lighten-2 white-text">
-    <div class="lighten-2">
-      <div class="container">
-        <div id="{{ lesson.lesson_nr }}." class="lesson-title scrollspy section">{{ lesson.lesson_nr }}.
-          {{ lesson.lesson_title }}
-          {% if lesson.is_mandatory == "on" %}
-          <i class="fas fa-exclamation-circle mandatory tooltipped" data-position="right" data-tooltip="Mandatory"></i>
-          {% endif %}
-        </div>
+  <div class="block z-depth-2 card">
+    <div class="container">
+      <div id="{{ lesson.lesson_nr }}." class="lesson-title scrollspy section">{{ lesson.lesson_nr }}.
+        {{ lesson.lesson_title }}
+        {% if lesson.is_mandatory == "on" %}
+        <i class="fas fa-exclamation-circle mandatory tooltipped" data-position="right" data-tooltip="Mandatory"></i>
+        {% endif %}
       </div>
     </div>
-    <div id="{{ lesson.lesson_nr }}" class="container lesson-frame lesson-box">
+    <div id="{{ lesson.lesson_nr }}" class="container lesson-frame lesson-box z-depth-1">
       <h4 class="description-text">{{ lesson.lesson_description }}</h4>
       <!-- Video -->
       {% if lesson.has_video == "on" %}
@@ -48,40 +46,47 @@
       {% endif %}
       <!-- Student Lesson Actions -->
       {% if lesson.has_submission == "on" %}
-      <h5 class="assignment-label">Assignment: <strong class="assignment">{{ lesson.lesson_test }}</strong></h5>
-      {% endif %}
-      {% if lesson.text_answer == "on" %}
-      <div id="student_upload" class="student-text z-depth-2">
-        <form>
-          <div class="row">
-            <div class="input-field">
-              <textarea id="student_answer" name="student_answer" class="materialize-textarea student-text validate"
-                data-length="2000" minlength="5"></textarea>
-              <label for="student_answer">Your answer:</label>
-            </div>
+      <div class="container assignment-box">
+        <div class="container assignment-box-empty z-depth-2">
+          <h5 class="flow-text assignment-label">Assignment: <strong
+              class="assignment">{{ lesson.lesson_test }}</strong></h5>
+          {% endif %}
+          {% if lesson.text_answer == "on" %}
+          <div id="student_upload" class="student-text z-depth-2">
+            <form>
+              <div class="row">
+                <div class="input-field">
+                  <textarea id="student_answer" name="student_answer" class="materialize-textarea student-text validate"
+                    data-length="2000" minlength="5"></textarea>
+                  <label for="student_answer">Your answer:</label>
+                </div>
+              </div>
+            </form>
           </div>
-        </form>
-      </div>
-      <div class="submit-btn-box">
-        <button type="submit" class="btn-large send-button waves-effect">Submit</button>
-      </div>
-      {% endif %}
-      {% if lesson.file_answer == "on" %}
-      <div class="row file-upload center">
-        <form id="fileForm" name="fileForm" class="student-upload" max-size="5mb" action="#">
-          <div class="file-field input-field">
-            <a class="btn-small file-button waves-effect submit-btn-box">
-              <i class="fas fa-paperclip"></i>
-              <input type="file" multiple>
-            </a>
-            <div class="file-path-wrapper">
-              <input class="file-path validate" type="text" placeholder="Upload one or more files">
-            </div>
+          <div class="submit-btn-box">
+            <button type="submit" class="btn-large send-button waves-effect">Submit</button>
           </div>
-          <button type="submit" class="btn-large send-button waves-effect">Submit</button>
-        </form>
+          {% endif %}
+          {% if lesson.file_answer == "on" %}
+          <div class="row file-upload center z-depth-2">
+            <form id="fileForm" name="fileForm" action="#">
+              <div class="file-field input-field">
+                <a class="btn-small file-button waves-effect submit-btn-box">
+                  <i class="fas fa-paperclip"></i>
+                  <input type="file">
+                </a>
+                <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text" placeholder="Upload your file">
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="submit-btn-box">
+            <button type="submit" class="btn-large send-button waves-effect">Submit</button>
+          </div>
+          {% endif %}
+        </div>
       </div>
-      {% endif %}
     </div>
   </div>
   {% endfor %}
