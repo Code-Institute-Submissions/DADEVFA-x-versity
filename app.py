@@ -150,6 +150,25 @@ def add_lesson():
         return redirect(url_for("login"))
 
 
+@app.route("/edit_lesson/<lesson_id>", methods=["POST", "GET"])
+def edit_lesson(lesson_id):
+    lesson = mongo.db.lessons.find_one({"_id": ObjectId(lesson_id)})
+    lessons = list(mongo.db.lessons.find())
+    course = session.get("course").capitalize()
+    user = session.get("user")
+    created = lesson.get("created_by")
+    if created in user:
+        return render_template(
+            "edit_lesson.html", lesson=lesson,
+            course=course, lessons=lessons)
+
+    else:
+        # if user is a somebody else
+        flash("Oops, you can only edit your own lessons")
+        # not allowed
+        return redirect(url_for("login"))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

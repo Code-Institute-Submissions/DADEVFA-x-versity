@@ -24,6 +24,9 @@
       </div>
     </div>
     <div id="{{ lesson.lesson_nr }}" class="container lesson-frame lesson-box z-depth-1">
+      {% if session.role|lower == "teacher"|lower %}
+      <a href="{{ url_for('edit_lesson', lesson_id=lesson._id) }}" class="btn edit-btn waves-effect right">Edit Lesson <i class="fas fa-edit right"></i></a>
+      {% endif %}
       <h4 class="description-text">{{ lesson.lesson_description }}</h4>
       <!-- Video -->
       {% if lesson.has_video == "on" %}

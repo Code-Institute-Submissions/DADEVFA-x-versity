@@ -37,7 +37,7 @@ body {
     height: 64px;
 }
 
-.sidenav li>a:hover{
+.sidenav li>a:hover {
     letter-spacing: 1px;
     color: #ece3d3;
     font-weight: 700;
@@ -244,6 +244,21 @@ audio {
 }
 
 /*---------------------------------- Lesson Page */
+/*------------------------ Teacher Actions  */
+
+.edit-btn {
+    margin: 10px;
+    background-color: #424242;
+    color: #ede4d5;
+    font-weight: 600;
+}
+
+.edit-btn:hover {
+    margin: 10px;
+    background-color: #dd5540;
+    color: #ede4d5;
+    font-weight: 600;
+}
 /*------------------------ Student Actions  */
 
 .student-text {
@@ -544,6 +559,7 @@ input[type='range']::-webkit-slider-thumb {
         padding: 20px;
         margin-top: -15%;
     }
+
     .lesson-media-text {
         margin-left: 25px;
     }
