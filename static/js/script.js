@@ -71,36 +71,56 @@ $(document).ready(function () {
 });
 
 function videoUpload() {
-  let element = document.getElementById("toggle_video");
-  let opposite = document.getElementById("mute_audio");
-  if ($(element).hasClass('toggle-video')) {
+  let video = document.getElementById("toggle_video");
+  let audio = document.getElementById("mute_audio");
+  let audio_box = document.getElementById("toggle_audio")
+  let audio_checkbox = document.getElementById("has_audio")
+  if ($(video).hasClass('toggle-video')) {
     // if the class is there, remove it
     // and make element visable
-    $(element).removeClass('toggle-video')
+    $(video).removeClass('toggle-video')
     // also hide audio option since video is picked
-    $(opposite).addClass('mute-audio')
+    $(audio).addClass('mute-audio')
+    // also if audio_box is already open, hide it
+    $(audio_box).addClass('mute-audio')
+    // lets make sure to uncheck video
+    // since we now want audio
+  } else if ($(audio_checkbox).is(':checked')) {
+    $(audio_checkbox).prop("checked", false);
   } else {
     // hide element by adding class
-    $(element).addClass('toggle-video')
+    $(video).addClass('toggle-video')
     // make audio an option again
-    $(opposite).removeClass('mute-audio')
+    $(audio).removeClass('mute-audio')
+    // make audio box an option again
+    $(audio_box).removeClass('mute-audio')
   }
 };
 
 function audioUpload() {
-  let element = document.getElementById("toggle_audio");
-  let opposite = document.getElementById("mute_video");
-  if ($(element).hasClass('toggle-audio')) {
+  let audio = document.getElementById("toggle_audio");
+  let video = document.getElementById("mute_video");
+  let video_box = document.getElementById("toggle_video")
+  let video_checkbox = document.getElementById("has_video")
+  if ($(audio).hasClass('toggle-audio')) {
     // if the class is there, remove it
     // and make element visable
-    $(element).removeClass('toggle-audio')
-    // also hide audio option since video is picked
-    $(opposite).addClass('mute-video')
+    $(audio).removeClass('toggle-audio')
+    // also hide video option since audio is picked
+    $(video).addClass('mute-video')
+    // also if video_box is already open, hide it
+    $(video_box).addClass('mute-video')
+    // lets make sure to uncheck video
+    // since we now want audio
+  } else if ($(video_checkbox).is(':checked')) {
+    $(video_checkbox).prop("checked", false);
   } else {
     /// hide element by adding class
-    $(element).addClass('toggle-audio')
+    $(audio).addClass('toggle-audio')
     // make video an option again
-    $(opposite).removeClass('mute-video')
+    $(video).removeClass('mute-video')
+    // make audio box an option again
+    $(video_box).removeClass('mute-video')
   }
 };
 
