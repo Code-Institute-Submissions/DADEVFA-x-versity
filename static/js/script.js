@@ -26,6 +26,20 @@ $(document).ready(function () {
       $("#text_answer").prop("checked", false);
   });
 
+  // Limit Teacher to only choose one option
+  // Make sure to uncheck audio option
+  // since video is picked
+  $("#has_video").click(function () {
+    if ($("#has_video").is(':checked'))
+      $("#has_audio").prop("checked", false);
+  });
+  // Make sure to uncheck video option
+  // since audio is picked
+  $("#has_audio").click(function () {
+    if ($("#has_audio").is(':checked'))
+      $("#has_video").prop("checked", false);
+  });
+
   // Code Institutes custom validator for 
   // select inputs with Materialize  
   validateMaterializeSelect();
@@ -73,7 +87,8 @@ $(document).ready(function () {
 function videoUpload() {
   let video = document.getElementById("toggle_video");
   let audio = document.getElementById("mute_audio");
-  let audio_box = document.getElementById("toggle_audio")
+  let audio_box = document.getElementById("toggle_audio");
+  let video_box = document.getElementById("toggle_video");
   if ($(video).hasClass('toggle-video')) {
     // if the class is there, remove it
     // and make element visable
@@ -90,7 +105,10 @@ function videoUpload() {
     // make audio an option again
     $(audio).removeClass('mute-audio')
     // make audio box an option again
-    $(audio_box).removeClass('mute-audio')
+    $(audio_box).addClass('mute-audio')
+  }
+  if ($(video_box).hasClass('mute-video')) {
+    $(video_box).removeClass('mute-video')
   }
 };
 
@@ -98,8 +116,8 @@ function videoUpload() {
 function audioUpload() {
   let audio = document.getElementById("toggle_audio");
   let video = document.getElementById("mute_video");
-  let video_box = document.getElementById("toggle_video")
-  let video_checkbox = document.getElementById("has_video")
+  let video_box = document.getElementById("toggle_video");
+  let audio_box = document.getElementById("toggle_audio");
   if ($(audio).hasClass('toggle-audio')) {
     // if the class is there, remove it
     // and make element visable
@@ -108,15 +126,16 @@ function audioUpload() {
     $(video).addClass('mute-video')
     // also if video_box is already open, hide it
     $(video_box).addClass('mute-video')
-    // lets make sure to uncheck video
-    // since we now want audio
   } else {
     /// hide element by adding class
     $(audio).addClass('toggle-audio')
     // make video an option again
     $(video).removeClass('mute-video')
     // make audio box an option again
-    $(video_box).removeClass('mute-video')
+    $(video_box).addClass('mute-video')
+  }
+  if ($(audio_box).hasClass('mute-audio')) {
+    $(audio_box).removeClass('mute-audio')
   }
 };
 
