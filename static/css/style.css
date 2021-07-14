@@ -176,6 +176,23 @@ body {
     padding-right: 1px;
 }
 
+.save-btn i {
+    color: #24c424;
+}
+
+.save-btn {
+    background-color: #424242;
+    text-align: center;
+    color: #ece3d3;
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+.save-btn:hover {
+    background-color: #ece3d3;
+    color: #24c424;
+}
+
 .add-lessons-box {
     color: #424242;
     background-color: #ede4d5ab;
@@ -259,6 +276,7 @@ audio {
     color: #ede4d5;
     font-weight: 600;
 }
+
 /*------------------------ Student Actions  */
 
 .student-text {
@@ -297,7 +315,6 @@ audio {
 }
 
 .send-button {
-    text-align: center;
     background-color: #424242;
     color: #ece3d3;
     font-weight: 600;

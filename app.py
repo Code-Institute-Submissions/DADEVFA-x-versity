@@ -156,15 +156,28 @@ def edit_lesson(lesson_id):
     lessons = list(mongo.db.lessons.find())
     course = session.get("course").capitalize()
     user = session.get("user")
-    created = lesson.get("created_by")
-    if created in user:
-        return render_template(
-            "edit_lesson.html", lesson=lesson,
-            course=course, lessons=lessons)
+    # check if user is a teacher
+    allow_role = ["teacher", "admin"]
+    if session.get("role") in allow_role:
+        # what courses are assigned
+        course = session.get("course").capitalize()
+        # who created the course
+        created = lesson.get("created_by")
+        if created in user:
+            # Only the teacher who created the lesson has access
+            return render_template(
+                "edit_lesson.html", lesson=lesson,
+                course=course, lessons=lessons)
+
+        else:
+            # if teacher is not the creator
+            flash("Oops, you can only edit your own lessons")
+            # not allowed
+            return redirect(url_for("login"))
 
     else:
-        # if user is a somebody else
-        flash("Oops, you can only edit your own lessons")
+        # if user is not a teacher or admin
+        flash("To become a Teacher, one must first study hard")
         # not allowed
         return redirect(url_for("login"))
 
