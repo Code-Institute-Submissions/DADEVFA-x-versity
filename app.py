@@ -152,6 +152,34 @@ def add_lesson():
 
 @app.route("/edit_lesson/<lesson_id>", methods=["POST", "GET"])
 def edit_lesson(lesson_id):
+    if request.method == "POST":
+        is_mandatory = "on" if request.form.get("is_mandatory") else "off"
+        has_audio = "on" if request.form.get("has_audio") else "off"
+        has_video = "on" if request.form.get("has_video") else "off"
+        has_submission = "on" if request.form.get("has_submission") else "off"
+        text_answer = "on" if request.form.get("text_answer") else "off"
+        file_answer = "on" if request.form.get("file_answer") else "off"
+        edit = {
+            "course_name": request.form.get("course_name"),
+            "course_module": request.form.get("course_module"),
+            "lesson_title": request.form.get("lesson_title"),
+            "lesson_nr": request.form.get("lesson_nr"),
+            "lesson_description": request.form.get("lesson_description"),
+            "due_date": request.form.get("due_date"),
+            "is_mandatory": is_mandatory,
+            "has_audio": has_audio,
+            "lesson_audio": request.form.get("lesson_audio"),
+            "has_video": has_video,
+            "lesson_video": request.form.get("lesson_video"),
+            "has_submission": has_submission,
+            "lesson_test": request.form.get("lesson_test"),
+            "text_answer": text_answer,
+            "file_answer": file_answer,
+            "created_by": session["user"]
+        }
+        mongo.db.lessons.update({"_id": ObjectId(lesson_id)}, edit)
+        flash("Lesson is now updated")
+
     lesson = mongo.db.lessons.find_one({"_id": ObjectId(lesson_id)})
     lessons = list(mongo.db.lessons.find())
     course = session.get("course").capitalize()

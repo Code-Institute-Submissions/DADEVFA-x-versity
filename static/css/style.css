@@ -105,6 +105,8 @@ body {
 
 .lesson-box .video-box {
     margin: 10px;
+    min-height: 300px;
+    min-width: 300px;
 }
 
 .video-box {

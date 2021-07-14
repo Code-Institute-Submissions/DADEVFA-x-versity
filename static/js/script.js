@@ -74,7 +74,6 @@ function videoUpload() {
   let video = document.getElementById("toggle_video");
   let audio = document.getElementById("mute_audio");
   let audio_box = document.getElementById("toggle_audio")
-  let audio_checkbox = document.getElementById("has_audio")
   if ($(video).hasClass('toggle-video')) {
     // if the class is there, remove it
     // and make element visable
@@ -85,8 +84,6 @@ function videoUpload() {
     $(audio_box).addClass('mute-audio')
     // lets make sure to uncheck video
     // since we now want audio
-  } else if ($(audio_checkbox).is(':checked')) {
-    $(audio_checkbox).prop("checked", false);
   } else {
     // hide element by adding class
     $(video).addClass('toggle-video')
@@ -96,6 +93,7 @@ function videoUpload() {
     $(audio_box).removeClass('mute-audio')
   }
 };
+
 
 function audioUpload() {
   let audio = document.getElementById("toggle_audio");
@@ -112,8 +110,6 @@ function audioUpload() {
     $(video_box).addClass('mute-video')
     // lets make sure to uncheck video
     // since we now want audio
-  } else if ($(video_checkbox).is(':checked')) {
-    $(video_checkbox).prop("checked", false);
   } else {
     /// hide element by adding class
     $(audio).addClass('toggle-audio')
