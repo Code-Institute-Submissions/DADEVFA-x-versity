@@ -104,7 +104,7 @@
                 <div class="input-field col s12">
                     <i class="fas fa-file-audio prefix mandatory-i"></i>
                     <div class="switch">
-                        <label for="has_audio">
+                        <label id="audio_upload" for="has_audio">
                             <input id="has_audio" name="has_audio" class="add-media" type="checkbox" checked>
                             <span onclick="audioUpload()" class="lever"></span>
                             Lesson has Audio?
@@ -133,7 +133,7 @@
                 <div class="input-field col s12">
                     <i class="fas fa-file-audio prefix mandatory-i"></i>
                     <div class="switch">
-                        <label for="has_audio">
+                        <label id="audio_upload" for="has_audio">
                             <input id="has_audio" name="has_audio" class="add-media" type="checkbox">
                             <span onclick="audioUpload()" class="lever"></span>
                             Lesson has Audio?
@@ -163,8 +163,8 @@
                 <div class="input-field col s12">
                     <i class="fas fa-file-video prefix mandatory-i"></i>
                     <div class="switch">
-                        <label for="has_video">
-                            <input type="checkbox" id="has_video" name="has_video mute-video" checked>
+                        <label id="video_upload" for="has_video">
+                            <input type="checkbox" id="has_video" name="has_video" checked>
                             <span onclick="videoUpload()" class="lever"></span>
                             Lesson has Video?
                         </label>
@@ -175,8 +175,7 @@
             <div id="toggle_video" class="row video-url card-panel z-depth-1">
                 <div class="input-field col s12 m6">
                     <textarea id="lesson_video" name="lesson_video" class="materialize-textarea"
-                        value="{{ lesson.lesson_video }}"
-                        placeholder="https://www.youtube-nocookie.com/embed/t7DrJqcUviA"></textarea>
+                        placeholder="https://www.youtube-nocookie.com/embed/t7DrJqcUviA">{{ lesson.lesson_video }}</textarea>
                     <label for="lesson_video">Link for Youtube Embed</label>
                     <p>Make sure to use the youtube url with <strong>"/embed/"</strong> included in link</p>
                 </div>
@@ -188,8 +187,8 @@
                 <div class="input-field col s12">
                     <i class="fas fa-file-video prefix mandatory-i"></i>
                     <div class="switch">
-                        <label for="has_video">
-                            <input type="checkbox" id="has_video" name="has_video mute-video">
+                        <label id="video_upload" for="has_video">
+                            <input type="checkbox" id="has_video" name="has_video">
                             <span onclick="videoUpload()" class="lever"></span>
                             Lesson has Video?
                         </label>
@@ -234,7 +233,7 @@
                     </div>
                     <div>
                         <label for="text_answer">
-                            {% if lesson.text_answer == "on"%}
+                            {% if lesson.text_answer == "on" %}
                                 <input type="checkbox" name="text_answer" id="text_answer" class="filled-in" checked />
                             {% else %}
                                 <input type="checkbox" name="text_answer" id="text_answer" class="filled-in" />
@@ -244,7 +243,7 @@
                     </div>
                     <div>
                         <label for="file_answer">
-                            {% if lesson.file_answer == "on"%}
+                            {% if lesson.file_answer == "on" %}
                                 <input type="checkbox" name="file_answer" id="file_answer" class="filled-in" checked />
                             {% else %}
                                 <input type="checkbox" name="file_answer" id="file_answer" class="filled-in" />
