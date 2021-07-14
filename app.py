@@ -116,6 +116,9 @@ def add_lesson():
         has_submission = "on" if request.form.get("has_submission") else "off"
         text_answer = "on" if request.form.get("text_answer") else "off"
         file_answer = "on" if request.form.get("file_answer") else "off"
+        lesson_video = request.form.get("lesson_video").replace(
+            "https://www.youtube.com/watch?v=",
+            "https://www.youtube.com/embed/")
         lesson = {
             "course_name": request.form.get("course_name"),
             "course_module": request.form.get("course_module"),
@@ -127,7 +130,7 @@ def add_lesson():
             "has_audio": has_audio,
             "lesson_audio": request.form.get("lesson_audio"),
             "has_video": has_video,
-            "lesson_video": request.form.get("lesson_video"),
+            "lesson_video": lesson_video,
             "has_submission": has_submission,
             "lesson_test": request.form.get("lesson_test"),
             "text_answer": text_answer,
@@ -159,6 +162,9 @@ def edit_lesson(lesson_id):
         has_submission = "on" if request.form.get("has_submission") else "off"
         text_answer = "on" if request.form.get("text_answer") else "off"
         file_answer = "on" if request.form.get("file_answer") else "off"
+        lesson_video = request.form.get("lesson_video").replace(
+            "https://www.youtube.com/watch?v=",
+            "https://www.youtube.com/embed/")
         edit = {
             "course_name": request.form.get("course_name"),
             "course_module": request.form.get("course_module"),
@@ -170,7 +176,7 @@ def edit_lesson(lesson_id):
             "has_audio": has_audio,
             "lesson_audio": request.form.get("lesson_audio"),
             "has_video": has_video,
-            "lesson_video": request.form.get("lesson_video"),
+            "lesson_video": lesson_video,
             "has_submission": has_submission,
             "lesson_test": request.form.get("lesson_test"),
             "text_answer": text_answer,
