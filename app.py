@@ -25,6 +25,12 @@ def get_lessons():
     return render_template("lessons.html", lessons=lessons)
 
 
+@app.route("/users")
+def get_users():
+    users = list(mongo.db.users.find())
+    return render_template("users.html", users=users)
+
+
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     # grab the session user's username from db
