@@ -108,15 +108,11 @@
         <!-- Audio Upload -->
         <div id="toggle_audio" class="row upload-box toggle-audio card-panel z-depth-1">
             <div class="input-field col s12 m6 audio_upload">
-                    <div class="file-field input-field">
-                        <div class="file-path-wrapper">
-                            <input class="file-path validate" type="text">
-                        </div>
-                        <div class="btn-small file-button">
-                            <input name="lesson_audio" id="lesson_audio" type="file">
-                            <span>Choose Audio File</span>
-                        </div>
-                    </div>
+                <textarea id="lesson_audio" name="lesson_audio" class="materialize-textarea"
+                    placeholder="/tracks/871659736" minlength="15" maxlength="19"></textarea>
+                <label for="lesson_audio">Link for Soundcloud Embed</label>
+                <p>Post only a part of your SoundCloud embed code. <p><strong class="theme-color-text">Look for src="....(</strong>/tracks/871659736<strong class="theme-color-text">)&...</strong></p>
+                Make sure to only submit the part inside the (brackets). Like the example above! </p>
             </div>
         </div>
         <!-- Has Video -->

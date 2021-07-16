@@ -152,6 +152,15 @@ body {
     margin-bottom: 60px;
 }
 
+.sc-iframe {
+    width: 100%;
+    height: 166px;
+}
+
+.theme-color-text {
+    color: #dd5540;
+}
+
 .scrollspy-box {
     position: fixed;
     width: 100px;
@@ -525,9 +534,15 @@ input[type='range']::-webkit-slider-thumb {
         max-width: 500px;
     }
 
-    .audio-box audio {
+    .audio-box {
         max-width: 100%;
-        margin-bottom: 150px;
+        padding: 10px;
+        margin-bottom: 160px;
+    }
+
+    .sc-iframe {
+        margin-bottom: 40px;
+        padding: 10px;
     }
 
     .student-text {
