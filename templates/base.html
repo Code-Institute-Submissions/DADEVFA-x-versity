@@ -38,7 +38,10 @@
                     {% if session.role|lower == "teacher"|lower %}
                     <li><a class="nav-btn" href="{{ url_for('add_lesson') }}">New Lesson</a></li>
                     {% endif %}
+                    {% if session.role|lower == "admin"|lower %}
                     <li><a class="nav-btn" href="#">Manage Courses</a></li>
+                    <li><a class="nav-btn" href="{{ url_for('get_users') }}">Manage Users</a></li>
+                    {% endif %}
                     <li><a class="nav-btn" href="{{ url_for('logout') }}">Log out</a></li>
                     {% else %}
                     <li><a class="nav-btn" href="{{ url_for('login') }}">Log in</a></li>
@@ -59,7 +62,10 @@
             {% if session.role|lower == "teacher"|lower %}
             <li><a class="nav-btn" href="{{ url_for('add_lesson') }}">New Lesson</a></li>
             {% endif %}
+            {% if session.role|lower == "admin"|lower %}
             <li><a class="nav-btn" href="#">Manage Courses</a></li>
+            <li><a class="nav-btn" href="{{ url_for('get_users') }}">Manage Users</a></li>
+            {% endif %}
             <li><a class="nav-btn" href="{{ url_for('logout') }}">Log out</a></li>
             {% else %}
             <li><a class="nav-btn" href="{{ url_for('login') }}">Log in</a></li>

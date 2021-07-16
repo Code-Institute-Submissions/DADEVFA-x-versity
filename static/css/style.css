@@ -83,6 +83,67 @@ body {
     color: #424242;
 }
 
+/*---------------------------------- Admin  */
+
+.admin-background {
+    background-color: #ece3d3;
+    min-height: 80vh;
+    height: auto;
+    margin: 10px;
+}
+
+.admin-box {
+    width: 100%;
+    height: auto;
+    background-color: #ece3d3;
+    font-size: 14px;
+    margin-top: 30px;
+    padding: 0;
+}
+
+.collection .collection-item.avatar {
+    padding-left: 20px;
+}
+
+
+.admin-box i {
+    color: #dd5540;
+    font-size: 25px;
+    padding-top: 3px;
+    padding: 3px 10px 5px 0px;
+}
+
+.admin-button-box {
+    width: 30%;
+    float: right;
+}
+
+.admin-button-box i {
+    color: #ede4d5;
+    padding-top: 0px;
+    font-size: 12px;
+}
+
+.manage-button {
+    color: #ede4d5;
+    background: #424242;
+    padding-bottom: 10px;
+}
+
+.manage-button:hover {
+    background-color: #dd5f4c;
+}
+
+.status-text {
+    color: #24c424;
+}
+
+.user-id {
+    font-size: 10px;
+    font-weight: 200;
+    color: grey;
+}
+
 .lesson-frame {
     border-width: 2px;
     background-color: white;
@@ -305,25 +366,6 @@ audio {
     width: 100%;
 }
 
-.file-upload {
-    margin: 20px 10px 10px 10px;
-    padding: 10px;
-    height: 250px;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    background-color: white;
-}
-
-.file-button {
-    background-color: #424242;
-    color: #ece3d3;
-}
-
-.file-button:hover {
-    background-color: #dd5540;
-    color: #ece3d3;
-}
 
 .send-button {
     background-color: #424242;
@@ -509,6 +551,14 @@ input[type='range']::-webkit-slider-thumb {
     .lesson-box .video-box {
         margin: 0px;
     }
+
+    .user-id {
+        font-size: 10px;
+        font-weight: 200;
+        color: grey;
+        padding-top: 26px;
+        margin-left: -20px;
+    }
 }
 
 /*------------------------------ Tablets*/
@@ -553,14 +603,6 @@ input[type='range']::-webkit-slider-thumb {
         border-right: none;
     }
 
-    .file-upload {
-        margin: 17px 20px 10px 20px;
-        height: 200px;
-        border-top: none;
-        border-left: none;
-        border-right: none;
-    }
-
     .add-lessons-box {
         padding: 26px;
         margin: 40px;
@@ -597,6 +639,23 @@ input[type='range']::-webkit-slider-thumb {
     .lesson-media-text {
         margin-left: 25px;
     }
+
+    .user-id {
+        font-size: 10px;
+        font-weight: 200;
+        color: grey;
+        padding-top: 20px;
+        margin: 0;
+    }
+
+    .admin-button-box {
+        width: 20%;
+    }
+
+    .admin-box {
+        padding: 20px;
+    }
+
 }
 
 @media (min-width: 1280px) {

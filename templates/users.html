@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3 class="center-align header-text">Manage Users</h3>
+<div class="admin-background z-depth-1">
+    <div class="row">
+        <div class="col s12 m8 offset-m2">
+            <div class="card-panel admin-box z-depth-3">
+                <h3>
+                    <ul class="collection z-depth-2">
+                        {% for user in users %}
+                        <li class="collection-item avatar">
+                            <span class="title"></span>
+                            <div class="admin-button-box">
+                                <a href="" class="btn manage-button">Manage</a>
+                                <h6 class="user-id">{{ user._id}}</h6>
+                            </div>
+                            {% if user.role == "teacher" %}
+                            <i class="fas fa-chalkboard-teacher left"></i>
+                            <h6 class="status-text">{{ user.status.capitalize() }}</h6>
+                            {% endif %}
+                            {% if user.role == "Teacher" %}
+                            <i class="fas fa-user-check left"></i>
+                            <h6 class="theme-color-text">Set enrollment day</h6>
+                            {% endif %}
+                            {% if user.role == "Student" %}
+                            <i class="fas fa-user-graduate left"></i>
+                            <h6 class="theme-color-text">Set enrollment day</h6>
+                            {% endif %}
+                            {% if user.role == "student" %}
+                            <i class="fas fa-user-graduate left"></i>
+                            <h6 class="status-text">{{ user.status.capitalize() }}</h6>
+                            {% endif %}
+                            {% if user.role == "admin" %}
+                            <i class="fas fa-user-astronaut"></i>
+                            {% endif %}
+                            <h6> {{ user.username.upper() }} - {{ user.role }} - {{ user.enrollment_day }} -
+                                {{ user.assigned_course.capitalize() }} </h6>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
