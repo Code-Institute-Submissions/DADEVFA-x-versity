@@ -12,20 +12,15 @@
                         <li class="collection-item avatar">
                             <span class="title"></span>
                             <div class="admin-button-box">
-                                <a href="" class="btn manage-button">Manage</a>
-                                <h6 class="user-id">{{ user._id}}</h6>
+                                <a href="{{ url_for('edit_user', user_id=user._id) }}" class="btn manage-button">Manage</a>
+                                <h6 class="user-id">{{ user._id }}</h6>
                             </div>
+                            {% if user.status == "pending" %}
+                            <i class="fas fa-user-check"></i><h6 class="theme-color-text">Set enrollment day</h6>
+                            {% endif %}
                             {% if user.role == "teacher" %}
                             <i class="fas fa-chalkboard-teacher left"></i>
                             <h6 class="status-text">{{ user.status.capitalize() }}</h6>
-                            {% endif %}
-                            {% if user.role == "Teacher" %}
-                            <i class="fas fa-user-check left"></i>
-                            <h6 class="theme-color-text">Set enrollment day</h6>
-                            {% endif %}
-                            {% if user.role == "Student" %}
-                            <i class="fas fa-user-graduate left"></i>
-                            <h6 class="theme-color-text">Set enrollment day</h6>
                             {% endif %}
                             {% if user.role == "student" %}
                             <i class="fas fa-user-graduate left"></i>
