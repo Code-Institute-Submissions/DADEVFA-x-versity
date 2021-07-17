@@ -6,10 +6,19 @@ $(document).ready(function () {
   $('select').formSelect();
   $('input#input_text, textarea#student_answer').characterCounter();
   $('.tooltipped').tooltip();
+  $('.modal').modal();
   $('.scrollspy').scrollSpy({
     scrollOffset: 1,
     getActiveElement: function (id) {
       return 'a[href="#' + id + '"]'
+    }
+  });
+  $('.datepicker').datepicker({
+    format: "dd mmmm, yyyy",
+    yearRange: 20,
+    showClearBtn: true,
+    i18n: {
+      done: "Select"
     }
   });
 
