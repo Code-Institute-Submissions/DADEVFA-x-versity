@@ -12,9 +12,9 @@
                     <div class="row">
                         <div class="input-field col s12">
                             {% if user.role == "student" %}
-                                <i class="fas fa-user-graduate prefix all-icons"></i>
+                            <i class="fas fa-user-graduate prefix all-icons"></i>
                             {% else %}
-                                <i class="fas fa-id-badge prefix all-icons"></i>
+                            <i class="fas fa-id-badge prefix all-icons"></i>
                             {% endif %}
                             <input id="username" name="username" type="text" class="validate"
                                 value="{{ user.username.capitalize() }}" required>
@@ -35,7 +35,8 @@
                         <div class="input-field col s12">
                             <i class="fas fa-key prefix all-icons"></i>
                             <input id="password" name="password" type="password" minlength="5" maxlength="15"
-                            pattern="^[a-zA-Z0-9äæöøüÄÆÖØÜ!?@`?=)(/&%€#*§-.,;:_) ]*$" value="{{ user.password }}" required>
+                                pattern="^[a-zA-Z0-9äæöøüÄÆÖØÜ!?@`?=)(/&%€#*§-.,;:_) ]*$" value="{{ user.password }}"
+                                required>
                             <label for="password">Password</label>
                         </div>
                     </div>

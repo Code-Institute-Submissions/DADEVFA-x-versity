@@ -235,6 +235,19 @@ def edit_lesson(lesson_id):
 
 @app.route("/edit_user/<user_id>", methods=["POST", "GET"])
 def edit_user(user_id):
+    if request.method == "POST":
+        edit = {
+            "username": request.form.get("username"),
+            "email": request.form.get("email"),
+            "password": request.form.get("password"),
+            "role": request.form.get("role"),
+            "assigned_course": request.form.get("assigned_course"),
+            "enrollment_day": request.form.get("enrollment_day"),
+            "status": request.form.get("status")
+        }
+        mongo.db.users.update({"_id": ObjectId(user_id)}, edit)
+        flash("User is now updated")
+
     user = mongo.db.users.find_one({"_id": ObjectId(user_id)})
     users = list(mongo.db.users.find())
     courses = list(mongo.db.courses.find())
