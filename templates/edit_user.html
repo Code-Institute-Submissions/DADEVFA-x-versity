@@ -25,6 +25,9 @@
                     </a>
                 </div>
             </div>
+            <a class="waves-effect btn-flat send-button" href="{{ url_for('get_users') }}">
+                Go back<i class="fas fa-undo prefix right"></i>
+            </a>
             <div class="row card-panel admin-box-user z-depth-3">
                 <form class="col s12 prefix" method="POST" action="{{ url_for('edit_user', user_id=user._id) }}">
                     <div class="row">
@@ -82,10 +85,10 @@
                             <i class="fas fa-university prefix all-icons"></i>
                             <select name="assigned_course" id="assigned_course" class="validate" required>
                                 <option value="{{ user.assigned_course }}" selected>
-                                    {{- user.assigned_course.capitalize() -}}
+                                    {{- user.assigned_course -}}
                                 </option>
                                 {% for course in courses %}
-                                <option value="{{ course.course_name }}">{{ course.course_name.capitalize() }}</option>
+                                <option value="{{ course.course_name }}">{{ course.course_name }}</option>
                                 {% endfor %}
                             </select>
                             <label for="assigned_course">Assign a Course</label>
