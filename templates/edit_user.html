@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3 class="center-align header-text">Edit User</h3>
+<div class="admin-background z-depth-1">
+    <div class="row">
+        <div class="col s12 m8 offset-m2">
+            <!-- User ID -->
+            <h6 class="user-id">{{ user._id }}</h6>
+            <div class="row card-panel admin-box-user z-depth-3">
+                <form class="col s12 prefix" method="POST" action="{{ url_for('edit_user', user_id=user._id) }}">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            {% if user.role == "student" %}
+                                <i class="fas fa-user-graduate prefix all-icons"></i>
+                            {% else %}
+                                <i class="fas fa-id-badge prefix all-icons"></i>
+                            {% endif %}
+                            <input id="username" name="username" type="text" class="validate"
+                                value="{{ user.username.capitalize() }}" required>
+                            <label for="username">Name:</label>
+                        </div>
+                    </div>
+                    <!-- Email -->
+                    <div class="row">
+                        <div class="input-field col s12" method="POST" action="">
+                            <i class="fas fa-at prefix all-icons"></i>
+                            <input id="email" name="email" type="email" class="validate" minlength="3" maxlength="20"
+                                value="{{ user.email }}" required>
+                            <label for="email">Email</label>
+                        </div>
+                    </div>
+                    <!-- Password -->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="fas fa-key prefix all-icons"></i>
+                            <input id="password" name="password" type="password" minlength="5" maxlength="15"
+                            pattern="^[a-zA-Z0-9äæöøüÄÆÖØÜ!?@`?=)(/&%€#*§-.,;:_) ]*$" value="{{ user.password }}" required>
+                            <label for="password">Password</label>
+                        </div>
+                    </div>
+                    <!-- Role -->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="fas fa-id-card prefix all-icons"></i>
+                            <select name="role" id="role" class="validate" required>
+                                <option value="{{ user.role }}" selected>{{ user.role.capitalize() }}</option>
+                                <option value="teacher">Teacher</option>
+                                <option value="parent">Parent</option>
+                                <option value="school">School</option>
+                                <option value="student">Student</option>
+                                <option value="company">Company</option>
+                                <option value="admin">Admin</option>
+                                <option value="pending">Pending</option>
+                                <option value="postgraduate">Postgraduate</option>
+                            </select>
+                            <label for="role">Role</label>
+                        </div>
+                    </div>
+                    <!-- Assign Course -->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="fas fa-university prefix all-icons"></i>
+                            <select name="assigned_course" id="assigned_course" class="validate" required>
+                                <option value="{{ user.assigned_course }}" selected>
+                                    {{- user.assigned_course.capitalize() -}}
+                                </option>
+                                {% for course in courses %}
+                                <option value="{{ course.course_name }}">{{ course.course_name.capitalize() }}</option>
+                                {% endfor %}
+                            </select>
+                            <label for="assigned_course">Assign a Course</label>
+                        </div>
+                    </div>
+                    <!-- Enrollment Day -->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="fas fa-user-clock prefix"></i>
+                            <label for="enrollment_day">Enrollment Day</label>
+                            <input name="enrollment_day" id="enrollment_day" type="text" class="datepicker"
+                                value="{{ user.enrollment_day }}" />
+                        </div>
+                    </div>
+                    <!-- Status -->
+                    <div class="row status-box card-panel z-depth-1">
+                        <div class="input-field col s12 m6">
+                            <div class="row">
+                                <select name="status" id="status" class="validate" required>
+                                    <option value="{{ user.status }}" selected>{{ user.status.capitalize() }}</option>
+                                    <option value="abscent">Abscent</option>
+                                    <option value="active">Active</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="sick">Sick</option>
+                                    <option value="vacation">Vacation</option>
+                                </select>
+                                <label for="status">Status:</label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Submit button -->
+                    <div class="row">
+                        <div class="col s12 center-align">
+                            <a href="{{ url_for('get_users') }}" class="btn-large send-button waves-effect">
+                                Cancel<i class="fas fa-times-circle right"></i>
+                            </a>
+                            <button type="submit" class="btn-large save-btn waves-effect">
+                                Save <i class="fas fa-check-circle right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

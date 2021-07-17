@@ -233,6 +233,22 @@ def edit_lesson(lesson_id):
         return redirect(url_for("login"))
 
 
+@app.route("/edit_user/<user_id>", methods=["POST", "GET"])
+def edit_user(user_id):
+    user = mongo.db.users.find_one({"_id": ObjectId(user_id)})
+    users = list(mongo.db.users.find())
+    courses = list(mongo.db.courses.find())
+    # check if user is a admin
+    if session.get("role") == "admin":
+        return render_template(
+            "edit_user.html", user=user, users=users, courses=courses)
+
+    else:
+        # session user shouldn't be here
+        flash("Ops, something went wrong")
+        return redirect(url_for("login"))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
