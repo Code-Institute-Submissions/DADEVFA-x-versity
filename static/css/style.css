@@ -349,6 +349,14 @@ audio {
 /*---------------------------------- Lesson Page */
 /*------------------------ Teacher Actions  */
 
+.delete-btn {
+    margin: 10px 0px 20px 10px;
+}
+
+.course-box {
+    margin-top: 20px;
+}
+
 .edit-btn {
     margin: 10px;
     background-color: #424242;
@@ -458,7 +466,7 @@ audio {
     padding: 10px 30px 20px 30px;
 }
 
-/*---------------------------------- Regristretion*/
+/*---------------------------------- Registretion*/
 
 .register-box {
     background-color: #ece3d3;

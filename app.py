@@ -62,7 +62,7 @@ def logout():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
-        # is username already taken?
+        # is Email already taken?
         existing_user = mongo.db.users.find_one(
             {"email": request.form.get("email").lower()})
 
@@ -269,6 +269,20 @@ def delete_user(user_id):
     if session.get("role") == "admin":
         flash("User deleted")
         return redirect(url_for("get_users"))
+
+    else:
+        # session user shouldn't be here
+        flash("Ops, something went wrong")
+        return redirect(url_for("login"))
+
+
+@app.route("/delete_lesson/<lesson_id>")
+def delete_lesson(lesson_id):
+    mongo.db.lessons.remove({"_id": ObjectId(lesson_id)})
+    # check if user is a admin
+    if session.get("role") == "teacher":
+        flash("Lesson deleted")
+        return redirect(url_for("get_lessons"))
 
     else:
         # session user shouldn't be here

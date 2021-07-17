@@ -4,9 +4,27 @@
 <h3 class="center-align header-text">Edit Lesson</h3>
 
 <div class="row card-panel add-lessons-box z-depth-3">
+    <!-- Delete Lesson -->
+    <button href="#delete-box" class="btn-flat right send-button waves-effect delete-button modal-trigger">
+        Delete Lesson<i class="fas fa-trash-alt prefix right"></i>
+    </button>
+    <!-- Delete Box -->
+    <div id="delete-box" class="modal">
+        <div class="modal-content">
+            <h4>Are you sure you want to delete {{ lesson.lesson_title }}? </h4>
+            <p>You will not be able to restore the data.</p>
+            <a href="{{ url_for('delete_lesson', lesson_id=lesson._id) }}"
+                class="modal-close waves-effect btn-flat red-text">
+                Delete Number: {{ lesson.lesson_nr }} <i class="fas fa-file-alt prefix right"></i>
+            </a>
+            <a class="modal-close waves-effect btn-flat">
+                Go back<i class="fas fa-undo prefix right"></i>
+            </a>
+        </div>
+    </div>
     <form class="col s12 prefix" method="POST" action="{{ url_for('edit_lesson', lesson_id=lesson._id) }}">
         <!-- Assigned Course -->
-        <div class="row">
+        <div class="row course-box">
             <div class="input-field col s12">
                 <select id="course_name" name="course_name" class="validate" required>
                     <option value="{{ course }}" selected>{{ course }}</option>
@@ -86,9 +104,9 @@
                 <div class="switch">
                     <label for="is_mandatory">
                         {% if lesson.is_mandatory == "on" %}
-                            <input type="checkbox" id="is_mandatory" name="is_mandatory" checked>
+                        <input type="checkbox" id="is_mandatory" name="is_mandatory" checked>
                         {% else %}
-                            <input type="checkbox" id="is_mandatory" name="is_mandatory">
+                        <input type="checkbox" id="is_mandatory" name="is_mandatory">
                         {% endif %}
                         <span class="lever"></span>
                         Mandatory?
@@ -100,195 +118,193 @@
         <!-- Has Audio -->
         <!-- Has Audio is ON -->
         {% if lesson.has_audio == "on" %}
-            <div id="mute_audio" class="row">
-                <div class="input-field col s12">
-                    <i class="fas fa-file-audio prefix mandatory-i"></i>
-                    <div class="switch">
-                        <label for="has_audio">
-                            <input id="has_audio" name="has_audio" class="add-media" type="checkbox" checked>
-                            <span onclick="audioUpload()" class="lever"></span>
-                            Lesson has Audio?
-                        </label>
-                    </div>
+        <div id="mute_audio" class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-file-audio prefix mandatory-i"></i>
+                <div class="switch">
+                    <label for="has_audio">
+                        <input id="has_audio" name="has_audio" class="add-media" type="checkbox" checked>
+                        <span onclick="audioUpload()" class="lever"></span>
+                        Lesson has Audio?
+                    </label>
                 </div>
             </div>
-            <!-- Audio Upload -->
-            <div id="toggle_audio" class="row upload-box card-panel z-depth-1">
-                <div class="input-field col s12 m6 audio_upload">
-                    <textarea id="lesson_audio" name="lesson_audio" class="materialize-textarea"
-                        placeholder="/tracks/871659736" minlength="15"
-                        maxlength="19">{{ lesson.lesson_audio }}</textarea>
-                    <label for="lesson_audio">Link for Soundcloud Embed</label>
-                        <p>Post only a part of your SoundCloud embed code.</p><strong class="theme-color-text"> Look for
-                        src="....(</strong>/tracks/871659736<strong class="theme-color-text">)&...</strong>
-                        <p>Make sure to only submit the part inside the (brackets). Like the example above! </p>
-                </div>
+        </div>
+        <!-- Audio Upload -->
+        <div id="toggle_audio" class="row upload-box card-panel z-depth-1">
+            <div class="input-field col s12 m6 audio_upload">
+                <textarea id="lesson_audio" name="lesson_audio" class="materialize-textarea"
+                    placeholder="/tracks/871659736" minlength="15" maxlength="19">{{ lesson.lesson_audio }}</textarea>
+                <label for="lesson_audio">Link for Soundcloud Embed</label>
+                <p>Post only a part of your SoundCloud embed code.</p><strong class="theme-color-text"> Look for
+                    src="....(</strong>/tracks/871659736<strong class="theme-color-text">)&...</strong>
+                <p>Make sure to only submit the part inside the (brackets). Like the example above! </p>
             </div>
+        </div>
         {% else %}
-            <!-- Has Audio -->
-            <!-- Has Audio is OFF -->
-            <div id="mute_audio" class="row">
-                <div class="input-field col s12">
-                    <i class="fas fa-file-audio prefix mandatory-i"></i>
-                    <div class="switch">
-                        <label for="has_audio">
-                            <input id="has_audio" name="has_audio" class="add-media" type="checkbox">
-                            <span onclick="audioUpload()" class="lever"></span>
-                            Lesson has Audio?
-                        </label>
-                    </div>
+        <!-- Has Audio -->
+        <!-- Has Audio is OFF -->
+        <div id="mute_audio" class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-file-audio prefix mandatory-i"></i>
+                <div class="switch">
+                    <label for="has_audio">
+                        <input id="has_audio" name="has_audio" class="add-media" type="checkbox">
+                        <span onclick="audioUpload()" class="lever"></span>
+                        Lesson has Audio?
+                    </label>
                 </div>
             </div>
-            <!-- Audio Upload -->
-            <div id="toggle_audio" class="row upload-box toggle-audio card-panel z-depth-1">
-                <div class="input-field col s12 m6 audio_upload">
-                    <textarea id="lesson_audio" name="lesson_audio" class="materialize-textarea"
-                        placeholder="/tracks/871659736" minlength="15"
-                        maxlength="19"></textarea>
-                    <label for="lesson_audio">Link for Soundcloud Embed</label>
-                        <p>Post only a part of your SoundCloud embed code.</p><strong class="theme-color-text"> Look for
-                        src="....(</strong>/tracks/871659736<strong class="theme-color-text">)&...</strong>
-                        <p>Make sure to only submit the part inside the (brackets). Like the example above!</p>
-                </div>
+        </div>
+        <!-- Audio Upload -->
+        <div id="toggle_audio" class="row upload-box toggle-audio card-panel z-depth-1">
+            <div class="input-field col s12 m6 audio_upload">
+                <textarea id="lesson_audio" name="lesson_audio" class="materialize-textarea"
+                    placeholder="/tracks/871659736" minlength="15" maxlength="19"></textarea>
+                <label for="lesson_audio">Link for Soundcloud Embed</label>
+                <p>Post only a part of your SoundCloud embed code.</p><strong class="theme-color-text"> Look for
+                    src="....(</strong>/tracks/871659736<strong class="theme-color-text">)&...</strong>
+                <p>Make sure to only submit the part inside the (brackets). Like the example above!</p>
             </div>
+        </div>
         {% endif %}
         <!-- Has Video -->
         <!-- Has Video is ON -->
         {% if lesson.has_video == "on" %}
-            <div id="mute_video" class="row">
-                <div class="input-field col s12">
-                    <i class="fas fa-file-video prefix mandatory-i"></i>
-                    <div class="switch">
-                        <label for="has_video">
-                            <input type="checkbox" id="has_video" name="has_video" checked>
-                            <span onclick="videoUpload()" class="lever"></span>
-                            Lesson has Video?
-                        </label>
-                    </div>
+        <div id="mute_video" class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-file-video prefix mandatory-i"></i>
+                <div class="switch">
+                    <label for="has_video">
+                        <input type="checkbox" id="has_video" name="has_video" checked>
+                        <span onclick="videoUpload()" class="lever"></span>
+                        Lesson has Video?
+                    </label>
                 </div>
             </div>
-            <!-- Video Link -->
-            <div id="toggle_video" class="row video-url card-panel z-depth-1">
-                <div class="input-field col s12 m6">
-                    <textarea id="lesson_video" name="lesson_video" class="materialize-textarea"
-                        placeholder="https://www.youtube.com/watch?v=Y8Tko2YC5hA">{{ lesson.lesson_video }}</textarea>
-                    <label for="lesson_video">Link for Youtube Embed</label>
-                    <p>Make sure to use full Youtube URL link from your internet browser. See example above!</p>
-                </div>
+        </div>
+        <!-- Video Link -->
+        <div id="toggle_video" class="row video-url card-panel z-depth-1">
+            <div class="input-field col s12 m6">
+                <textarea id="lesson_video" name="lesson_video" class="materialize-textarea"
+                    placeholder="https://www.youtube.com/watch?v=Y8Tko2YC5hA">{{ lesson.lesson_video }}</textarea>
+                <label for="lesson_video">Link for Youtube Embed</label>
+                <p>Make sure to use full Youtube URL link from your internet browser. See example above!</p>
             </div>
+        </div>
         {% else %}
-            <!-- Has Video -->
-            <!-- Has Video is OFF -->
-            <div id="mute_video" class="row">
-                <div class="input-field col s12">
-                    <i class="fas fa-file-video prefix mandatory-i"></i>
-                    <div class="switch">
-                        <label for="has_video">
-                            <input type="checkbox" id="has_video" name="has_video">
-                            <span onclick="videoUpload()" class="lever"></span>
-                            Lesson has Video?
-                        </label>
-                    </div>
+        <!-- Has Video -->
+        <!-- Has Video is OFF -->
+        <div id="mute_video" class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-file-video prefix mandatory-i"></i>
+                <div class="switch">
+                    <label for="has_video">
+                        <input type="checkbox" id="has_video" name="has_video">
+                        <span onclick="videoUpload()" class="lever"></span>
+                        Lesson has Video?
+                    </label>
                 </div>
             </div>
-            <!-- Video Link -->
-            <div id="toggle_video" class="row video-url toggle-video card-panel z-depth-1">
-                <div class="input-field col s12 m6">
-                    <textarea id="lesson_video" name="lesson_video" class="materialize-textarea"
-                        placeholder="https://www.youtube-nocookie.com/embed/t7DrJqcUviA"></textarea>
-                    <label for="lesson_video">Link for Youtube Embed</label>
-                    <p>Make sure to use the youtube url with <strong>"/embed/"</strong> included in link</p>
-                </div>
+        </div>
+        <!-- Video Link -->
+        <div id="toggle_video" class="row video-url toggle-video card-panel z-depth-1">
+            <div class="input-field col s12 m6">
+                <textarea id="lesson_video" name="lesson_video" class="materialize-textarea"
+                    placeholder="https://www.youtube-nocookie.com/embed/t7DrJqcUviA"></textarea>
+                <label for="lesson_video">Link for Youtube Embed</label>
+                <p>Make sure to use the youtube url with <strong>"/embed/"</strong> included in link</p>
             </div>
+        </div>
         {% endif %}
         <!-- Has Submission -->
         <!-- Has Submission is ON -->
         {% if lesson.has_submission == "on" %}
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="fas fa-paperclip prefix mandatory-i"></i>
-                    <div class="switch">
-                        <label for="has_submission">
-                            <input type="checkbox" id="has_submission" name="has_submission" checked>
-                            <span onclick="submissionUpload()" class="lever"></span>
-                            Lesson has Submission?
-                        </label>
-                    </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-paperclip prefix mandatory-i"></i>
+                <div class="switch">
+                    <label for="has_submission">
+                        <input type="checkbox" id="has_submission" name="has_submission" checked>
+                        <span onclick="submissionUpload()" class="lever"></span>
+                        Lesson has Submission?
+                    </label>
                 </div>
             </div>
-            <!-- Submission Style -->
-            <div id="submission_style" class="row upload-box card-panel z-depth-1">
-                <div class="input-field col s12 m6">
-                    <!-- Lesson Test -->
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <textarea id="lesson_test" name="lesson_test" minlength="10" maxlength="400"
-                                class="materialize-textarea" placeholder="Assignment">{{ lesson.lesson_test }}</textarea>
-                            <label for="lesson_test">Give your student an assignment:</label>
-                        </div>
-                    </div>
-                    <div>
-                        <label for="text_answer">
-                            {% if lesson.text_answer == "on" %}
-                                <input type="checkbox" name="text_answer" id="text_answer" class="filled-in" checked />
-                            {% else %}
-                                <input type="checkbox" name="text_answer" id="text_answer" class="filled-in" />
-                            {% endif %}
-                            <span>Student sends text</span>
-                        </label>
-                    </div>
-                    <div>
-                        <label for="file_answer">
-                            {% if lesson.file_answer == "on" %}
-                                <input type="checkbox" name="file_answer" id="file_answer" class="filled-in" checked />
-                            {% else %}
-                                <input type="checkbox" name="file_answer" id="file_answer" class="filled-in" />
-                            {% endif %}
-                            <span>Student uploads file</span>
-                        </label>
+        </div>
+        <!-- Submission Style -->
+        <div id="submission_style" class="row upload-box card-panel z-depth-1">
+            <div class="input-field col s12 m6">
+                <!-- Lesson Test -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="lesson_test" name="lesson_test" minlength="10" maxlength="400"
+                            class="materialize-textarea" placeholder="Assignment">{{ lesson.lesson_test }}</textarea>
+                        <label for="lesson_test">Give your student an assignment:</label>
                     </div>
                 </div>
+                <div>
+                    <label for="text_answer">
+                        {% if lesson.text_answer == "on" %}
+                        <input type="checkbox" name="text_answer" id="text_answer" class="filled-in" checked />
+                        {% else %}
+                        <input type="checkbox" name="text_answer" id="text_answer" class="filled-in" />
+                        {% endif %}
+                        <span>Student sends text</span>
+                    </label>
+                </div>
+                <div>
+                    <label for="file_answer">
+                        {% if lesson.file_answer == "on" %}
+                        <input type="checkbox" name="file_answer" id="file_answer" class="filled-in" checked />
+                        {% else %}
+                        <input type="checkbox" name="file_answer" id="file_answer" class="filled-in" />
+                        {% endif %}
+                        <span>Student uploads file</span>
+                    </label>
+                </div>
             </div>
+        </div>
         {% else %}
-            <!-- Has Submission -->
-            <!-- Has Submission is OFF -->
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="fas fa-paperclip prefix mandatory-i"></i>
-                    <div class="switch">
-                        <label for="has_submission">
-                            <input type="checkbox" id="has_submission" name="has_submission">
-                            <span onclick="submissionUpload()" class="lever"></span>
-                            Lesson has Submission?
-                        </label>
-                    </div>
+        <!-- Has Submission -->
+        <!-- Has Submission is OFF -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-paperclip prefix mandatory-i"></i>
+                <div class="switch">
+                    <label for="has_submission">
+                        <input type="checkbox" id="has_submission" name="has_submission">
+                        <span onclick="submissionUpload()" class="lever"></span>
+                        Lesson has Submission?
+                    </label>
                 </div>
             </div>
-            <!-- Submission Style -->
-            <div id="submission_style" class="row toggle-sub-styles upload-box card-panel z-depth-1">
-                <div class="input-field col s12 m6">
-                    <!-- Lesson Test -->
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <textarea id="lesson_test" name="lesson_test" minlength="10" maxlength="400"
-                                class="materialize-textarea" placeholder="Assignment"></textarea>
-                            <label for="lesson_test">Give your student an assignment:</label>
-                        </div>
-                    </div>
-                    <div>
-                        <label for="text_answer">
-                            <input type="checkbox" name="text_answer" id="text_answer" class="filled-in" />
-                            <span>Student sends text</span>
-                        </label>
-                    </div>
-                    <div>
-                        <label for="file_answer">
-                            <input type="checkbox" name="file_answer" id="file_answer" class="filled-in" />
-                            <span>Student uploads file</span>
-                        </label>
+        </div>
+        <!-- Submission Style -->
+        <div id="submission_style" class="row toggle-sub-styles upload-box card-panel z-depth-1">
+            <div class="input-field col s12 m6">
+                <!-- Lesson Test -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="lesson_test" name="lesson_test" minlength="10" maxlength="400"
+                            class="materialize-textarea" placeholder="Assignment"></textarea>
+                        <label for="lesson_test">Give your student an assignment:</label>
                     </div>
                 </div>
+                <div>
+                    <label for="text_answer">
+                        <input type="checkbox" name="text_answer" id="text_answer" class="filled-in" />
+                        <span>Student sends text</span>
+                    </label>
+                </div>
+                <div>
+                    <label for="file_answer">
+                        <input type="checkbox" name="file_answer" id="file_answer" class="filled-in" />
+                        <span>Student uploads file</span>
+                    </label>
+                </div>
             </div>
+        </div>
         {% endif %}
         <!-- Submit button -->
         <div class="row">
