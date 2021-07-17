@@ -14,10 +14,10 @@
             <h4>Are you sure you want to delete {{ lesson.lesson_title }}? </h4>
             <p>You will not be able to restore the data.</p>
             <a href="{{ url_for('delete_lesson', lesson_id=lesson._id) }}"
-                class="modal-close waves-effect btn-flat red-text">
+                class="modal-close waves-effect btn-flat delete-btn">
                 Delete Number: {{ lesson.lesson_nr }} <i class="fas fa-file-alt prefix right"></i>
             </a>
-            <a class="modal-close waves-effect btn-flat">
+            <a class="modal-close waves-effect btn-flat edit-btn">
                 Go back<i class="fas fa-undo prefix right"></i>
             </a>
         </div>

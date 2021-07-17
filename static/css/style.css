@@ -350,7 +350,15 @@ audio {
 /*------------------------ Teacher Actions  */
 
 .delete-btn {
-    margin: 10px 0px 20px 10px;
+    margin: 10px;
+    background-color: #424242;
+    color: #dd5540;
+    font-weight: 600;
+}
+
+.delete-btn:hover {
+    background-color: #dd5540;
+    color: #ede4d5;
 }
 
 .course-box {
@@ -365,10 +373,7 @@ audio {
 }
 
 .edit-btn:hover {
-    margin: 10px;
     background-color: #dd5540;
-    color: #ede4d5;
-    font-weight: 600;
 }
 
 /*------------------------ Student Actions  */
