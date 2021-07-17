@@ -239,7 +239,7 @@ def edit_user(user_id):
         edit = {
             "username": request.form.get("username"),
             "email": request.form.get("email"),
-            "password": request.form.get("password"),
+            "password": generate_password_hash(request.form.get("password")),
             "role": request.form.get("role"),
             "assigned_course": request.form.get("assigned_course"),
             "enrollment_day": request.form.get("enrollment_day"),
