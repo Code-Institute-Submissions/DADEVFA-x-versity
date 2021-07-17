@@ -19,6 +19,40 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        # check if username exists in db
+        existing_user = mongo.db.users.find_one(
+            {"email": request.form.get("email")})
+
+        if existing_user:
+            # ensure hashed password matches user input
+            if check_password_hash(
+                    existing_user["password"], request.form.get("password")):
+                # store users name and role and course
+                session["user"] = existing_user["username"]
+                session["role"] = existing_user["role"]
+                session["course"] = existing_user["assigned_course"]
+                username = session["user"]
+                flash("Welcome, {}".format(username))
+                course = session.get("course")
+                return render_template(
+                    "profile.html", username=username, course=course)
+
+            else:
+                # invalid password match
+                flash("Incorrect Username and/or Password")
+                return redirect(url_for("login"))
+
+        else:
+            # username doesn't exist
+            flash("Incorrect Username and/or Password")
+            return redirect(url_for("login"))
+
+    return render_template("login.html")
+
+
 @app.route("/get_lessons")
 def get_lessons():
     lessons = list(mongo.db.lessons.find())
@@ -42,9 +76,11 @@ def profile(username):
     # grab the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
+    course = session.get("course")
 
     if session["user"]:
-        return render_template("profile.html", username=username)
+        return render_template(
+            "profile.html", username=username, course=course)
 
     return redirect(url_for("login"))
 
@@ -90,38 +126,6 @@ def register():
             "profile", username=session["user"]))
 
     return render_template("register.html")
-
-
-@app.route("/login", methods=["GET", "POST"])
-def login():
-    if request.method == "POST":
-        # check if username exists in db
-        existing_user = mongo.db.users.find_one(
-            {"email": request.form.get("email")})
-
-        if existing_user:
-            # ensure hashed password matches user input
-            if check_password_hash(
-                    existing_user["password"], request.form.get("password")):
-                # store users name and role and course
-                session["user"] = existing_user["username"]
-                session["role"] = existing_user["role"]
-                session["course"] = existing_user["assigned_course"]
-                username = session["user"]
-                flash("Welcome, {}".format(username))
-                return render_template("profile.html", username=username)
-
-            else:
-                # invalid password match
-                flash("Incorrect Username and/or Password")
-                return redirect(url_for("login"))
-
-        else:
-            # username doesn't exist
-            flash("Incorrect Username and/or Password")
-            return redirect(url_for("login"))
-
-    return render_template("login.html")
 
 
 @app.route("/add_lesson", methods=["GET", "POST"])
