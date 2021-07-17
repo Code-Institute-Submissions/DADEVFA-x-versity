@@ -7,6 +7,23 @@
         <div class="col s12 m8 offset-m2">
             <!-- User ID -->
             <h6 class="user-id">{{ user._id }}</h6>
+            <!-- Delete User -->
+            <button href="#delete-box" class="btn-flat send-button waves-effect modal-trigger">
+                Delete User<i class="fas fa-trash-alt prefix right"></i>
+            </button>
+            <!-- Delete Box -->
+            <div id="delete-box" class="modal">
+                <div class="modal-content">
+                    <h4>Are you sure you want to delete {{ user.username.upper() }}? </h4>
+                    <p>You will not be able to restore the data.</p>
+                    <a href="#!" class="modal-close waves-effect btn-flat red-text">
+                        Delete {{ user.username.upper() }}<i class="fas fa-user-slash"></i>
+                    </a>
+                    <a class="modal-close waves-effect btn-flat">
+                        Go back<i class="fas fa-undo prefix right"></i>
+                    </a>
+                </div>
+            </div>
             <div class="row card-panel admin-box-user z-depth-3">
                 <form class="col s12 prefix" method="POST" action="{{ url_for('edit_user', user_id=user._id) }}">
                     <div class="row">
