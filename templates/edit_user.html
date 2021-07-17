@@ -16,7 +16,7 @@
                 <div class="modal-content">
                     <h4>Are you sure you want to delete {{ user.username.upper() }}? </h4>
                     <p>You will not be able to restore the data.</p>
-                    <a href="#!" class="modal-close waves-effect btn-flat red-text">
+                    <a href="{{ url_for('delete_user', user_id=user._id) }}" class="modal-close waves-effect btn-flat red-text">
                         Delete {{ user.username.upper() }}<i class="fas fa-user-slash"></i>
                     </a>
                     <a class="modal-close waves-effect btn-flat">

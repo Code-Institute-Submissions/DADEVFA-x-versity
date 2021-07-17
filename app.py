@@ -262,6 +262,20 @@ def edit_user(user_id):
         return redirect(url_for("login"))
 
 
+@app.route("/delete_user/<user_id>")
+def delete_user(user_id):
+    mongo.db.users.remove({"_id": ObjectId(user_id)})
+    # check if user is a admin
+    if session.get("role") == "admin":
+        flash("User deleted")
+        return redirect(url_for("get_users"))
+
+    else:
+        # session user shouldn't be here
+        flash("Ops, something went wrong")
+        return redirect(url_for("login"))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
