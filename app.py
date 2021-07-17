@@ -28,7 +28,13 @@ def get_lessons():
 @app.route("/users")
 def get_users():
     users = list(mongo.db.users.find())
-    return render_template("users.html", users=users)
+    if session.get("role") == "admin":
+        return render_template("users.html", users=users)
+
+    else:
+        # session user shouldn't be here
+        flash("Ops, something went wrong")
+        return redirect(url_for("login"))
 
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
@@ -45,7 +51,7 @@ def profile(username):
 
 @app.route("/logout")
 def logout():
-    # remove session cookie
+    # remove session cookies
     flash("You have been logged out")
     session.pop("user")
     session.pop("role")
@@ -68,12 +74,17 @@ def register():
             "username": request.form.get("username").lower(),
             "email": request.form.get("email").lower(),
             "password": generate_password_hash(request.form.get("password")),
-            "role": request.form.get("role")
+            "role": request.form.get("role"),
+            "status": "pending",
+            "assigned_course": "pending",
+            "enrollment_day": "pending"
         }
         mongo.db.users.insert_one(register)
 
         # Store user in session cookies
         session["user"] = request.form.get("username").lower()
+        session["role"] = request.form.get("role")
+        session["course"] = request.form.get("course")
         flash("Registration Successful!")
         return redirect(url_for(
             "profile", username=session["user"]))
