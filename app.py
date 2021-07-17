@@ -64,10 +64,10 @@ def register():
     if request.method == "POST":
         # is username already taken?
         existing_user = mongo.db.users.find_one(
-            {"username": request.form.get("username").lower()})
+            {"email": request.form.get("email").lower()})
 
         if existing_user:
-            flash("Username taken")
+            flash("Email already in use")
             return redirect(url_for("register"))
 
         register = {
