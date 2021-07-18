@@ -393,7 +393,6 @@ audio {
     width: 100%;
 }
 
-
 .send-button {
     background-color: #424242;
     color: #ece3d3;
@@ -444,13 +443,35 @@ audio {
 .profile-box {
     background-color: #ece3d3;
     height: 60vh;
-    width: 100%;
-    margin: 15px;
+    width: 100%;;
+    margin-top: 40px;
 }
 
 .message-box {
     color: #dd5540;
     font-size: 6vh;
+}
+
+.profile-boxes {
+    background-color: white;
+    padding: 10px;
+    margin: 10px;
+    height: 70%
+}
+.profile-start {
+    width: 100%;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.start-btn {
+    background-color: #424242;
+    color: #ece3d3;
+}
+
+.start-btn:hover {
+    background-color: #dd5540;
+    color: #ece3d3;
 }
 
 /*---------------------------------- Login*/

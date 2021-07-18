@@ -1,18 +1,31 @@
 {% extends "base.html" %}
 {% block content %}
 
+<h3 class="center-align header-text">My Profile</h3>
 
+<div class="admin-background z-depth-1">
     <div class="row">
-        <div class="col s12 m8 offset-m2" >
-            <div class="card-panel profile-box z-depth-3">
-                <h3>
-                    {{ username }} 
-                </h3>
-                <h3>
-                    My courses: {{ course }} 
-                </h3>
+        <div class="col s12 m8 offset-m2">
+            <div class="card-panel profile-box z-depth-2">
+                <div class="profile-boxes z-depth-1">
+                    <h5 class="theme-color-text">Name:</h5> {{ username.upper() }}
+                    {% if session.course|lower == "pending"|lower %}
+                    <h5 class="theme-color-text">Course:</h5>{{ course.upper() }}
+                    <h6>You have no assigned courses yet</h6>
+                    {% else %}
+                    <h5 class="theme-color-text">Course:</h5>{{ course.upper() }}
+                </div>
+                <div class="profile-start">
+                    {% if session.role|lower == "teacher"|lower %}
+                    <a href="{{ url_for('get_lessons') }}" class="btn-large start-btn waves-effect center">
+                        Start course <i class="fas fa-meteor prefix right"></i>
+                    </a>
+                    {% endif %}
+                </div>
+                {% endif %}
             </div>
         </div>
     </div>
+</div>
 
 {% endblock %}

@@ -120,10 +120,10 @@ def register():
         # Store user in session cookies
         session["user"] = request.form.get("username").lower()
         session["role"] = request.form.get("role")
-        session["course"] = request.form.get("course")
+        session["course"] = "pending"
         flash("Registration Successful!")
         return redirect(url_for(
-            "profile", username=session["user"]))
+            "profile", username=session["user"], course=session["course"]))
 
     return render_template("register.html")
 
