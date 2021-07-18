@@ -87,7 +87,8 @@ def profile(username):
         return render_template(
             "profile.html", username=username, course=course)
 
-    return redirect(url_for("login"))
+    else:
+        return redirect(url_for("login"))
 
 
 @app.route("/logout")
