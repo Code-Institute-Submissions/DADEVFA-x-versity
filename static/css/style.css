@@ -486,6 +486,7 @@ audio {
     font-weight: 600;
     margin-top: -250px;
 }
+
 .home-button:hover {
     background-color: #424242;
     color: #ece3d3;
@@ -672,122 +673,124 @@ input[type='range']::-webkit-slider-thumb {
     .home-button {
         margin-top: -350px;
     }
+
     .hero-text {
         top: 40%;
         left: 50%;
     }
 }
-    /*------------------------------ Tablets*/
+
+/*------------------------------ Tablets*/
 
 
-    @media (min-width: 767px) {
-        .scrollspy-box {
-            font-size: 16px;
-            padding-right: 20px;
-        }
-
-        .table-of-contents a.active {
-            padding-left: 10px;
-            padding-right: 5px;
-        }
-
-        .video-box {
-            padding-right: 10px;
-        }
-
-        .lesson-box .video-box {
-            margin: 10px 0px 10px 35px;
-            max-width: 500px;
-        }
-
-        .audio-box {
-            max-width: 100%;
-            padding: 10px;
-            margin-bottom: 160px;
-        }
-
-        .sc-iframe {
-            margin-bottom: 40px;
-            padding: 10px;
-        }
-
-        .student-text {
-            margin: 17px 20px 10px 20px;
-            height: 230px;
-            border-top: none;
-            border-left: none;
-            border-right: none;
-        }
-
-        .add-lessons-box {
-            padding: 26px;
-            margin: 40px;
-        }
-
-        .login-box {
-            height: 100vh;
-            padding: 40px;
-            margin: 15px;
-        }
-
-        .login-frame {
-            margin: 12px;
-            padding: 10px 20px 20px 50px;
-        }
-
-        .register-box {
-            height: 135vh;
-            padding: 40px;
-            margin: 15px;
-        }
-
-        .register-frame {
-            margin: 12px;
-            padding: 10px 20px 20px 50px;
-        }
-
-        .assignment-box {
-            width: 100%;
-            padding: 20px;
-            margin-top: -15%;
-        }
-
-        .lesson-media-text {
-            margin-left: 25px;
-        }
-
-        .user-id {
-            font-size: 10px;
-            font-weight: 200;
-            color: grey;
-            padding-top: 20px;
-            margin: 0;
-        }
-
-        .admin-button-box {
-            width: 20%;
-        }
-
-        .admin-box {
-            padding: 20px;
-        }
-
-        .hero-text {
-            top: 46%;
-            left: 70%;
-        }
-
-        .hero-image {
-            width: 70%;
-        }
+@media (min-width: 767px) {
+    .scrollspy-box {
+        font-size: 16px;
+        padding-right: 20px;
     }
 
-    @media (min-width: 1280px) {
-        .register-box {
-            height: 100vh;
-        }
-
-        .login-box {
-            height: 80vh;
-        }
+    .table-of-contents a.active {
+        padding-left: 10px;
+        padding-right: 5px;
     }
+
+    .video-box {
+        padding-right: 10px;
+    }
+
+    .lesson-box .video-box {
+        margin: 10px 0px 10px 35px;
+        max-width: 500px;
+    }
+
+    .audio-box {
+        max-width: 100%;
+        padding: 10px;
+        margin-bottom: 160px;
+    }
+
+    .sc-iframe {
+        margin-bottom: 40px;
+        padding: 10px;
+    }
+
+    .student-text {
+        margin: 17px 20px 10px 20px;
+        height: 230px;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+    }
+
+    .add-lessons-box {
+        padding: 26px;
+        margin: 40px;
+    }
+
+    .login-box {
+        height: 100vh;
+        padding: 40px;
+        margin: 15px;
+    }
+
+    .login-frame {
+        margin: 12px;
+        padding: 10px 20px 20px 50px;
+    }
+
+    .register-box {
+        height: 135vh;
+        padding: 40px;
+        margin: 15px;
+    }
+
+    .register-frame {
+        margin: 12px;
+        padding: 10px 20px 20px 50px;
+    }
+
+    .assignment-box {
+        width: 100%;
+        padding: 20px;
+        margin-top: -15%;
+    }
+
+    .lesson-media-text {
+        margin-left: 25px;
+    }
+
+    .user-id {
+        font-size: 10px;
+        font-weight: 200;
+        color: grey;
+        padding-top: 20px;
+        margin: 0;
+    }
+
+    .admin-button-box {
+        width: 20%;
+    }
+
+    .admin-box {
+        padding: 20px;
+    }
+
+    .hero-text {
+        top: 46%;
+        left: 70%;
+    }
+
+    .hero-image {
+        width: 70%;
+    }
+}
+
+@media (min-width: 1280px) {
+    .register-box {
+        height: 100vh;
+    }
+
+    .login-box {
+        height: 80vh;
+    }
+}

@@ -31,7 +31,7 @@
                 </a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a class="nav-btn" href="{{ url_for('login') }}">Home</a></li>
+                    <li><a class="nav-btn" href="{{ url_for('home') }}">Home</a></li>
                     {% if session.user %}
                     <li><a class="nav-btn" href="{{ url_for('get_lessons') }}">My lessons</a></li>
                     <li><a class="nav-btn" href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
@@ -44,8 +44,8 @@
                     {% endif %}
                     <li><a class="nav-btn" href="{{ url_for('logout') }}">Log out</a></li>
                     {% else %}
-                    <li><a class="nav-btn" href="{{ url_for('login') }}">Log in</a></li>
                     <li><a class="nav-btn" href="{{ url_for('register') }}">Register</a></li>
+                    <li><a class="nav-btn" href="{{ url_for('login') }}">Log in</a></li>
                     {% endif %}
                 </ul>
             </div>
@@ -55,7 +55,7 @@
             <a href="#">
                 <img class="logo" src="{{ url_for('static', filename='x-versity-logo.png') }}" alt="Logo for X-Versity">
             </a>
-            <li><a class="nav-btn" href="{{ url_for('login') }}">Home</a></li>
+            <li><a class="nav-btn" href="{{ url_for('home') }}">Home</a></li>
             {% if session.user %}
             <li><a class="nav-btn" href="{{ url_for('get_lessons') }}">My lessons</a></li>
             <li><a class="nav-btn" href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
@@ -68,8 +68,9 @@
             {% endif %}
             <li><a class="nav-btn" href="{{ url_for('logout') }}">Log out</a></li>
             {% else %}
-            <li><a class="nav-btn" href="{{ url_for('login') }}">Log in</a></li>
             <li><a class="nav-btn" href="{{ url_for('register') }}">Register</a></li>
+            <li><a class="nav-btn" href="{{ url_for('login') }}">Log in</a></li>
+
             {% endif %}
         </ul>
     </header>
@@ -96,10 +97,13 @@
             <div class="row">
                 <div class="col s5">
                     <ul class="left">
+                        <li><a class="nav-btn" href="{{ url_for('home') }}">Home</a></li>
+                        {% if session.user %}
                         <li><a class="footer-btn" href="{{ url_for('get_lessons') }}">Home</a></li>
-                        <li><a class="footer-btn" href="{{ url_for('login') }}">Log in</a></li>
                         <li><a class="footer-btn" href="{{ url_for('logout') }}">Log out</a></li>
+                        {% endif %}
                         <li><a class="footer-btn" href="{{ url_for('register') }}">Register</a></li>
+                        <li><a class="footer-btn" href="{{ url_for('login') }}">Log in</a></li>
                     </ul>
                 </div>
                 <div class="col s5 right">
