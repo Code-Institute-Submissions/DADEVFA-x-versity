@@ -471,20 +471,21 @@ audio {
 }
 
 .typewrite {
-    color: white;
+    color: #dd5f4cf3;
     font-weight: 700;
 }
 
 .button-hero-box {
     text-align: center;
-    padding: 20px;
+    top: 50%;
+    left: 50%;
 }
 
 .home-button {
     background-color: #dd5540;
     color: #ece3d3;
     font-weight: 600;
-    margin-top: -250px;
+    top: 290px;
 }
 
 .home-button:hover {
@@ -657,26 +658,40 @@ input[type='range']::-webkit-slider-thumb {
     }
 
     .user-id {
-        font-size: 10px;
-        font-weight: 200;
-        color: grey;
         padding-top: 26px;
         margin-left: -20px;
-    }
-
-    .home-button {
-        margin-top: -434px;
     }
 }
 
 @media (min-width: 375px) {
+
+    .hero-text {
+        top: 45%;
+        left: 50%;
+    }
+
     .home-button {
-        margin-top: -350px;
+        top: 330px;
+    }
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: landscape) {
+
+    .hero-image {
+        background: url(/static/x-versity-hero.jpeg) 50% 55% no-repeat fixed;
     }
 
     .hero-text {
-        top: 40%;
-        left: 50%;
+        top: 50%;
+    }
+}
+
+/* Landscape 6/7/8 Plus */
+@media only screen and (min-device-height: 320px) and (max-device-height: 414px) and (orientation: landscape) {
+
+    .home-button {
+        top: 100px;
     }
 }
 
@@ -760,9 +775,6 @@ input[type='range']::-webkit-slider-thumb {
     }
 
     .user-id {
-        font-size: 10px;
-        font-weight: 200;
-        color: grey;
         padding-top: 20px;
         margin: 0;
     }
@@ -776,21 +788,89 @@ input[type='range']::-webkit-slider-thumb {
     }
 
     .hero-text {
-        top: 46%;
-        left: 70%;
+        top: 40%;
+        left: 65%;
     }
 
     .hero-image {
         width: 70%;
     }
+
+    .home-button {
+        top: 360px;
+        left: 65%;
+    }
 }
 
-@media (min-width: 1280px) {
+/*------------------------------ Ipad Pro*/
+
+@media (min-width: 1024px) {
+    .hero-text {
+        top: 30%;
+        left: 70%;
+    }
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+
+    .hero-text {
+        top: 50%;
+        left: 70%;
+    }
+}
+
+/* Landscape Iphone x */
+@media only screen and (width: 812px) and (height: 375px) and (orientation: landscape) {
+
+    .hero-image {
+        background: url(/static/x-versity-hero.jpeg) 50% 20% no-repeat fixed;
+    }
+
+    .hero-text {
+        top: 46%;
+    }
+
+    .home-button {
+        top: 120px;
+        left: 60%;
+    }
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: landscape) {
+
+    .hero-image {
+        background: url(/static/x-versity-hero.jpeg) 50% 0 no-repeat fixed;
+    }
+
+    .hero-text {
+        top: 45%;
+    }
+
+    .home-button {
+        left: 70%;
+    }
+}
+
+/*------------------------------ Laptops*/
+
+@media (min-width: 1250px) {
     .register-box {
         height: 100vh;
     }
 
     .login-box {
         height: 80vh;
+    }
+
+    .hero-text {
+        top: 50%;
+        left: 65%;
+    }
+
+    .home-button {
+        top: 330px;
+        left: 60%;
     }
 }
