@@ -16,7 +16,7 @@
                     <h5 class="theme-color-text">Course:</h5>{{ course.upper() }}
                 </div>
                 <div class="profile-start">
-                    {% if session.role|lower == "teacher"|lower %}
+                    {% if session.course|lower != "pending"|lower %}
                     <a href="{{ url_for('get_lessons') }}" class="btn-large start-btn waves-effect center">
                         Start course <i class="fas fa-meteor prefix right"></i>
                     </a>
