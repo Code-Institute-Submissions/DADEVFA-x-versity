@@ -60,8 +60,17 @@ def login():
 
 @app.route("/get_lessons")
 def get_lessons():
-    lessons = list(mongo.db.lessons.find())
-    return render_template("lessons.html", lessons=lessons)
+    course = session.get("course")
+    lessons = list(mongo.db.lessons.find(
+        {"$text": {"$search": course}}))
+    lessons.reverse()
+    if course != "pending":
+        return render_template(
+            "lessons.html", lessons=lessons)
+
+    elif course:
+        flash("You will be assigned to your course soon.")
+        return redirect(url_for("home"))
 
 
 @app.route("/users")
