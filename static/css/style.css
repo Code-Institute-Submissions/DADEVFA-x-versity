@@ -857,7 +857,7 @@ input[type='range']::-webkit-slider-thumb {
 
 @media (min-width: 1250px) {
     .register-box {
-        height: 100vh;
+        height: auto;
     }
 
     .login-box {

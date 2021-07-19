@@ -76,6 +76,7 @@ def get_lessons():
 @app.route("/users")
 def get_users():
     users = list(mongo.db.users.find())
+    users.reverse()
     if session.get("role") == "admin":
         return render_template("users.html", users=users)
 
@@ -128,7 +129,8 @@ def register():
             "role": request.form.get("role"),
             "status": "pending",
             "assigned_course": "pending",
-            "enrollment_day": "pending"
+            "enrollment_day": "pending",
+            "apply_course": request.form.get("apply_course")
         }
         mongo.db.users.insert_one(register)
 
@@ -262,7 +264,8 @@ def edit_user(user_id):
             "role": request.form.get("role"),
             "assigned_course": request.form.get("assigned_course"),
             "enrollment_day": request.form.get("enrollment_day"),
-            "status": request.form.get("status")
+            "status": request.form.get("status"),
+            "apply_course": request.form.get("apply_course")
         }
         mongo.db.users.update({"_id": ObjectId(user_id)}, edit)
         flash("User is now updated")

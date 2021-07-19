@@ -16,7 +16,7 @@
                 <div class="modal-content">
                     <h4>Are you sure you want to delete {{ user.username.upper() }}? </h4>
                     <p>You will not be able to restore the data.</p>
-                    <a href="{{ url_for('delete_user', user_id=user._id) }}" 
+                    <a href="{{ url_for('delete_user', user_id=user._id) }}"
                         class="modal-close waves-effect btn-flat delete-btn">
                         Delete {{ user.username.upper() }} <i class="fas fa-user-slash prefix right"></i>
                     </a>
@@ -79,13 +79,23 @@
                             <label for="role">Role</label>
                         </div>
                     </div>
+                    <!-- Applies for Course -->
+                    <div class="row">
+                        <h6 class="theme-color-text center">User has applied for:</h6>
+                        <div class="input-field col s12">
+                            <i class="fas fa-file-contract prefix all-icons"></i>
+                            <input id="apply_course" name="apply_course" type="text" class="validate"
+                            value="{{ user.apply_course }}" required>
+                            <label for="apply_course">Applies for:</label>
+                        </div>
+                    </div>
                     <!-- Assign Course -->
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="fas fa-university prefix all-icons"></i>
                             <select name="assigned_course" id="assigned_course" class="validate" required>
                                 <option value="{{ user.assigned_course }}" selected>
-                                    {{- user.assigned_course -}}
+                                {{- user.assigned_course -}}
                                 </option>
                                 {% for course in courses %}
                                 <option value="{{ course.course_name }}">{{ course.course_name }}</option>
