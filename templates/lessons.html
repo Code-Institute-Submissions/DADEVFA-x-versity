@@ -54,24 +54,24 @@
               class="assignment">{{ lesson.lesson_test }}</strong></h5>
           {% endif %}
           {% if lesson.text_answer == "on" %}
-          <div id="student_upload" class="student-text z-depth-2">
-            <form>
+          <div id="text_submission" class="student-text z-depth-2">
+            <form method="POST" action="{{ url_for('student_submit') }}">
               <div class="row">
                 <div class="input-field">
-                  <textarea id="student_answer" name="student_answer" class="materialize-textarea student-text validate"
+                  <textarea id="text_submission" name="text_submission" class="materialize-textarea student-text validate"
                     data-length="2000" minlength="5"></textarea>
-                  <label for="student_answer">Your answer:</label>
+                  <label for="text_submission">Your answer:</label>
                 </div>
               </div>
-            </form>
           </div>
           <div class="submit-btn-box">
             <button type="submit" class="btn-large send-button waves-effect">Submit</button>
           </div>
+        </form>
           {% endif %}
           {% if lesson.file_answer == "on" %}
           <div class="row file-upload center z-depth-2">
-            <form id="fileForm" name="fileForm" action="#">
+            <form id="file_submission" name="file_submission" method="POST" action="{{ url_for('student_submit') }}">
               <div class="file-field input-field">
                 <a class="btn-small file-button waves-effect submit-btn-box">
                   <i class="fas fa-paperclip"></i>

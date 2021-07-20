@@ -3,6 +3,7 @@ from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
+from datetime import datetime
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
@@ -35,7 +36,7 @@ def login():
             # ensure hashed password matches user input
             if check_password_hash(
                     existing_user["password"], request.form.get("password")):
-                # store users name and role and course
+                # store users name, role and course
                 session["user"] = existing_user["username"]
                 session["role"] = existing_user["role"]
                 session["course"] = existing_user["assigned_course"]
@@ -71,6 +72,34 @@ def get_lessons():
     elif course:
         flash("You will be assigned to your course soon.")
         return redirect(url_for("home"))
+
+
+@app.route("/student_submit", methods=["POST", "GET"])
+def student_submit():
+    if request.method == "POST":
+        # check if user is a student
+        if session.get("role") == "student":
+            # get the time and day
+            submit_time = datetime.now()
+            date = submit_time.strftime("%d/%m/%Y %H:%M:%S")
+            submit = {
+                "text_submission": request.form.get("text_submission"),
+                "file_submission": request.form.get("file_submission"),
+                "student": session["user"],
+                "course_name": session["course"],
+                "date": date,
+                "grade": "",
+                "feedback": "",
+            }
+            mongo.db.submissions.insert_one(submit)
+            flash("Your answer has been submitted")
+            return redirect(url_for("get_lessons"))
+
+        else:
+            # if user is not a student
+            flash("Ops, are you sure you´re studing this course?")
+            # not allowed
+            return redirect(url_for("login"))
 
 
 @app.route("/users")
