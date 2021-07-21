@@ -394,6 +394,18 @@ audio {
     width: 100%;
 }
 
+.file-upload {
+    margin: 0px 20px;
+}
+.file-button {
+    background-color: #424242;
+    color: #ece3d3;
+}
+.file-button:hover {
+    background-color: #dd5540;
+    color: #ece3d3;
+}
+
 .send-button {
     background-color: #424242;
     color: #ece3d3;

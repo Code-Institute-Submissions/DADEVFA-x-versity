@@ -6,6 +6,9 @@ from flask_pymongo import PyMongo
 from datetime import datetime
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 if os.path.exists("env.py"):
     import env
 
@@ -16,7 +19,16 @@ app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
+
 mongo = PyMongo(app)
+
+
+# Cloudinary API used to store the item images
+cloudinary.config(
+    cloud_name=os.environ.get("CLOUD_NAME"),
+    api_key=os.environ.get("API_KEY"),
+    api_secret=os.environ.get("API_SECRET")
+)
 
 
 @app.route("/")
@@ -76,7 +88,9 @@ def get_lessons():
 
 @app.route("/student_submit", methods=["POST", "GET"])
 def student_submit():
-    if request.method == "POST":
+    files = request.files['file_submission']
+    files_upload = cloudinary.uploader.upload(files)
+    if request.method == 'POST':
         # check if user is a student
         if session.get("role") == "student":
             # get the time and day
@@ -84,13 +98,14 @@ def student_submit():
             date = submit_time.strftime("%d/%m/%Y %H:%M:%S")
             submit = {
                 "text_submission": request.form.get("text_submission"),
-                "file_submission": request.form.get("file_submission"),
+                "file_submission": files_upload["secure_url"],
                 "student": session["user"],
                 "course_name": session["course"],
                 "date": date,
                 "grade": "",
-                "feedback": "",
+                "feedback": ""
             }
+
             mongo.db.submissions.insert_one(submit)
             flash("Your answer has been submitted")
             return redirect(url_for("get_lessons"))
