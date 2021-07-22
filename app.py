@@ -34,168 +34,19 @@ cloudinary.config(
 @app.route("/")
 @app.route("/home")
 def home():
+    """
+    Home route.
+    """
     return render_template("home.html")
-
-
-@app.route("/login", methods=["GET", "POST"])
-def login():
-    if request.method == "POST":
-        # check if username exists in db
-        existing_user = mongo.db.users.find_one(
-            {"email": request.form.get("email")})
-
-        if existing_user:
-            # ensure hashed password matches user input
-            if check_password_hash(
-                    existing_user["password"], request.form.get("password")):
-                # store users name, role and course
-                session["user"] = existing_user["username"]
-                session["role"] = existing_user["role"]
-                session["course"] = existing_user["assigned_course"]
-                username = session["user"]
-                flash("Welcome, {}".format(username))
-                course = session.get("course")
-                return render_template(
-                    "profile.html", username=username, course=course)
-
-            else:
-                # invalid password match
-                flash("Incorrect Username and/or Password")
-                return redirect(url_for("login"))
-
-        else:
-            # username doesn't exist
-            flash("Incorrect Username and/or Password")
-            return redirect(url_for("login"))
-
-    return render_template("login.html")
-
-
-@app.route("/get_lessons")
-def get_lessons():
-    course = session.get("course")
-    lessons = list(mongo.db.lessons.find(
-        {"$text": {"$search": course}}))
-    lessons.reverse()
-    if course != "pending":
-        return render_template(
-            "lessons.html", lessons=lessons)
-
-    elif course:
-        flash("You will be assigned to your course soon.")
-        return redirect(url_for("home"))
-
-
-@app.route("/student_submit", methods=["POST", "GET"])
-def student_submit():
-    if request.method == 'POST':
-        files_upload = {}
-        if "file_submission" in request.files:
-            files = request.files['file_submission']
-            files_upload = cloudinary.uploader.upload(files)
-            # check if user is a student
-        if session.get("role") == "student":
-            # get the time and day
-            submit_time = datetime.now()
-            date = submit_time.strftime("%d/%m/%Y %H:%M:%S")
-            submit = {
-                "text_submission": request.form.get("text_submission"),
-                "file_submission": files_upload["secure_url"] if "secure_url" in files_upload else "",
-                "student": session["user"],
-                "course_name": session["course"],
-                "date": date,
-                "grade": "",
-                "feedback": ""
-            }
-            mongo.db.submissions.insert_one(submit)
-            flash("Your answer has been submitted")
-            return redirect(url_for("get_lessons"))
-
-        else:
-            # if user is not a student
-            flash("Ops, are you sure you´re studing this course?")
-            # not allowed
-            return redirect(url_for("login"))
-
-
-@app.route("/submissions")
-def get_submits():
-    submissions = list(mongo.db.submissions.find())
-    submissions.reverse()
-    if session.get("role") == "teacher":
-        return render_template("submissions.html", submissions=submissions)
-
-    else:
-        # session user shouldn't be here
-        flash("Ops, something went wrong")
-        return redirect(url_for("login"))
-
-
-@app.route("/grade_submission/<submission_id>", methods=["POST", "GET"])
-def grade_submission(submission_id):
-    if request.method == "POST":
-        # teacher sets grade and gives feedback
-        grade = { "$set":
-            {"grade": request.form.get("grade"),
-            "feedback": request.form.get("feedback")}
-            }
-        mongo.db.submissions.update({"_id": ObjectId(submission_id)}, grade)
-        flash("Submission is has been graded")
-
-    submission = mongo.db.submissions.find_one(
-        {"_id": ObjectId(submission_id)})
-    submissions = list(mongo.db.submissions.find())
-    # check if user is a admin
-    if session.get("role") == "teacher":
-        return render_template(
-            "grade_submission.html", submission=submission, submissions=submissions)
-
-    else:
-        # session user shouldn't be here
-        flash("Ops, something went wrong")
-        return redirect(url_for("login"))
-
-
-@app.route("/users")
-def get_users():
-    users = list(mongo.db.users.find())
-    users.reverse()
-    if session.get("role") == "admin":
-        return render_template("users.html", users=users)
-
-    else:
-        # session user shouldn't be here
-        flash("Ops, something went wrong")
-        return redirect(url_for("login"))
-
-
-@app.route("/profile/<username>", methods=["GET", "POST"])
-def profile(username):
-    # grab the session user's username from db
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
-    course = session.get("course")
-
-    if session["user"]:
-        return render_template(
-            "profile.html", username=username, course=course)
-
-    else:
-        return redirect(url_for("login"))
-
-
-@app.route("/logout")
-def logout():
-    # remove session cookies
-    flash("You have been logged out")
-    session.pop("user")
-    session.pop("role")
-    session.pop("course")
-    return redirect(url_for("login"))
 
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    """
+    Register route. Checks if email already is in use or new.
+    Stores username, then sets default role and course in session
+    cookies.
+    """
     if request.method == "POST":
         # is Email already taken?
         existing_user = mongo.db.users.find_one(
@@ -228,8 +79,81 @@ def register():
     return render_template("register.html")
 
 
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    """
+    Login route. Stores Username, Role and Course.
+    """
+    if request.method == "POST":
+        # check if username exists in db
+        existing_user = mongo.db.users.find_one(
+            {"email": request.form.get("email")})
+
+        if existing_user:
+            # ensure hashed password matches user input
+            if check_password_hash(
+                    existing_user["password"], request.form.get("password")):
+                # store users name, role and course
+                session["user"] = existing_user["username"]
+                session["role"] = existing_user["role"]
+                session["course"] = existing_user["assigned_course"]
+                username = session["user"]
+                flash("Welcome, {}".format(username))
+                course = session.get("course")
+                return render_template(
+                    "profile.html", username=username, course=course)
+
+            else:
+                # invalid password match
+                flash("Incorrect Username and/or Password")
+                return redirect(url_for("login"))
+
+        else:
+            # username doesn't exist
+            flash("Incorrect Username and/or Password")
+            return redirect(url_for("login"))
+
+    return render_template("login.html")
+
+
+@app.route("/logout")
+def logout():
+    """
+    Logout route. Removes stored session username,
+    role and course.
+    """
+    # remove session cookies
+    flash("You have been logged out")
+    session.pop("user")
+    session.pop("role")
+    session.pop("course")
+    return redirect(url_for("login"))
+
+
+@app.route("/profile/<username>", methods=["GET", "POST"])
+def profile(username):
+    """
+    Profile route. For users to view if they have been
+    assigned a course or not.
+    """
+    # grab the session user's username from db
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+    course = session.get("course")
+
+    if session["user"]:
+        return render_template(
+            "profile.html", username=username, course=course)
+
+    else:
+        return redirect(url_for("login"))
+
+
 @app.route("/add_lesson", methods=["GET", "POST"])
 def add_lesson():
+    """
+    Add Lesson route. Teacher creates their lessons from here.
+    """
     if request.method == "POST":
         is_mandatory = "on" if request.form.get("is_mandatory") else "off"
         has_audio = "on" if request.form.get("has_audio") else "off"
@@ -276,6 +200,10 @@ def add_lesson():
 
 @app.route("/edit_lesson/<lesson_id>", methods=["POST", "GET"])
 def edit_lesson(lesson_id):
+    """
+    Edit Lesson route. Teachers can update their lessons. They
+    access it from get lessons template.
+    """
     if request.method == "POST":
         is_mandatory = "on" if request.form.get("is_mandatory") else "off"
         has_audio = "on" if request.form.get("has_audio") else "off"
@@ -337,8 +265,150 @@ def edit_lesson(lesson_id):
         return redirect(url_for("login"))
 
 
+@app.route("/get_lessons")
+def get_lessons():
+    """
+    Lesson route. Like a classroom were students
+    go through course and submit their work.
+    Teachers can edit their lessons from here too.
+    """
+    course = session.get("course")
+    lessons = list(mongo.db.lessons.find(
+        {"$text": {"$search": course}}))
+    lessons.reverse()
+    if course != "pending":
+        return render_template(
+            "lessons.html", lessons=lessons)
+
+    elif course:
+        flash("You will be assigned to your course soon.")
+        return redirect(url_for("home"))
+
+
+@app.route("/student_submit", methods=["POST", "GET"])
+def student_submit():
+    """
+    Student Submit route. Makes submissions possible,
+    both file and text even though they are separate forms.
+    """
+    if request.method == 'POST':
+        files_upload = {}
+        if "file_submission" in request.files:
+            files = request.files['file_submission']
+            files_upload = cloudinary.uploader.upload(files)
+            # check if user is a student
+        if session.get("role") == "student":
+            # get the time and day
+            submit_time = datetime.now()
+            date = submit_time.strftime("%d/%m/%Y %H:%M:%S")
+            submit = {
+                "text_submission": request.form.get("text_submission"),
+                "file_submission": files_upload["secure_url"] if "secure_url"
+                in files_upload else "",
+                "student": session["user"],
+                "course_name": session["course"],
+                "date": date,
+                "grade": "",
+                "feedback": ""
+            }
+            mongo.db.submissions.insert_one(submit)
+            flash("Your answer has been submitted")
+            return redirect(url_for("get_lessons"))
+
+        else:
+            # if user is not a student
+            flash("Ops, are you sure you´re studing this course?")
+            # not allowed
+            return redirect(url_for("login"))
+
+
+@app.route("/submissions")
+def get_submits():
+    """
+    Submissions route. For teachers to view all their students
+    submissions, course filter is included in template.
+    """
+    submissions = list(mongo.db.submissions.find())
+    submissions.reverse()
+    if session.get("role") == "teacher":
+        return render_template("submissions.html", submissions=submissions)
+
+    else:
+        # session user shouldn't be here
+        flash("Ops, something went wrong")
+        return redirect(url_for("login"))
+
+
+@app.route("/grade_submission/<submission_id>", methods=["POST", "GET"])
+def grade_submission(submission_id):
+    """
+    Grade Submissions route. Teachers can assess submissions made by
+    their students and then grade it.
+    """
+    if request.method == "POST":
+        # teacher sets grade and gives feedback
+        grade = {"$set": {
+            "grade": request.form.get("grade"),
+            "feedback": request.form.get("feedback")}
+            }
+        mongo.db.submissions.update({"_id": ObjectId(submission_id)}, grade)
+        flash("Submission is has been graded")
+
+    submission = mongo.db.submissions.find_one(
+        {"_id": ObjectId(submission_id)})
+    submissions = list(mongo.db.submissions.find())
+    # check if user is a admin
+    if session.get("role") == "teacher":
+        return render_template(
+            "grade_submission.html", submission=submission,
+            submissions=submissions)
+
+    else:
+        # session user shouldn't be here
+        flash("Ops, something went wrong")
+        return redirect(url_for("login"))
+
+
+@app.route("/delete_lesson/<lesson_id>")
+def delete_lesson(lesson_id):
+    """
+    Delete Lessons route. Teachers can delete their lessons.
+    """
+    mongo.db.lessons.remove({"_id": ObjectId(lesson_id)})
+    # check if user is a admin
+    if session.get("role") == "teacher":
+        flash("Lesson deleted")
+        return redirect(url_for("get_lessons"))
+
+    else:
+        # session user shouldn't be here
+        flash("Ops, something went wrong")
+        return redirect(url_for("login"))
+
+
+@app.route("/users")
+def get_users():
+    """
+    Users route. Admin view all registered users
+    from here.
+    """
+    users = list(mongo.db.users.find())
+    users.reverse()
+    if session.get("role") == "admin":
+        return render_template("users.html", users=users)
+
+    else:
+        # session user shouldn't be here
+        flash("Ops, something went wrong")
+        return redirect(url_for("login"))
+
+
 @app.route("/edit_user/<user_id>", methods=["POST", "GET"])
 def edit_user(user_id):
+    """
+    Edit User route. Admin updates users information and also sets
+    privileges and courses.
+    """
     if request.method == "POST":
         edit = {
             "username": request.form.get("username"),
@@ -369,25 +439,14 @@ def edit_user(user_id):
 
 @app.route("/delete_user/<user_id>")
 def delete_user(user_id):
+    """
+    Delete User route. Admin can remove users.
+    """
     mongo.db.users.remove({"_id": ObjectId(user_id)})
     # check if user is a admin
     if session.get("role") == "admin":
         flash("User deleted")
         return redirect(url_for("get_users"))
-
-    else:
-        # session user shouldn't be here
-        flash("Ops, something went wrong")
-        return redirect(url_for("login"))
-
-
-@app.route("/delete_lesson/<lesson_id>")
-def delete_lesson(lesson_id):
-    mongo.db.lessons.remove({"_id": ObjectId(lesson_id)})
-    # check if user is a admin
-    if session.get("role") == "teacher":
-        flash("Lesson deleted")
-        return redirect(url_for("get_lessons"))
 
     else:
         # session user shouldn't be here
