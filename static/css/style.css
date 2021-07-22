@@ -88,6 +88,10 @@ body {
     color: #424242;
 }
 
+.select {
+    -webkit-appearance: none;
+}
+
 /*---------------------------------- Admin  */
 
 .admin-background {
@@ -150,7 +154,7 @@ body {
 }
 
 .user-id {
-    font-size: 10px;
+    font-size: 8px;
     font-weight: 200;
     color: grey;
 }
@@ -162,6 +166,9 @@ body {
 .status-box {
     background-color: #ede4d5;
 }
+
+/*---------------------------------- Lesson Page */
+/*------------------------ Student */
 
 .lesson-frame {
     border-width: 2px;
@@ -351,47 +358,6 @@ audio {
     background-color: whitesmoke;
 }
 
-/*---------------------------------- Lesson Page */
-/*------------------------ Teacher Actions  */
-
-.delete-btn {
-    margin: 10px;
-    background-color: #424242;
-    color: #dd5540;
-    font-weight: 600;
-}
-
-.delete-btn:hover {
-    background-color: #dd5540;
-    color: #ede4d5;
-}
-
-.course-box {
-    margin-top: 20px;
-}
-
-.edit-btn {
-    margin: 10px;
-    background-color: #424242;
-    color: #ede4d5;
-    font-weight: 600;
-}
-
-.edit-btn:hover {
-    background-color: #dd5540;
-}
-
-.submission-text {
-    font-weight: 500;
-    letter-spacing: 1px;
-    color: rgb(26, 26, 26);
-    height: auto;
-    overflow-x: auto;
-    word-break: keep-all;
-}
-
-/*------------------------ Student Actions  */
-
 .student-text {
     margin: 20px 10px 10px 10px;
     padding: 10px;
@@ -410,13 +376,19 @@ audio {
 .file-upload {
     margin: 0px 20px;
 }
+
 .file-button {
     background-color: #424242;
     color: #ece3d3;
 }
+
 .file-button:hover {
     background-color: #dd5540;
     color: #ece3d3;
+}
+
+.file-btn {
+    margin-bottom: 20px;
 }
 
 .send-button {
@@ -464,6 +436,44 @@ audio {
     background-color: #ece3d3;
 }
 
+/*---------------------------------- Lesson Page */
+/*------------------------ Teacher */
+
+.delete-btn {
+    margin: 10px;
+    background-color: #424242;
+    color: #dd5540;
+    font-weight: 600;
+}
+
+.delete-btn:hover {
+    background-color: #dd5540;
+    color: #ede4d5;
+}
+
+.course-box {
+    margin-top: 20px;
+}
+
+.edit-btn {
+    margin: 10px;
+    background-color: #424242;
+    color: #ede4d5;
+    font-weight: 600;
+}
+
+.edit-btn:hover {
+    background-color: #dd5540;
+}
+
+.submission-text {
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: rgb(26, 26, 26);
+    height: auto;
+    overflow-x: auto;
+    word-break: keep-all;
+}
 
 /*---------------------------------- Home*/
 
@@ -891,5 +901,9 @@ input[type='range']::-webkit-slider-thumb {
     .home-button {
         top: 330px;
         left: 60%;
+    }
+
+    .lesson-title {
+        font-size: 5.3vh;
     }
 }
