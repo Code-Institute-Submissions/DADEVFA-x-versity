@@ -117,6 +117,19 @@ def student_submit():
             return redirect(url_for("login"))
 
 
+@app.route("/submissions")
+def get_submits():
+    submissions = list(mongo.db.submissions.find())
+    submissions.reverse()
+    if session.get("role") == "teacher":
+        return render_template("submissions.html", submissions=submissions)
+
+    else:
+        # session user shouldn't be here
+        flash("Ops, something went wrong")
+        return redirect(url_for("login"))
+
+
 @app.route("/users")
 def get_users():
     users = list(mongo.db.users.find())
