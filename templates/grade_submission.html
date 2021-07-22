@@ -18,11 +18,11 @@
                     <!-- Text Submission-->
                     {% if submission.text_submission != None %}
                         <textarea  class="submission-text" rows="20">
-                        <p>{{ submission.text_submission }}</p>
+                        {{ submission.text_submission }}
                         </textarea>
                     {% else %}  
                     <!-- File Submission-->
-                        <a href="{{ submission.file_submission }}" 
+                        <a href="{{ submission.file_submission }}" target="_blank" 
                             class="modal-close waves-effect btn-flat edit-btn">
                             File Submission<i class="fas fa-file-download prefix right"></i>
                         </a>
