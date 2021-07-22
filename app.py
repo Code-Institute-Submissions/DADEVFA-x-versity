@@ -88,24 +88,25 @@ def get_lessons():
 
 @app.route("/student_submit", methods=["POST", "GET"])
 def student_submit():
-    files = request.files['file_submission']
-    files_upload = cloudinary.uploader.upload(files)
     if request.method == 'POST':
-        # check if user is a student
+        files_upload = {}
+        if "file_submission" in request.files:
+            files = request.files['file_submission']
+            files_upload = cloudinary.uploader.upload(files)
+            # check if user is a student
         if session.get("role") == "student":
             # get the time and day
             submit_time = datetime.now()
             date = submit_time.strftime("%d/%m/%Y %H:%M:%S")
             submit = {
                 "text_submission": request.form.get("text_submission"),
-                "file_submission": files_upload["secure_url"],
+                "file_submission": files_upload["secure_url"] if "secure_url" in files_upload else "",
                 "student": session["user"],
                 "course_name": session["course"],
                 "date": date,
                 "grade": "",
                 "feedback": ""
             }
-
             mongo.db.submissions.insert_one(submit)
             flash("Your answer has been submitted")
             return redirect(url_for("get_lessons"))
