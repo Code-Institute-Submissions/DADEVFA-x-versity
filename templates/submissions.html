@@ -16,12 +16,13 @@
                                     <div class="admin-button-box">
                                 <!-- Alert teacher that submission has no grade  -->
                                 {% if not submission.grade %}
-                                        <a href="" class="btn manage-button">Grade</a>
+                                        <a href="{{ url_for('grade_submission', submission_id=submission._id) }}" 
+                                            class="btn manage-button">Grade</a>
                                     </div>
                                     <i class="fas fa-user-check left"></i>
                                     <h6 class="theme-color-text">This submission is not graded </h6>
                                 {% else %}
-                                        <a href="" class="btn manage-button">Check</a>
+                                        <a href="{{ url_for('grade_submission', submission_id=submission._id) }}" class="btn manage-button">Check</a>
                                     </div>
                                     <i class="fas fa-user-graduate left"></i>
                                     <h6 class="status-text">This submissions grade: {{ submission.grade.capitalize() }} </h6>
