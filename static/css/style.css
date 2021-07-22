@@ -254,7 +254,7 @@ body {
     height: 170px;
     z-index: 2;
     font-family: 'Titillium Web';
-    font-family: 300;
+    font-weight: 300;
     font-size: 15px;
     top: 12vh;
     right: 0;
@@ -413,7 +413,7 @@ audio {
 }
 
 .assignment-label {
-    bottom: 50;
+    bottom: 50px;
     padding: 0px 20px 0px 20px;
     color: #dd5540;
     width: 98%;
@@ -517,14 +517,14 @@ audio {
 }
 
 .home-button {
-    background-color: #dd5540;
-    color: #ece3d3;
+    background-color: #ece3d3;
+    color: #424242;
     font-weight: 600;
-    top: 290px;
+    top: 40vh;
 }
 
 .home-button:hover {
-    background-color: #424242;
+    background-color: #dd5540;
     color: #ece3d3;
 }
 
@@ -640,10 +640,9 @@ audio {
 }
 
 [type="checkbox"].filled-in:checked+span:not(.lever):after {
-    border: 2px solid #dd5540;
+    border: 2px solid #ec6d59;
     background-color: #dd5540;
 }
-
 
 element.style {
     height: 30px;
@@ -697,30 +696,6 @@ input[type='range']::-webkit-slider-thumb {
     .hero-text {
         top: 45%;
         left: 50%;
-    }
-
-    .home-button {
-        top: 330px;
-    }
-}
-
-/* Landscape */
-@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: landscape) {
-
-    .hero-image {
-        background: url("/static/img/x-versity-hero.jpeg") 50% 55% no-repeat fixed;
-    }
-
-    .hero-text {
-        top: 50%;
-    }
-}
-
-/* Landscape 6/7/8 Plus */
-@media only screen and (min-device-height: 320px) and (max-device-height: 414px) and (orientation: landscape) {
-
-    .home-button {
-        top: 100px;
     }
 }
 
@@ -818,67 +793,23 @@ input[type='range']::-webkit-slider-thumb {
 
     .hero-text {
         top: 40%;
-        left: 65%;
     }
 
     .hero-image {
-        width: 70%;
+        width: 100%;
+    }
+
+}
+
+/*------------------------------ Ipad Pro Landscape*/
+
+@media (min-width: 1024px) and (max-height: 1366px) {
+    .hero-text {
+        top: 28vh;
     }
 
     .home-button {
-        top: 360px;
-        left: 65%;
-    }
-}
-
-/*------------------------------ Ipad Pro*/
-
-@media (min-width: 1024px) {
-    .hero-text {
-        top: 30%;
-        left: 70%;
-    }
-}
-
-/* Landscape */
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
-
-    .hero-text {
-        top: 50%;
-        left: 70%;
-    }
-}
-
-/* Landscape Iphone x */
-@media only screen and (width: 812px) and (height: 375px) and (orientation: landscape) {
-
-    .hero-image {
-        background: url("/static/img/x-versity-hero.jpeg") 50% 20% no-repeat fixed;
-    }
-
-    .hero-text {
-        top: 46%;
-    }
-
-    .home-button {
-        top: 120px;
-        left: 60%;
-    }
-}
-
-/* Landscape */
-@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: landscape) {
-
-    .hero-image {
-        background: url("/static/img/x-versity-hero.jpeg") 50% 0 no-repeat fixed;
-    }
-
-    .hero-text {
-        top: 45%;
-    }
-
-    .home-button {
-        left: 70%;
+        top: 20vh;
     }
 }
 
@@ -894,13 +825,11 @@ input[type='range']::-webkit-slider-thumb {
     }
 
     .hero-text {
-        top: 50%;
-        left: 65%;
+        top: 40vh;
     }
 
     .home-button {
-        top: 330px;
-        left: 60%;
+        top: 35vh;
     }
 
     .lesson-title {

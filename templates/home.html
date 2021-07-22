@@ -15,7 +15,7 @@
             <div class="button-hero-box">
                 {% if session.user %}
                 <a href="{{ url_for('profile', username=session['user']) }}"
-                    class="btn-large home-button waves-effect z-depth-3">Get started</a>
+                    class="btn-large home-button waves-effect z-depth-4">Get started</a>
                 {% else %}
                 <a href="{{ url_for('register') }}" class="btn-large home-button waves-effect z-depth-2">Get started</a>
                 {% endif %}
