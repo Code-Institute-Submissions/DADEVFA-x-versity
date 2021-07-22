@@ -37,6 +37,7 @@
                     <li><a class="nav-btn" href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
                     {% if session.role|lower == "teacher"|lower %}
                     <li><a class="nav-btn" href="{{ url_for('add_lesson') }}">New Lesson</a></li>
+                    <li><a class="nav-btn" href="{{ url_for('get_submits') }}">Student Submission</a></li>
                     {% endif %}
                     {% if session.role|lower == "admin"|lower %}
                     <li><a class="nav-btn" href="#">Manage Courses</a></li>
@@ -61,6 +62,7 @@
             <li><a class="nav-btn" href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
             {% if session.role|lower == "teacher"|lower %}
             <li><a class="nav-btn" href="{{ url_for('add_lesson') }}">New Lesson</a></li>
+            <li><a class="nav-btn" href="{{ url_for('get_submits') }}">Student Submission</a></li>
             {% endif %}
             {% if session.role|lower == "admin"|lower %}
             <li><a class="nav-btn" href="#">Manage Courses</a></li>
