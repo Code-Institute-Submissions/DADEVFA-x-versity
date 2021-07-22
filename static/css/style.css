@@ -74,6 +74,10 @@ body {
     margin-top: -2px;
 }
 
+.logo {
+    background: url("/static/img/x-versity-logo.png") 50% 50% no-repeat fixed;
+}
+
 .full {
     width: 100%;
 }
@@ -377,6 +381,15 @@ audio {
     background-color: #dd5540;
 }
 
+.submission-text {
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: rgb(26, 26, 26);
+    height: auto;
+    overflow-x: auto;
+    word-break: keep-all;
+}
+
 /*------------------------ Student Actions  */
 
 .student-text {
@@ -466,7 +479,7 @@ audio {
 }
 
 .hero-image {
-    background: url("/static/x-versity-hero.jpeg") 50% 0 no-repeat fixed;
+    background: url("/static/img/x-versity-hero.jpeg") 50% 0 no-repeat fixed;
     color: white;
     min-height: 600px;
     padding: 100px 0 0 0;
@@ -593,12 +606,6 @@ audio {
     letter-spacing: 1px;
 }
 
-.footer-btn:hover {
-    text-shadow: 0.7px 2px black;
-    padding-left: 5px;
-    border-left: 3px solid #dd5540;
-}
-
 .footer i {
     font-size: 20px;
     margin-top: 4px;
@@ -691,7 +698,7 @@ input[type='range']::-webkit-slider-thumb {
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: landscape) {
 
     .hero-image {
-        background: url(/static/x-versity-hero.jpeg) 50% 55% no-repeat fixed;
+        background: url("/static/img/x-versity-hero.jpeg") 50% 55% no-repeat fixed;
     }
 
     .hero-text {
@@ -836,7 +843,7 @@ input[type='range']::-webkit-slider-thumb {
 @media only screen and (width: 812px) and (height: 375px) and (orientation: landscape) {
 
     .hero-image {
-        background: url(/static/x-versity-hero.jpeg) 50% 20% no-repeat fixed;
+        background: url("/static/img/x-versity-hero.jpeg") 50% 20% no-repeat fixed;
     }
 
     .hero-text {
@@ -853,7 +860,7 @@ input[type='range']::-webkit-slider-thumb {
 @media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: landscape) {
 
     .hero-image {
-        background: url(/static/x-versity-hero.jpeg) 50% 0 no-repeat fixed;
+        background: url("/static/img/x-versity-hero.jpeg") 50% 0 no-repeat fixed;
     }
 
     .hero-text {
