@@ -130,6 +130,31 @@ def get_submits():
         return redirect(url_for("login"))
 
 
+@app.route("/grade_submission/<submission_id>", methods=["POST", "GET"])
+def grade_submission(submission_id):
+    if request.method == "POST":
+        # teacher sets grade and gives feedback
+        grade = { "$set":
+            {"grade": request.form.get("grade"),
+            "feedback": request.form.get("feedback")}
+            }
+        mongo.db.submissions.update({"_id": ObjectId(submission_id)}, grade)
+        flash("Submission is has been graded")
+
+    submission = mongo.db.submissions.find_one(
+        {"_id": ObjectId(submission_id)})
+    submissions = list(mongo.db.submissions.find())
+    # check if user is a admin
+    if session.get("role") == "teacher":
+        return render_template(
+            "grade_submission.html", submission=submission, submissions=submissions)
+
+    else:
+        # session user shouldn't be here
+        flash("Ops, something went wrong")
+        return redirect(url_for("login"))
+
+
 @app.route("/users")
 def get_users():
     users = list(mongo.db.users.find())
