@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3 class="center-align header-text">Grade Submission</h3>
+<div class="admin-background z-depth-1">
+    <div class="row">
+        <div class="col s12 m8 offset-m2">
+            <!-- Submission ID -->
+            <h6 class="user-id">{{ submission._id }}</h6>
+            <!-- View Submission -->
+            <button href="#submission-box" class="btn-flat send-button waves-effect modal-trigger">
+                View Submisson<i class="fas fa-file-alt prefix right"></i>
+            </button>
+            <!-- Submission Box -->
+            <div id="submission-box" class="modal">
+                <div class="modal-content">
+                    <h6 class="theme-color-text center">{{ submission.student }}</h6>
+                    <!-- Text Submission-->
+                    {% if submission.text_submission != None %}
+                        <textarea  class="submission-text" rows="20">
+                        <p>{{ submission.text_submission }}</p>
+                        </textarea>
+                    {% else %}  
+                    <!-- File Submission-->
+                        <a 
+                            href="{{ submission.file_submission }}" 
+                            class="modal-close waves-effect btn-flat edit-btn">
+                            File Submission<i class="fas fa-file-download prefix right"></i>
+                        </a>
+                    {% endif %}
+                    <a class="modal-close waves-effect btn-flat edit-btn">
+                        Go back<i class="fas fa-undo prefix right"></i>
+                    </a>
+                </div>
+            </div>
+            <a class="waves-effect btn-flat send-button" href="">
+                Go back<i class="fas fa-undo prefix right"></i>
+            </a>
+            <div class="row card-panel admin-box-user z-depth-3">
+                <form class="col s12 prefix" method="POST"
+                    action="{{ url_for('grade_submission', submission_id=submission._id) }}">
+                    <!-- Grade-->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="grade" name="grade" type="text" class="validate"
+                                value="{{ submission.grade.capitalize() }}" required>
+                            <label for="grade">Grade:</label>
+                        </div>
+                    </div>
+                    <!-- Teacher Feedback-->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="grade" name="grade" type="text" class="validate"
+                                value="{{ submission.feedback }}" placeholder="Give your student feedback" required>
+                            <label for="grade">Feedback:</label>
+                        </div>
+                    </div>
+                    <!-- Submit button -->
+                    <div class="row">
+                        <div class="col s12 center-align">
+                            <a href="" class="btn-large send-button waves-effect">
+                                Cancel<i class="fas fa-times-circle right"></i>
+                            </a>
+                            <button type="submit" class="btn-large save-btn waves-effect">
+                                Save <i class="fas fa-check-circle right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
