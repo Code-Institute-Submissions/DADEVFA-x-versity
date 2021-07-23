@@ -33,8 +33,12 @@
                 <ul class="right hide-on-med-and-down">
                     <li><a class="nav-btn" href="{{ url_for('home') }}">Home</a></li>
                     {% if session.user %}
+                            <!-- Admin will not see -->
                         {% if session.role|lower != "admin" %}
-                            <li><a class="nav-btn" href="{{ url_for('get_lessons') }}">My lessons</a></li>
+                            <!-- User with pending course will not see -->
+                            {% if session.course|lower != "pending" %}
+                                <li><a class="nav-btn" href="{{ url_for('get_lessons') }}">My lessons</a></li>
+                            {% endif %}
                             <li><a class="nav-btn" href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
                         {% endif %}
                     {% if session.role|lower == "teacher"|lower %}
@@ -60,9 +64,13 @@
             </a>
             <li><a class="nav-btn" href="{{ url_for('home') }}">Home</a></li>
             {% if session.user %}
+                <!-- Admin will not see -->
                 {% if session.role|lower != "admin" %}
-                    <li><a class="nav-btn" href="{{ url_for('get_lessons') }}">My lessons</a></li>
-                    <li><a class="nav-btn" href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+                    <!-- User with pending course will not see -->
+                    {% if session.course|lower != "pending" %}
+                        <li><a class="nav-btn" href="{{ url_for('get_lessons') }}">My lessons</a></li>
+                    {% endif %}
+                <li><a class="nav-btn" href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
                 {% endif %}
             {% if session.role|lower == "teacher"|lower %}
                 <li><a class="nav-btn" href="{{ url_for('add_lesson') }}">New Lesson</a></li>
@@ -104,9 +112,13 @@
                     <ul class="left">
                         <li><a class="nav-btn" href="{{ url_for('home') }}">Home</a></li>
                         {% if session.user %}
+                            <!-- Admin will not see -->
                             {% if session.role|lower != "admin" %}
+                                <!-- User with pending course will not see -->
+                                {% if session.course|lower != "pending" %}
+                                    <li><a class="nav-btn" href="{{ url_for('get_lessons') }}">My lessons</a></li>
+                                {% endif %}
                                 <li><a class="nav-btn" href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-                                <li><a class="nav-btn" href="{{ url_for('get_lessons') }}">My lessons</a></li>
                             {% endif %}
                         {% if session.role|lower == "teacher"|lower %}
                             <li><a class="nav-btn" href="{{ url_for('add_lesson') }}">New Lesson</a></li>
