@@ -410,10 +410,19 @@ def edit_user(user_id):
     privileges and courses.
     """
     if request.method == "POST":
+        # To prevent password from updating
+        password = request.form.get("password")
+        if len(password) == 0:
+            # Empty means same
+            user = mongo.db.users.find_one({"_id": ObjectId(user_id)})
+            password = user["password"]
+        else:
+            # New
+            password = generate_password_hash(request.form.get("password"))
         edit = {
             "username": request.form.get("username"),
             "email": request.form.get("email"),
-            "password": generate_password_hash(request.form.get("password")),
+            "password": password,
             "role": request.form.get("role"),
             "assigned_course": request.form.get("assigned_course"),
             "enrollment_day": request.form.get("enrollment_day"),
