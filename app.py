@@ -454,6 +454,12 @@ def delete_user(user_id):
         return redirect(url_for("login"))
 
 
+@app.route("/get_courses")
+def get_courses():
+    courses = list(mongo.db.courses.find().sort("course_name", 1))
+    return render_template("courses.html", courses=courses)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
