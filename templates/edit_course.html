@@ -2,8 +2,26 @@
 {% block content %}
 
 <h3 class="center-align header-text">Edit Course</h3>
-
+ß
 <div class="admin-background z-depth-1">
+    <!-- Delete Course -->
+    <button href="#delete-box" class="btn-flat left send-button waves-effect delete-button modal-trigger">
+        Delete Course<i class="fas fa-trash-alt prefix right"></i>
+    </button>
+    <!-- Delete Box -->
+    <div id="delete-box" class="modal">
+        <div class="modal-content">
+            <h4>Are you sure you want to delete course: {{ course.course_name.upper() }}? </h4>
+            <p>You will not be able to restore the data.</p>
+            <a href="{{ url_for('delete_course', course_id=course._id) }}"
+                class="modal-close waves-effect btn-flat delete-btn">
+                Delete: {{ course.course_name.upper() }} <i class="fas fa-file-alt prefix right"></i>
+            </a>
+            <a class="modal-close waves-effect btn-flat edit-btn">
+                Go back<i class="fas fa-undo prefix right"></i>
+            </a>
+        </div>
+    </div>
     <div class="row card-panel add-course-box z-depth-3">
         <form class="col s12 prefix" method="POST" action="{{ url_for('edit_course', course_id=course._id) }}">
             <!-- Course Name -->

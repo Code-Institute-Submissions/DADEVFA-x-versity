@@ -515,6 +515,23 @@ def edit_course(course_id):
         return redirect(url_for("login"))
 
 
+@app.route("/delete_course/<course_id>")
+def delete_course(course_id):
+    """
+    Delete Course route. Admin can delete course.
+    """
+    mongo.db.course.remove({"_id": ObjectId(course_id)})
+    # check if user is a admin
+    if session.get("role") == "admin":
+        flash("Course deleted")
+        return redirect(url_for("get_courses"))
+
+    else:
+        # session user shouldn't be here
+        flash("Ops, something went wrong")
+        return redirect(url_for("home"))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

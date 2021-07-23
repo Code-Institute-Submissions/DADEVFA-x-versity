@@ -171,7 +171,7 @@ body {
     height: auto;
     color: #424242;
     background-color: #ede4d5ab;
-    margin: 20px 13px 13px 13px;
+    margin: 80px 13px 13px 13px;
 }
 
 /*---------------------------------- Lesson Page */
@@ -458,8 +458,12 @@ audio {
     color: #ede4d5;
 }
 
+.delete-button {
+    margin: 10px 0px 20px 10px;
+}
+
 .course-box {
-    margin-top: 20px;
+    margin-top: 80px;
 }
 
 .edit-btn {
