@@ -195,7 +195,7 @@ def add_lesson():
         # if user is a somebody else
         flash("To become a Teacher, one must first study hard")
         # not allowed
-        return redirect(url_for("login"))
+        return redirect(url_for("home"))
 
 
 @app.route("/edit_lesson/<lesson_id>", methods=["POST", "GET"])
@@ -262,7 +262,7 @@ def edit_lesson(lesson_id):
         # if user is not a teacher or admin
         flash("To become a Teacher, one must first study hard")
         # not allowed
-        return redirect(url_for("login"))
+        return redirect(url_for("home"))
 
 
 @app.route("/get_lessons")
@@ -319,7 +319,7 @@ def student_submit():
             # if user is not a student
             flash("Ops, are you sure you´re studing this course?")
             # not allowed
-            return redirect(url_for("login"))
+            return redirect(url_for("home"))
 
 
 @app.route("/submissions")
@@ -336,7 +336,7 @@ def get_submits():
     else:
         # session user shouldn't be here
         flash("Ops, something went wrong")
-        return redirect(url_for("login"))
+        return redirect(url_for("home"))
 
 
 @app.route("/grade_submission/<submission_id>", methods=["POST", "GET"])
@@ -366,7 +366,7 @@ def grade_submission(submission_id):
     else:
         # session user shouldn't be here
         flash("Ops, something went wrong")
-        return redirect(url_for("login"))
+        return redirect(url_for("home"))
 
 
 @app.route("/delete_lesson/<lesson_id>")
@@ -383,7 +383,7 @@ def delete_lesson(lesson_id):
     else:
         # session user shouldn't be here
         flash("Ops, something went wrong")
-        return redirect(url_for("login"))
+        return redirect(url_for("home"))
 
 
 @app.route("/users")
@@ -400,7 +400,7 @@ def get_users():
     else:
         # session user shouldn't be here
         flash("Ops, something went wrong")
-        return redirect(url_for("login"))
+        return redirect(url_for("home"))
 
 
 @app.route("/edit_user/<user_id>", methods=["POST", "GET"])
@@ -434,7 +434,7 @@ def edit_user(user_id):
     else:
         # session user shouldn't be here
         flash("Ops, something went wrong")
-        return redirect(url_for("login"))
+        return redirect(url_for("home"))
 
 
 @app.route("/delete_user/<user_id>")
@@ -451,7 +451,7 @@ def delete_user(user_id):
     else:
         # session user shouldn't be here
         flash("Ops, something went wrong")
-        return redirect(url_for("login"))
+        return redirect(url_for("homev"))
 
 
 @app.route("/get_courses")
@@ -467,7 +467,7 @@ def get_courses():
     else:
         # session user shouldn't be here
         flash("Ops, something went wrong")
-        return redirect(url_for("login"))
+        return redirect(url_for("home"))
 
 
 @app.route("/add_course", methods=["GET", "POST"])
@@ -512,7 +512,7 @@ def edit_course(course_id):
     else:
         # session user shouldn't be here
         flash("Ops, something went wrong")
-        return redirect(url_for("login"))
+        return redirect(url_for("home"))
 
 
 @app.route("/delete_course/<course_id>")
