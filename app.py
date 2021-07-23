@@ -456,8 +456,40 @@ def delete_user(user_id):
 
 @app.route("/get_courses")
 def get_courses():
-    courses = list(mongo.db.courses.find().sort("course_name", 1))
-    return render_template("courses.html", courses=courses)
+    """
+    Get Courses route. Admin can see all courses.
+    """
+    # check if user is a admin
+    if session.get("role") == "admin":
+        courses = list(mongo.db.courses.find().sort("course_name", 1))
+        return render_template("courses.html", courses=courses)
+
+    else:
+        # session user shouldn't be here
+        flash("Ops, something went wrong")
+        return redirect(url_for("login"))
+
+
+@app.route("/add_course", methods=["GET", "POST"])
+def add_course():
+    """
+    Add Courses route. Admin can add a new course.
+    """
+    # check if user is a admin
+    if session.get("role") == "admin":
+        if request.method == "POST":
+            courses = {
+                "course_name": request.form.get("course_name")
+            }
+            mongo.db.courses.insert_one(courses)
+            flash("New Course Added")
+            return redirect(url_for("get_courses"))
+        return render_template("add_course.html")
+
+    else:
+        # session user shouldn't be here
+        flash("Ops, something went wrong")
+        return redirect(url_for("login"))
 
 
 if __name__ == "__main__":

@@ -167,6 +167,13 @@ body {
     background-color: #ede4d5;
 }
 
+.add-course-box {
+    height: auto;
+    color: #424242;
+    background-color: #ede4d5ab;
+    margin: 20px 13px 13px 13px;
+}
+
 /*---------------------------------- Lesson Page */
 /*------------------------ Student */
 
