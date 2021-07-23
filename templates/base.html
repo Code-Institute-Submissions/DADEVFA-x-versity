@@ -34,31 +34,18 @@
                     <li><a class="nav-btn" href="{{ url_for('home') }}">Home</a></li>
                     {% if session.user %}
                         {% if session.role|lower != "admin" %}
-<<<<<<< HEAD
                             <li><a class="nav-btn" href="{{ url_for('get_lessons') }}">My lessons</a></li>
                             <li><a class="nav-btn" href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
                         {% endif %}
-=======
-                        <li><a class="nav-btn" href="{{ url_for('get_lessons') }}">My lessons</a></li>
-                            {% endif %}
-                        <li><a class="nav-btn" href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
->>>>>>> 3c1a8eba3f7207a00b174faeb36b54840a277498
                     {% if session.role|lower == "teacher"|lower %}
                         <li><a class="nav-btn" href="{{ url_for('add_lesson') }}">New Lesson</a></li>
                         <li><a class="nav-btn" href="{{ url_for('get_submits') }}">Student Submission</a></li>
                     {% endif %}
                     {% if session.role|lower == "admin"|lower %}
-<<<<<<< HEAD
                         <li><a class="nav-btn" href="{{ url_for('get_courses') }}">Manage Courses</a></li>
                         <li><a class="nav-btn" href="{{ url_for('get_users') }}">Manage Users</a></li>
                     {% endif %}
                         <li><a class="nav-btn" href="{{ url_for('logout') }}">Log out</a></li>
-=======
-                        <li><a class="nav-btn" href="#">Manage Courses</a></li>
-                        <li><a class="nav-btn" href="{{ url_for('get_users') }}">Manage Users</a></li>
-                    {% endif %}
-                        i><a class="nav-btn" href="{{ url_for('logout') }}">Log out</a></li>
->>>>>>> 3c1a8eba3f7207a00b174faeb36b54840a277498
                     {% else %}
                         <li><a class="nav-btn" href="{{ url_for('register') }}">Register</a></li>
                         <li><a class="nav-btn" href="{{ url_for('login') }}">Log in</a></li>
@@ -75,33 +62,20 @@
             {% if session.user %}
                 {% if session.role|lower != "admin" %}
                     <li><a class="nav-btn" href="{{ url_for('get_lessons') }}">My lessons</a></li>
-<<<<<<< HEAD
                     <li><a class="nav-btn" href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
                 {% endif %}
-=======
-                {% endif %}
-                <li><a class="nav-btn" href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
->>>>>>> 3c1a8eba3f7207a00b174faeb36b54840a277498
             {% if session.role|lower == "teacher"|lower %}
                 <li><a class="nav-btn" href="{{ url_for('add_lesson') }}">New Lesson</a></li>
                 <li><a class="nav-btn" href="{{ url_for('get_submits') }}">Student Submission</a></li>
             {% endif %}
             {% if session.role|lower == "admin"|lower %}
-<<<<<<< HEAD
                 <li><a class="nav-btn" href="{{ url_for('get_courses') }}">Manage Courses</a></li>
-=======
-                <li><a class="nav-btn" href="#">Manage Courses</a></li>
->>>>>>> 3c1a8eba3f7207a00b174faeb36b54840a277498
                 <li><a class="nav-btn" href="{{ url_for('get_users') }}">Manage Users</a></li>
             {% endif %}
                 <li><a class="nav-btn" href="{{ url_for('logout') }}">Log out</a></li>
             {% else %}
                 <li><a class="nav-btn" href="{{ url_for('register') }}">Register</a></li>
                 <li><a class="nav-btn" href="{{ url_for('login') }}">Log in</a></li>
-<<<<<<< HEAD
-=======
-
->>>>>>> 3c1a8eba3f7207a00b174faeb36b54840a277498
             {% endif %}
         </ul>
     </header>
@@ -131,10 +105,7 @@
                         <li><a class="nav-btn" href="{{ url_for('home') }}">Home</a></li>
                         {% if session.user %}
                             {% if session.role|lower != "admin" %}
-<<<<<<< HEAD
                                 <li><a class="nav-btn" href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
-=======
->>>>>>> 3c1a8eba3f7207a00b174faeb36b54840a277498
                                 <li><a class="nav-btn" href="{{ url_for('get_lessons') }}">My lessons</a></li>
                             {% endif %}
                         {% if session.role|lower == "teacher"|lower %}
