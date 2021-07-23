@@ -9,6 +9,7 @@
             <a class="waves-effect btn-flat send-button" href="{{ url_for('add_course') }}">
                 Add Course <i class="fas fa-plus-square prefix right"></i>
             </a>
+            <!-- Courses -->
             <div class="card-panel admin-box z-depth-3">
                 <h3>
                     <ul class="collection z-depth-2">
@@ -16,7 +17,7 @@
                             <li class="collection-item avatar">
                                 <span class="title"></span>
                                 <div class="admin-button-box">
-                                    <a href="" class="btn manage-button">Manage</a>
+                                    <a href="{{ url_for('edit_course', course_id=course._id) }}" class="btn manage-button">Manage</a>
                                     <h6 class="user-id"></h6>
                                 </div>
                                 <i class="fas fa-book prefix"></i>

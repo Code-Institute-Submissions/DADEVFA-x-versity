@@ -489,6 +489,29 @@ def add_course():
     else:
         # session user shouldn't be here
         flash("Ops, something went wrong")
+        return redirect(url_for("home"))
+
+
+@app.route("/edit_course/<course_id>", methods=["GET", "POST"])
+def edit_course(course_id):
+    """
+    Edit Courses route. Admin can Edit a new course.
+    """
+    # check if user is a admin
+    if session.get("role") == "admin":
+        if request.method == "POST":
+            edit = {
+                "course_name": request.form.get("course_name")
+            }
+            mongo.db.courses.update({"_id": ObjectId(course_id)}, edit)
+            flash("Course is now updated")
+            return redirect(url_for("get_courses"))
+        course = mongo.db.courses.find_one({"_id": ObjectId(course_id)})
+        return render_template("edit_course.html", course=course)
+
+    else:
+        # session user shouldn't be here
+        flash("Ops, something went wrong")
         return redirect(url_for("login"))
 
 

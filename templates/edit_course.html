@@ -1,17 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3 class="center-align header-text">Add a new Course</h3>
+<h3 class="center-align header-text">Edit Course</h3>
 
 <div class="admin-background z-depth-1">
     <div class="row card-panel add-course-box z-depth-3">
-        <form class="col s12 prefix" method="POST" action="{{ url_for('add_course') }}">
-            <!-- Course Title -->
+        <form class="col s12 prefix" method="POST" action="{{ url_for('edit_course', course_id=course._id) }}">
+            <!-- Course Name -->
             <div class="row">
                 <div class="input-field col s12" method="POST" action="">
                     <i class="fas fa-book prefix all-icons"></i>
-                    <input id="course_name" name="course_name" type="text" class="validate" minlength="2" maxlength="20"
-                        required>
+                    <input id="course_name" name="course_name" type="text" value="{{ course.course_name.upper() }}"
+                        class="validate" minlength="2" maxlength="20" required>
                     <label for="course_name">Course Name:</label>
                 </div>
             </div>
@@ -22,7 +22,7 @@
                         Cancel<i class="fas fa-times-circle right"></i>
                     </a>
                     <button type="submit" class="btn-large save-btn waves-effect">
-                        Add Course <i class="fas fa-plus-square right"></i>
+                        Edit Course <i class="fas fa-plus-square right"></i>
                     </button>
                 </div>
             </div>
