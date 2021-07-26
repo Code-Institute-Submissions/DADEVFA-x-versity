@@ -10,24 +10,30 @@
                 <div class="profile-boxes z-depth-1">
                     <h5 class="theme-color-text">Name:</h5> {{ username.upper() }}
                     {% if session.course|lower == "pending"|lower %}
-                        <h5 class="theme-color-text">Course:</h5>{{ course.upper() }}
-                        <h6>You have no assigned courses yet</h6>
+                    <h5 class="theme-color-text">Course:</h5>{{ course.upper() }}
+                    <h6>You have no assigned courses yet. You will receive a 
+                        letter of acceptence which will include details of your enrollment. </h6>
+                </div>
+                <div class="profile-start">
+                    <a href="{{ url_for('logout') }}" class="btn-large start-btn waves-effect center">
+                        Logout <i class="fas fa-meteor prefix right"></i>
+                    </a>
                     {% else %}
-                        <h5 class="theme-color-text">Course:</h5>{{ course.upper() }}
+                    <h5 class="theme-color-text">Course:</h5>{{ course.upper() }}
                 </div>
                 <div class="profile-start">
                     {% if session.course|lower != "pending"|lower %}
-                        {% if session.role|lower != "admin" %}
-                            {% if session.role|lower == "teacher" %}
-                                <a href="{{ url_for('get_submits') }}" class="btn-large start-btn waves-effect center">
-                                    See Submits <i class="fas fa-meteor prefix right"></i>
-                                </a>
-                            {% else %}
-                                <a href="{{ url_for('get_lessons') }}" class="btn-large start-btn waves-effect center">
-                                    Start course <i class="fas fa-meteor prefix right"></i>
-                                </a>
-                            {% endif %}
-                        {% endif %}
+                    {% if session.role|lower != "admin" %}
+                    {% if session.role|lower == "teacher" %}
+                        <a href="{{ url_for('get_submits') }}" class="btn-large start-btn waves-effect center">
+                            See Submits <i class="fas fa-meteor prefix right"></i>
+                        </a>
+                    {% else %}
+                        <a href="{{ url_for('get_lessons') }}" class="btn-large start-btn waves-effect center">
+                            Start course <i class="fas fa-meteor prefix right"></i>
+                        </a>
+                    {% endif %}
+                    {% endif %}
                     {% endif %}
                 </div>
                 {% endif %}
