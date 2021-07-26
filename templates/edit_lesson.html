@@ -26,7 +26,7 @@
             <!-- Assigned Course -->
             <div class="row course-box">
                 <div class="input-field col s12">
-                    <select id="course_name" name="course_name" class="validate" required>
+                    <select id="course_name" name="course_name" required>
                         <option value="{{ course }}" selected>{{ course }}</option>
                     </select>
                     <label for="course_name">Assigned Course:</label>
@@ -54,7 +54,7 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-book prefix all-icons"></i>
-                    <select name="lesson_nr" id="lesson_nr" class="validate" required>
+                    <select name="lesson_nr" id="lesson_nr" required>
                         <option value="{{ lesson.lesson_nr }}" selected>{{ lesson.lesson_nr }}</option>
                         <option value="1">1st</option>
                         <option value="2">2nd</option>
@@ -74,7 +74,7 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-file-archive prefix all-icons"></i>
-                    <select name="course_module" id="course_module" class="validate" required>
+                    <select name="course_module" id="course_module" required>
                         <option value="{{ lesson.course_module }}" selected>{{ lesson.course_module }}</option>
                         <option value="1">Module 1</option>
                         <option value="2">Module 2</option>
@@ -240,7 +240,7 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <textarea id="lesson_test" name="lesson_test" minlength="10" maxlength="400"
-                                class="materialize-textarea"
+                                class="materialize-textarea validate"
                                 placeholder="Assignment">{{ lesson.lesson_test }}</textarea>
                             <label for="lesson_test">Give your student an assignment:</label>
                         </div>

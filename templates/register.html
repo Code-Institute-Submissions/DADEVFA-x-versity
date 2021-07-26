@@ -33,7 +33,7 @@
                     </div>
                     <!-- Role -->
                     <div class="row">
-                        <div class="input-field col s12 validate" required>
+                        <div class="input-field col s12" required>
                             <select name="role" id="role">
                                 <option value="student-apply" selected>Student</option>
                                 <option value="teacher-apply">Teacher</option>
@@ -45,7 +45,7 @@
                     </div>
                     <!-- Applies for Course -->
                     <div class="row">
-                        <div class="input-field col s12 validate">
+                        <div class="input-field col s12">
                             <select name="apply_course" id="apply_course" required>
                                 {% for course in courses %}
                                     <option value="{{ course.course_name }}">{{ course.course_name.capitalize() }}</option>

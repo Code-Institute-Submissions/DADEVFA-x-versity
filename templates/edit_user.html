@@ -64,7 +64,7 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="fas fa-id-card prefix all-icons"></i>
-                            <select name="role" id="role" class="validate" required>
+                            <select name="role" id="role" required>
                                 <option value="{{ user.role }}" selected>{{ user.role.capitalize() }}</option>
                                 <option value="teacher">Teacher</option>
                                 <option value="parent">Parent</option>
@@ -92,7 +92,7 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="fas fa-university prefix all-icons"></i>
-                            <select name="assigned_course" id="assigned_course" class="validate" required>
+                            <select name="assigned_course" id="assigned_course" required>
                                 <option value="{{ user.assigned_course }}" selected>
                                 {{- user.assigned_course -}}
                                 </option>
@@ -116,7 +116,7 @@
                     <div class="row status-box card-panel z-depth-1">
                         <div class="input-field col s12 m6">
                             <div class="row">
-                                <select name="status" id="status" class="validate" required>
+                                <select name="status" id="status" required>
                                     <option value="{{ user.status }}" selected>{{ user.status.capitalize() }}</option>
                                     <option value="abscent">Abscent</option>
                                     <option value="active">Active</option>
