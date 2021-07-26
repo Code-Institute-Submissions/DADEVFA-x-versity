@@ -4,15 +4,6 @@
 <h3 class="center-align header-text">REGISTER</h3>
 
 <div class="row register-box z-depth-1">
-    <!-- Login Instead -->
-    <div class="row">
-        <div class="col s12">
-            <p class="center-align">
-                Already Registered?
-                <a href="{{ url_for('login') }}" class="login-register-check">Log In</a>
-            </p>
-        </div>
-    </div>
     <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">
         <div class="card-panel register-frame">
             <div class="row">
@@ -54,8 +45,8 @@
                     </div>
                     <!-- Applies for Course -->
                     <div class="row">
-                        <div class="input-field col s12">
-                            <select name="apply_course" class="validate" id="apply_course" required>
+                        <div class="input-field col s12 validate">
+                            <select name="apply_course" id="apply_course" required>
                                 {% for course in courses %}
                                     <option value="{{ course.course_name }}">{{ course.course_name.capitalize() }}</option>
                                 {% endfor %}
@@ -71,6 +62,16 @@
                     </div>
             </div>
     </form>
+</div>
+
+<!-- Login Instead -->
+<div class="row">
+    <div class="col s12">
+        <p class="center-align">
+            Already Registered?
+            <a href="{{ url_for('login') }}" class="login-register-check">Log In</a>
+        </p>
+    </div>
 </div>
 
 {% endblock %}
