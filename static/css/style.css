@@ -814,6 +814,14 @@ input[type='range']::-webkit-slider-thumb {
         width: 100%;
     }
 
+    .login-frame .row {
+        margin-right: 8px;
+    }
+
+    .register-frame .row {
+        margin-right: 8px;
+    }
+
 }
 
 /*------------------------------ Ipad Pro Landscape*/
