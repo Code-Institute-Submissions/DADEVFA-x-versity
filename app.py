@@ -136,9 +136,8 @@ def profile(username):
     Profile route. For users to view if they have been
     assigned a course or not.
     """
-    # grab the session user's username from db
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
+    # grab the session user's username from cookie
+    username = session["user"]
     course = session.get("course")
 
     if session["user"]:
