@@ -76,7 +76,8 @@ def register():
         return redirect(url_for(
             "profile", username=session["user"], course=session["course"]))
 
-    return render_template("register.html")
+    courses = list(mongo.db.courses.find())
+    return render_template("register.html", courses=courses)
 
 
 @app.route("/login", methods=["GET", "POST"])
