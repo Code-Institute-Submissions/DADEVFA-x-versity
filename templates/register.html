@@ -55,7 +55,7 @@
                     <!-- Applies for Course -->
                     <div class="row">
                         <div class="input-field col s12">
-                            <select name="apply_course validate" id="apply_course" required>
+                            <select name="apply_course" class="validate" id="apply_course" required>
                                 {% for course in courses %}
                                     <option value="{{ course.course_name }}">{{ course.course_name.capitalize() }}</option>
                                 {% endfor %}
