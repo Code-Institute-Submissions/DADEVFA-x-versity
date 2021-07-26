@@ -127,7 +127,7 @@ def logout():
     session.pop("user")
     session.pop("role")
     session.pop("course")
-    return redirect(url_for("login"))
+    return redirect(url_for("home"))
 
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
