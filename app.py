@@ -352,7 +352,7 @@ def grade_submission(submission_id):
             "feedback": request.form.get("feedback")}
             }
         mongo.db.submissions.update({"_id": ObjectId(submission_id)}, grade)
-        flash("Submission is has been graded")
+        flash("Submission is now graded")
 
     submission = mongo.db.submissions.find_one(
         {"_id": ObjectId(submission_id)})
@@ -529,7 +529,7 @@ def delete_course(course_id):
     """
     Delete Course route. Admin can delete course.
     """
-    mongo.db.course.remove({"_id": ObjectId(course_id)})
+    mongo.db.courses.remove({"_id": ObjectId(course_id)})
     # check if user is a admin
     if session.get("role") == "admin":
         flash("Course deleted")
