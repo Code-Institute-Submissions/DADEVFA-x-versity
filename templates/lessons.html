@@ -72,7 +72,7 @@
           {% endif %}
           {% if lesson.file_answer == "on" %}
           <div class="row file-upload center z-depth-2">
-            <form method="POST" action="{{ url_for('student_submit') }}" enctype="multipart/form-data" novalidate>
+            <form id="file-form" method="POST" action="{{ url_for('student_submit') }}" enctype="multipart/form-data" novalidate>
               <div class="file-field input-field">
                 <a class="btn-small file-button waves-effect submit-btn-box">
                   <i class="fas fa-paperclip"></i>
@@ -83,10 +83,10 @@
                     placeholder="Upload your file">
                 </div>
               </div>
-              <div class="submit-btn-box">
-                <button type="submit" class="btn-large send-button file-btn waves-effect">Submit</button>
-              </div>
             </form>
+          </div>
+          <div class="submit-btn-box">
+            <button type="submit" form="file-form" class="btn-large send-button file-btn waves-effect">Submit</button>
           </div>
           {% endif %}
         </div>
