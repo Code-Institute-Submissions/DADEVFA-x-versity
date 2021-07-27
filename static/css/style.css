@@ -203,7 +203,7 @@ body {
     background-color: white;
     display: block;
     overflow: auto;
-    margin-bottom: 40px;
+    margin-bottom: 70px;
     overflow-y: hidden;
 }
 
@@ -392,6 +392,8 @@ audio {
 
 .file-upload {
     margin: 0px 20px;
+    background-color: #ffffff;
+    height: 100px;
 }
 
 .file-button {
@@ -750,7 +752,7 @@ input[type='range']::-webkit-slider-thumb {
     }
 
     .lesson-box .video-box {
-        margin: 10px 0px 10px 35px;
+        margin: 10px 0px 110px 35px;
         max-width: 500px;
     }
 
@@ -876,5 +878,9 @@ input[type='range']::-webkit-slider-thumb {
 
     .lesson-title {
         font-size: 5.3vh;
+    }
+
+    .lesson-box .video-box {
+        margin: 10px 0px 10px 35px;
     }
 }
