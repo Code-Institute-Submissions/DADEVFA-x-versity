@@ -134,6 +134,7 @@ body {
 .admin-button-box {
     width: 30%;
     float: right;
+    text-align: center;
 }
 
 
@@ -158,9 +159,10 @@ body {
 }
 
 .user-id {
-    font-size: 8px;
-    font-weight: 200;
+    font-size: 7px;
+    font-weight: 100;
     color: grey;
+    margin: 2px;
 }
 
 .datepicker-date-display {
@@ -702,7 +704,7 @@ input[type='range']::-webkit-slider-thumb {
 
     .user-id {
         padding-top: 26px;
-        margin-left: -20px;
+        margin: 2px;
     }
 }
 
@@ -799,7 +801,9 @@ input[type='range']::-webkit-slider-thumb {
     }
 
     .admin-button-box {
-        width: 20%;
+        width: 30%;
+        float: right;
+        text-align: center;
     }
 
     .admin-box {
