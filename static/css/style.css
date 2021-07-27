@@ -672,6 +672,10 @@ audio {
     background-color: #dd5540;
 }
 
+.input-field .prefix.active {
+    color: #dd5540;
+}
+
 element.style {
     height: 30px;
     width: 30px;
