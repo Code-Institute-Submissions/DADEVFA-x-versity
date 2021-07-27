@@ -90,6 +90,10 @@ body {
     -o-appearance:none;
      appearance:none;
      background-color: transparent;
+     opacity: 0;
+     height: 0;
+     width: 0;
+     overflow: hidden;
 }
 
 /*---------------------------------- Admin  */
