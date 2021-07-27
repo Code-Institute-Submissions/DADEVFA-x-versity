@@ -82,18 +82,22 @@ body {
     font-size: 5vh;
     font-weight: 400;
     color: #424242;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .select {
-    -webkit-appearance:none;
-    -moz-appearance:none;
-    -o-appearance:none;
-     appearance:none;
-     background-color: transparent;
-     opacity: 0;
-     height: 0;
-     width: 0;
-     overflow: hidden;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    opacity: 0;
+    height: 0;
+    width: 0;
+    overflow: hidden;
 }
 
 /*---------------------------------- Admin  */
@@ -492,6 +496,13 @@ audio {
     word-break: keep-all;
 }
 
+.no-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 /*---------------------------------- Home*/
 
 .home-background {
@@ -557,7 +568,7 @@ audio {
 
 .message-box {
     color: #dd5540;
-    font-size: 6vh;
+    font-size: 4vh;
 }
 
 .profile-boxes {
