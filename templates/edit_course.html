@@ -15,7 +15,7 @@
             <p>You will not be able to restore the data.</p>
             <a href="{{ url_for('delete_course', course_id=course._id) }}"
                 class="modal-close waves-effect btn-flat delete-btn">
-                Delete: {{ course.course_name.upper() }} <i class="fas fa-file-alt prefix right"></i>
+                Delete: {{ course.course_name.upper() }} <i class="far fa-trash-alt prefix right"></i>
             </a>
             <a class="modal-close waves-effect btn-flat edit-btn">
                 Go back<i class="fas fa-undo prefix right"></i>
@@ -36,11 +36,11 @@
             <!-- Submit button -->
             <div class="row">
                 <div class="col s12 center-align">
-                    <a href="{{ url_for('get_courses') }}" class="btn-large send-button waves-effect">
+                    <a href="{{ url_for('get_courses') }}" class="btn send-button waves-effect">
                         Cancel<i class="fas fa-times-circle right"></i>
                     </a>
-                    <button type="submit" class="btn-large save-btn waves-effect">
-                        Edit Course <i class="fas fa-plus-square right"></i>
+                    <button type="submit" class="btn save-btn waves-effect">
+                        Save <i class="far fa-save right"></i>
                     </button>
                 </div>
             </div>
